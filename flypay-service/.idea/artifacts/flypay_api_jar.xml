@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="flypay-api:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/flypay_api_jar</output-path>
+    <root id="archive" name="flypay-api.jar">
+      <element id="module-output" name="flypay-api" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.flypay.center</groupId>
+    <artifactId>registration-certification-center</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <!-- 1、默认使用Java 8
+       2、使用UTF-8编码
+       3、一个引用管理的功能，在dependencies里的部分配置可以不用填写version信息，这些version信息会从spring-boot-dependencies里得到继承。
+       4、能够识别application.properties和application.yml类型的文件，同时也能支持profile-specific类型的文件（如： application-foo.properties and application-foo.yml，这个功能可以更好的配置不同生产环境下的配置文件)。
+       5、识别插件的配置（Sensible plugin configuration (exec plugin, surefire, Git commit ID, shade).）
+       -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.2.RELEASE</version>
+    </parent>
+
+    <!-- properties声明一些公共配置,该节点配置了自定义属性即可在任意地方使用,通过${}访问,形式如${java.version} -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <spring.cloud.dependencies.version>Camden.SR7</spring.cloud.dependencies.version>
+        <io.springfox>2.7.0</io.springfox>
+    </properties>
+
+    <!-- dependencyManagement的作用其实相当于一个对所依赖jar包进行版本管理的管理器 -->
+    <!--
+                       说明1：如果dependencies里的dependency自己没有声明version元素，那么maven就会倒dependencyManagement里面去找有没有对该artifactId和groupId进行过版本声明，
+                               如果有，就继承它，如果没有就会报错，告诉你必须为dependency声明一个version
+                       说明2：如果dependencies中的dependency声明了version，那么无论dependencyManagement中有无对该jar的version声明，都以dependency里的version为准。
+           -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- 一种<build>被称为Project Build，即是<project>的直接子元素。另一种<build>被称为Profile Build，即是<profile>的直接子元素。 -->
+    <build>
+        <!--
+            <plugins>给出构建过程中所用到的插件
+            extensions，是否加载该插件的扩展，默认false
+            inherited，该插件的configuration中的配置是否可以被（继承该POM的其他Maven项目）继承，默认true
+            configuration，该插件所需要的特殊配置，在父子项目之间可以覆盖或合并
+            dependencies，该插件所特有的依赖类库
+            executions，该插件的某个goal（一个插件中可能包含多个goal）的执行方式。一个execution有如下设置：
+                id，唯一标识
+                goals，要执行的插件的goal（可以有多个），如<goal>run</goal>
+                phase，插件的goal要嵌入到Maven的phase中执行，如verify
+                inherited，该execution是否可被子项目继承
+                configuration，该execution的其他配置参数
+             -->
+        <plugins>
+            <!-- 打包jar文件时，配置manifest文件，加入lib包的jar依赖 -->
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <classesDirectory>target/classes/</classesDirectory>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.ynet.access.Main</mainClass>
+                            <!-- 打包时 MANIFEST.MF文件不记录时间戳版本 -->
+                            <useUniqueVersions>false</useUniqueVersions>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                        </manifest>
+                        <manifestEntries>
+                            <Class-Path>.</Class-Path>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>UTF-8</encoding>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- maven仓库地址,在maven安装目录下的：/lib/maven-model-builder-${version}.jar中
+		 打开该文件，能找到超级POM：\org\apache\maven\model\pom-4.0.0.xml ，它是所有Maven POM的父POM，所有Maven项目继承该配置，你可以在这个POM中发现如下配置
+		-->
+
+    <modules>
+
+        <module>eureka-server</module>
+        <module>center-api</module>
+        <module>center-registration</module>
+    </modules>
+</project>
