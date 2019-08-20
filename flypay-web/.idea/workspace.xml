@@ -2,7 +2,52 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ea1f3b4-ff87-4d64-be27-55bd6ed029f3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../flypay-service/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../flypay-service/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/conf/ConfigBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/conf/MyWebAppConfigurer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/job/IdleConnectionEvictor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/dto/HttpResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/dto/WxpayfaceAuthinfoParamDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/dto/WxpayfaceAuthinfoResultDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/pojo/BasePO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/pojo/BusinessInformationPO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/pojo/IdBuildPO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/repository/BusinessInfoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/repository/IdBuildRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/CommonUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/ConsistentHash.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/DBUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/HttpUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/Md5Digest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/Page.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/StringUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/XsteamUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/comparator/ParamKeyComparator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/httpclient/HttpClientManagerFactoryBen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/httpclient/MyConnectionKeepAliveStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/httpclient/MyDefaultProxyRoutePlanner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/httpclient/MyHttpRequestRetryHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/httpclient/MyPoolingHttpClientConnectionManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/httpclient/MyRequestConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/resources/log4j.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flypay-web-controller/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/flypay-web-controller/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/WebApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/WebApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/bp/PayService.java" beforeDir="false" afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/bp/PayService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/bp/impl/PayServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/bp/impl/PayServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/controller/FacePayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/controller/FacePayController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/controller/PayController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/vo/BusinessInformationVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/vo/BusinessInformationVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flypay-web-controller/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flypay-web-controller/src/main/resources/lib/center-api.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flypay-web-controller/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/flypay-web-controller/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flypay-web-controller/target/classes/com/flypay/WebApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/flypay-web-controller/target/classes/com/flypay/WebApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flypay-web-controller/target/classes/com/flypay/bp/PayService.class" beforeDir="false" afterPath="$PROJECT_DIR$/flypay-web-controller/target/classes/com/flypay/bp/PayService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flypay-web-controller/target/classes/com/flypay/bp/impl/PayServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/flypay-web-controller/target/classes/com/flypay/bp/impl/PayServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flypay-web-controller/target/classes/com/flypay/controller/PayController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flypay-web-controller/target/classes/com/flypay/swagger/Swagger2.class" beforeDir="false" afterPath="$PROJECT_DIR$/flypay-web-controller/target/classes/com/flypay/swagger/Swagger2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flypay-web-controller/target/classes/lib/flypay-api.jar" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -19,27 +64,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/controller/PayController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1305">
-              <caret line="45" column="5" selection-start-line="39" selection-start-column="4" selection-end-line="45" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1138#1139#0" expanded="true" />
-                <element signature="e#1182#1183#0" expanded="true" />
-                <element signature="e#1847#1848#0" expanded="true" />
-                <element signature="e#1892#1893#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/controller/FacePayController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="754">
-              <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
+            <state relative-caret-position="621">
+              <caret line="41" column="75" selection-start-line="41" selection-start-column="75" selection-end-line="41" selection-end-column="75" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -48,28 +77,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+        <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/conf/MyWebAppConfigurer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="97" column="10" selection-start-line="97" selection-start-column="10" selection-end-line="97" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/flypay-web-controller/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="53" column="29" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/bp/impl/PayServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+            <state relative-caret-position="87">
+              <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -78,19 +89,88 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/vo/BusinessInformationVO.java">
+        <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="11" column="24" selection-start-line="7" selection-start-column="17" selection-end-line="11" selection-end-column="24" />
+            <state relative-caret-position="427">
+              <caret line="40" column="32" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/Result.java">
+        <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/httpclient/MyDefaultProxyRoutePlanner.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="145">
+              <caret line="12" column="2" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/HttpUtils.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="58">
-              <caret line="2" column="19" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="19" />
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/pojo/BusinessInformationPO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="26">
+              <caret line="36" column="1" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/DBUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="42" column="46" lean-forward="true" selection-start-line="42" selection-start-column="46" selection-end-line="42" selection-end-column="46" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/pojo/IdBuildPO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="174">
+              <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/pojo/BasePO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="124">
+              <caret line="22" column="27" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="22" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/WebApplication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="87">
+              <caret line="55" column="5" lean-forward="true" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -105,32 +185,69 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>HttpClientConnectionManager</find>
+      <find>PoolingHttpClientConnectionManager</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/eureka-server/pom.xml" />
-        <option value="$PROJECT_DIR$/eureka-server/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/eureka-server/src/main/java/com/flypay/application.java" />
         <option value="$PROJECT_DIR$/eureka-server/src/main/java/com/flypay/EurekaServerApplication.java" />
         <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/application/WebApplication.java" />
         <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/swagger/Swagger2.java" />
-        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/WebApplication.java" />
         <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/api/IDemoApi.java" />
         <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/controller/DemoController.java" />
         <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/bp/DemoService.java" />
         <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/bp/impl/DemoServiceImpl.java" />
-        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/bp/PayService.java" />
-        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/controller/PayController.java" />
         <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/Result.java" />
-        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/vo/BusinessInformationVO.java" />
-        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/controller/FacePayController.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/controller/PayController.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/resources/log4j.properties" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/repository/BusinessInfoRepository.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/pojo/IdBuild.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/pojo/BasePO.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/repository/IdBuildRepository.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/conf/HibernateAutoConfiguration.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/ConsistentHash.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/StringUtil.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/Page.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/dto/WxpayfaceAuthinfo.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/dto/WxpayfaceAuthinfoResultDTO.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/conf/ConfigBean.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/dto/HttpResult.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/httpclient/MyconnectionKeepAliveStrategy.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/httpclient/MyhttpRequestRetryHandler.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/httpclient/MyPoolingHttpClientConnectionManager.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/job/IdleConnectionEvictor.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/httpclient/MyConnectionKeepAliveStrategy.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/httpclient/MyRequestConfig.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/httpclient/MyHttpRequestRetryHandler.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/httpclient/HttpClientManagerFactoryBen.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/HttpClient.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/vo/BusinessInformationVO.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/Md5Digest.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/bp/PayService.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/comparator/ParamKeyComparator.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/CommonUtils.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/dto/WxpayfaceAuthinfoParamDTO.java" />
         <option value="$PROJECT_DIR$/flypay-web-controller/pom.xml" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/XsteamUtil.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/pojo/BusinessInformationPO.java" />
         <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/bp/impl/PayServiceImpl.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/HttpUtils.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/httpclient/MyDefaultProxyRoutePlanner.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/WebApplication.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/pojo/IdBuildPO.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/DBUtils.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/conf/MyWebAppConfigurer.java" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/controller/FacePayController.java" />
       </list>
     </option>
   </component>
@@ -138,14 +255,24 @@
     <option name="generalSettings">
       <MavenGeneralSettings>
         <option name="localRepository" value="E:\Apache\maven-repository" />
-        <option name="mavenHome" value="D:/soft/apache-maven-3.6.1" />
-        <option name="userSettingsFile" value="D:\soft\apache-maven-3.6.1\conf\settings.xml" />
+        <option name="mavenHome" value="D:/sorft/maven/apache-maven-3.5.0" />
+        <option name="userSettingsFile" value="D:\sorft\maven\apache-maven-3.5.0\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
   </component>
   <component name="MavenProjectNavigator">
     <treeState>
-      <expand />
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="flypay-web-controller" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="flypay-web-controller" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
+        </path>
+      </expand>
       <select />
     </treeState>
   </component>
@@ -161,8 +288,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -194,7 +319,57 @@
               <item name="flypay-web-controller" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="flypay-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="flypay-web" type="462c0819:PsiDirectoryNode" />
+              <item name="flypay-web-controller" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="flypay" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="flypay-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="flypay-web" type="462c0819:PsiDirectoryNode" />
+              <item name="flypay-web-controller" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="flypay" type="462c0819:PsiDirectoryNode" />
+              <item name="conf" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="flypay-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="flypay-web" type="462c0819:PsiDirectoryNode" />
+              <item name="flypay-web-controller" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="flypay" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="flypay-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="flypay-web" type="462c0819:PsiDirectoryNode" />
+              <item name="flypay-web-controller" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="flypay" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="flypay-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="flypay-web" type="462c0819:PsiDirectoryNode" />
+              <item name="flypay-web-controller" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="flypay" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="pojo" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="flypay-web" type="b2602c69:ProjectViewProjectNode" />
@@ -203,12 +378,13 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -221,19 +397,23 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/flypay-web-controller/src/main/resources/lib" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.flypay.model.repository" />
       <recent name="com.flypay.api" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\work\新建文件夹\webservice\flypay-web\flypay-web-controller\src\main\java\com\flypay\utils" />
       <recent name="E:\work\com\webservice\flypay-web\flypay-web-controller\src\main\resources\lib" />
       <recent name="E:\Work Space\COM\flypay-web\flypay-web-controller\src\main\resources\lib" />
     </key>
@@ -250,7 +430,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.EurekaServerApplication">
+  <component name="RunManager" selected="Spring Boot.WebApplication">
+    <configuration name="PayServiceImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.flypay.bp.impl.PayServiceImpl" />
+      <module name="flypay-web-controller" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.flypay.bp.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="WebApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.flypay.WebApplication" />
       <module name="flypay-web-controller" />
@@ -287,6 +480,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.WebApplication" />
+        <item itemvalue="Application.PayServiceImpl" />
+        <item itemvalue="Application.WebApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -309,16 +504,27 @@
       <workItem from="1565840442202" duration="4671000" />
       <workItem from="1565867947407" duration="1319000" />
       <workItem from="1565871072201" duration="1513000" />
+      <workItem from="1566175900845" duration="48326000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24708000" />
+    <option name="totallyTimeSpent" value="73034000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2730711" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.204236" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -329,23 +535,23 @@
       <window_info id="设计师" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3291367" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39928058" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.75718606" visible="true" weight="0.11803278" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49924356" weight="0.39836067" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" visible="true" weight="0.3295082" />
-      <window_info anchor="bottom" id="Messages" order="11" />
-      <window_info anchor="bottom" id="Java Enterprise" order="12" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3295082" />
+      <window_info anchor="bottom" id="Spring" order="7" weight="0.3295082" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.24281392" side_tool="true" weight="0.49016392" />
+      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49848714" weight="0.3295082" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3295082" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.3295082" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
-      <window_info anchor="bottom" id="Version Control" order="14" />
+      <window_info anchor="bottom" id="Version Control" order="14" weight="0.3295082" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" visible="true" weight="0.21406959" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.12481089" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="right" id="Database" order="6" />
@@ -354,69 +560,76 @@
       <window_info anchor="right" id="Bean Validation" order="9" />
       <window_info anchor="right" id="控制板" order="10" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.204236" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info id="设计师" order="8" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.75718606" visible="true" weight="0.49016392" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49924356" weight="0.39836067" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3295082" />
+      <window_info anchor="bottom" id="Spring" order="7" weight="0.3295082" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.24281392" side_tool="true" weight="0.49016392" />
+      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49848714" weight="0.3295082" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3295082" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.3295082" />
+      <window_info anchor="bottom" id="Database Changes" order="13" />
+      <window_info anchor="bottom" id="Version Control" order="14" weight="0.3295082" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.12481089" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Bean Validation" order="9" />
+      <window_info anchor="right" id="控制板" order="10" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/DBUtils.java</url>
+          <line>57</line>
+          <properties />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/eureka-server/src/main/resources/application.yml" />
-    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/swagger/Swagger2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="42" column="35" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/api/IDemoApi.java" />
-    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/bp/impl/DemoServiceImpl.java" />
     <entry file="jar://$PROJECT_DIR$/flypay-web-controller/src/main/resources/lib/flypay-api.jar!/com/flypay/api/flypayresource/PayApi.class" />
-    <entry file="jar://$PROJECT_DIR$/flypay-web-controller/src/main/resources/lib/flypay-api.jar!/com/flypay/api/flypayresource/api/PayApi.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/bp/PayService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$PROJECT_DIR$/flypay-web-controller/src/main/resources/lib/flypay-api.jar!/com/flypay/api/flypayresource/api/PayApi.class" />
     <entry file="file://$PROJECT_DIR$/eureka-server/src/main/java/com/flypay/EurekaServerApplication.java" />
-    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="29">
-          <caret line="1" column="26" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/flypay-web-controller/src/main/resources/lib/flypay-api.jar!/com/flypay/conf/StaticConf.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/WebApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="23" column="21" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$PROJECT_DIR$/flypay-web-controller/src/main/resources/lib/flypay-api.jar!/com/flypay/conf/StaticConf.class" />
     <entry file="file://$PROJECT_DIR$/eureka-server/pom.xml" />
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/Result.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/controller/PayController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1305">
-          <caret line="45" column="5" selection-start-line="39" selection-start-column="4" selection-end-line="45" selection-end-column="5" />
+        <state relative-caret-position="29">
+          <caret line="39" column="4" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1138#1139#0" expanded="true" />
@@ -427,51 +640,391 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/controller/FacePayController.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="754">
-          <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
+        <state relative-caret-position="215">
+          <caret line="634" column="20" selection-start-line="634" selection-start-column="15" selection-end-line="634" selection-end-column="20" />
+          <folding>
+            <element signature="e#23072#23073#0" expanded="true" />
+            <element signature="e#23112#23113#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot/1.5.2.RELEASE/spring-boot-1.5.2.RELEASE-sources.jar!/org/springframework/boot/SpringApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="339" column="27" selection-start-line="339" selection-start-column="27" selection-end-line="339" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/resources/log4j.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="18" column="52" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/repository/BusinessInfoRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="9" column="57" selection-start-line="9" selection-start-column="57" selection-end-line="9" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/vo/BusinessInformationVO.java">
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/StringUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="11" column="24" selection-start-line="7" selection-start-column="17" selection-end-line="11" selection-end-column="24" />
+        <state relative-caret-position="502">
+          <caret line="36" column="15" selection-start-line="36" selection-start-column="15" selection-end-line="36" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#975#976#0" expanded="true" />
+            <element signature="e#1013#1014#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/Result.java">
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/repository/IdBuildRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="19" />
+        <state relative-caret-position="203">
+          <caret line="7" column="62" selection-start-line="7" selection-start-column="62" selection-end-line="7" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/conf/HibernateAutoConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="19" column="5" lean-forward="true" selection-start-line="13" selection-start-column="3" selection-end-line="19" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/ConsistentHash.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/Page.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1940">
+          <caret line="112" column="42" selection-start-line="112" selection-start-column="42" selection-end-line="112" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5722#5723#0" expanded="true" />
+            <element signature="e#5751#5752#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/dto/WxpayfaceAuthinfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="8" column="13" selection-end-line="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/conf/ConfigBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="667">
+          <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/dto/HttpResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/job/IdleConnectionEvictor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="13" column="54" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/httpclient/MyConnectionKeepAliveStrategy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="53">
+          <caret line="23" column="40" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/httpclient/MyRequestConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/httpclient/MyPoolingHttpClientConnectionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="633">
+          <caret line="33" column="54" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1534#1559#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/httpclient/HttpClientManagerFactoryBen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1177">
+          <caret line="18" column="37" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2336#2337#0" expanded="true" />
+            <element signature="e#2361#2362#0" expanded="true" />
+            <element signature="e#2648#2649#0" expanded="true" />
+            <element signature="e#2736#2737#0" expanded="true" />
+            <element signature="e#2801#2802#0" expanded="true" />
+            <element signature="e#2819#2820#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/httpclient/MyHttpRequestRetryHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="28" column="4" lean-forward="true" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="4" />
+          <folding>
+            <element signature="e#844#876#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpclient/4.5.3/httpclient-4.5.3-sources.jar!/org/apache/http/client/methods/HttpPost.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="54" column="60" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/dto/WxpayfaceAuthinfoResultDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="58" column="7" lean-forward="true" selection-start-line="58" selection-start-column="7" selection-end-line="58" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/Md5Digest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3103">
+          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="15" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/bp/PayService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="8" column="136" selection-start-line="8" selection-start-column="136" selection-end-line="8" selection-end-column="136" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/comparator/ParamKeyComparator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#232#233#0" expanded="true" />
+            <element signature="e#289#290#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/CommonUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="82" column="9" selection-start-line="82" selection-start-column="9" selection-end-line="82" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/dto/WxpayfaceAuthinfoParamDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="100" column="32" selection-start-line="100" selection-start-column="32" selection-end-line="100" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="97" column="10" selection-start-line="97" selection-start-column="10" selection-end-line="97" selection-end-column="10" />
+        <state relative-caret-position="1070">
+          <caret line="94" column="13" selection-start-line="94" selection-start-column="13" selection-end-line="94" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/XsteamUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/5.0.12.Final/hibernate-core-5.0.12.Final-sources.jar!/org/hibernate/Query.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="850" column="17" selection-start-line="850" selection-start-column="17" selection-end-line="850" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/1.5.2.RELEASE/spring-boot-autoconfigure-1.5.2.RELEASE-sources.jar!/org/springframework/boot/autoconfigure/orm/jpa/JpaBaseConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="58" column="23" selection-start-line="58" selection-start-column="23" selection-end-line="58" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/vo/BusinessInformationVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-14">
+          <caret line="93" column="37" selection-start-line="93" selection-start-column="37" selection-end-line="93" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/bp/impl/PayServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+          <caret line="59" column="54" selection-start-line="59" selection-start-column="54" selection-end-line="59" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flypay-web-controller/pom.xml">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/4.3.7.RELEASE/spring-beans-4.3.7.RELEASE-sources.jar!/org/springframework/beans/factory/annotation/AutowiredAnnotationBeanPostProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="53" column="29" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
+        <state relative-caret-position="95">
+          <caret line="365" column="21" selection-start-line="365" selection-start-column="21" selection-end-line="365" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/HttpUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/httpclient/MyDefaultProxyRoutePlanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="12" column="2" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/WebApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="55" column="5" lean-forward="true" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/pojo/BasePO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="22" column="27" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="22" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/pojo/IdBuildPO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/DBUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="42" column="46" lean-forward="true" selection-start-line="42" selection-start-column="46" selection-end-line="42" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/pojo/BusinessInformationPO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="36" column="1" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="40" column="32" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/conf/MyWebAppConfigurer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/controller/FacePayController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="41" column="75" selection-start-line="41" selection-start-column="75" selection-end-line="41" selection-end-column="75" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

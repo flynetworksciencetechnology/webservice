@@ -10,4 +10,6 @@ public class BusinessInformationVO {
     public String deviceId;
     public String appid;
     public String mchId;
+    public String uuid;
+    public String key;
 }

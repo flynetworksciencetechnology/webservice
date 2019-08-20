@@ -1,9 +1,10 @@
 package com.flypay.bp;
 
+import com.flypay.model.Result;
+
 public interface PayService {
-    public String helloPay();
 
-    public String feginPay(String payType,String payKind);
+    Result getBusinessInformation(String uuid);
 
-    public String ribbonPay();
+    Result getWxpayfaceAuthinfo(String storeId, String storeName, String deviceId, String rawdata, String appid, String mchId,String key);
 }
