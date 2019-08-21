@@ -20,6 +20,32 @@ public class DBUtils {
     @Autowired
     @PersistenceContext
     private EntityManager em;
+
+    /**
+     * 根据id删除表数据
+     * @param queryStr
+     * @param id
+     * @param queryType
+     * @return
+     * @throws Exception
+     */
+    public Integer delete(final String queryStr, final Integer id,
+                          final String queryType) throws Exception {
+        if (null == id) {
+            throw new NullPointerException(
+                    "param:id is not allowed null when you delete by id");
+        }
+        Query query = createQuery(em, queryStr, queryType, false,null);
+        query.setParameter(1, id);
+        return query.executeUpdate();
+    }
+    /**
+     * 分页查询返回list<map>
+     * @param page
+     * @param queryStr
+     * @param params
+     * @return
+     */
     public List<Map<String,Object>> queryBySql2Map(final Page page, final String queryStr, final List<Object> params){
         Query query = em.createNativeQuery(queryStr);
         query.unwrap(SQLQuery.class).setResultTransformer(
@@ -33,7 +59,34 @@ public class DBUtils {
         return query.getResultList();
     }
 
-
+    /**
+     * @Description: 根据查询类型创建query对象
+     * @param em
+     * @param queryStr
+     * @param queryType
+     *            HQL/SQL
+     * @param mapClass
+     *            是否需要也class类进行映射，一般是通过select 查询属性集合时用到<br/>
+     *            把一个对象数组的集合映射为对象的集合。
+     * @return
+     * @author Li Weidong
+     * @date 2015-12-25
+     */
+    private Query createQuery(EntityManager em, final String queryStr,
+                                     final String queryType, boolean mapClass,Class entityClass) {
+        Query query = null;
+        if ("HQL".equals(queryType))
+            query = em.createQuery(queryStr);
+        if ("HQL".equals(queryType)) {
+            if (mapClass) {
+                query = em.createNativeQuery(queryStr);
+                query.unwrap(SQLQuery.class).setResultTransformer(
+                        Transformers.aliasToBean(entityClass));
+            } else
+                query = em.createNativeQuery(queryStr);
+        }
+        return query;
+    }
     /**
      * 生成表id
      * @param dbNo

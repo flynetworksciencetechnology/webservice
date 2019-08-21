@@ -26,4 +26,27 @@ public class ConfigBean {
      */
     @Value("${wechat.facepay.wxpayface_authinfo}")
     public String wxpayfaceAuthinfoURL;
+
+    @Value("${spring.redis.host}")
+    public String host;
+
+    @Value("${spring.redis.port}")
+    public int port;
+
+    @Value("${spring.redis.timeout}")
+    public int timeout;
+
+    @Value("${spring.redis.pool.max-active}")
+    public int maxActive;
+
+    @Value("${spring.redis.pool.max-idle}")
+    public int maxIdle;
+
+    @Value("${spring.redis.pool.min-idle}")
+    public int minIdle;
+
+    @Value("${spring.redis.pool.max-wait}")
+    public long maxWaitMillis;
+    @Value("${spring.redis.password}")
+    public String redispwd;
 }
