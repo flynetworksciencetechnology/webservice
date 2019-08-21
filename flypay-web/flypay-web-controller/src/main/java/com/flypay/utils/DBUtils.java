@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import org.hibernate.SQLQuery;
 import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
@@ -12,7 +13,7 @@ import javax.transaction.Transactional;
 import java.math.BigInteger;
 import java.util.List;
 import java.util.Map;
-@Service
+@Component
 public class DBUtils {
     private static final Logger LOGGER = Logger.getLogger(DBUtils.class);
     @Autowired
