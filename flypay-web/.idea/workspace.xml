@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4ea1f3b4-ff87-4d64-be27-55bd6ed029f3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flypay-web-controller/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/flypay-web-controller/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/controller/FacePayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/controller/FacePayController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flypay-web-controller/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flypay-web-controller/target/classes/META-INF/flypay-web-controller.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flypay-web-controller/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/flypay-web-controller/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flypay-web-controller/target/classes/com/flypay/swagger/Swagger2.class" beforeDir="false" afterPath="$PROJECT_DIR$/flypay-web-controller/target/classes/com/flypay/swagger/Swagger2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/DBUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/DBUtils.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -34,11 +29,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/DBUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="122" column="22" selection-start-line="122" selection-start-column="22" selection-end-line="122" selection-end-column="22" />
+            <state relative-caret-position="186">
+              <caret line="133" column="43" selection-start-line="133" selection-start-column="43" selection-end-line="133" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -102,11 +97,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="49" column="28" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="28" />
+            <state relative-caret-position="97">
+              <caret line="58" column="12" lean-forward="true" selection-start-line="58" selection-start-column="12" selection-end-line="58" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -206,10 +201,10 @@
         <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/conf/ConfigBean.java" />
         <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/conf/JedisConfig.java" />
         <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/RedisUtils.java" />
-        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/DBUtils.java" />
         <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/controller/FacePayController.java" />
         <option value="$PROJECT_DIR$/flypay-web-controller/pom.xml" />
         <option value="$PROJECT_DIR$/flypay-web-controller/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/DBUtils.java" />
       </list>
     </option>
   </component>
@@ -300,26 +295,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="flypay" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flypay-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flypay-web" type="462c0819:PsiDirectoryNode" />
-              <item name="flypay-web-controller" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="flypay" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="pojo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flypay-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flypay-web" type="462c0819:PsiDirectoryNode" />
-              <item name="flypay-web-controller" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -470,11 +446,18 @@
       <option name="project" value="LOCAL" />
       <updated>1566381715852</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="&lt;配置并使用redis&gt;">
+      <created>1566393861316</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1566393861316</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77427000" />
+    <option name="totallyTimeSpent" value="78407000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -489,6 +472,43 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info content_ui="combo" id="Project" order="0" weight="0.27760968" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info id="设计师" order="8" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.75718606" weight="0.49099836" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49924356" weight="0.39836067" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3295082" />
+      <window_info anchor="bottom" id="Spring" order="7" weight="0.3295082" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.32829046" side_tool="true" weight="0.3289689" />
+      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49848714" weight="0.3289689" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3295082" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.3295082" />
+      <window_info anchor="bottom" id="Database Changes" order="13" />
+      <window_info anchor="bottom" id="Version Control" order="14" sideWeight="0.67170954" weight="0.3295082" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.21406959" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Bean Validation" order="9" />
+      <window_info anchor="right" id="控制板" order="10" />
+    </layout>
+    <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27760968" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
@@ -524,43 +544,6 @@
       <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info anchor="right" id="Bean Validation" order="9" />
       <window_info anchor="right" id="控制板" order="10" />
-    </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.204236" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info id="Web" order="7" side_tool="true" />
-      <window_info id="设计师" order="8" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.75718606" visible="true" weight="0.49016392" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49924356" weight="0.39836067" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3295082" />
-      <window_info anchor="bottom" id="Spring" order="7" weight="0.3295082" />
-      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.24281392" side_tool="true" weight="0.49016392" />
-      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49848714" weight="0.3295082" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3295082" />
-      <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.3295082" />
-      <window_info anchor="bottom" id="Database Changes" order="13" />
-      <window_info anchor="bottom" id="Version Control" order="14" weight="0.3295082" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" weight="0.12481089" />
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="right" id="Database" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info anchor="right" id="Bean Validation" order="9" />
-      <window_info anchor="right" id="控制板" order="10" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -569,7 +552,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="&lt;增加工具类&gt;" />
     <MESSAGE value="&lt;增加redis&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&lt;增加redis&gt;" />
+    <MESSAGE value="&lt;配置并使用redis&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&lt;配置并使用redis&gt;" />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://$PROJECT_DIR$/flypay-web-controller/src/main/resources/lib/flypay-api.jar!/com/flypay/conf/StaticConf.class" />
@@ -919,16 +903,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/DBUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="122" column="22" selection-start-line="122" selection-start-column="22" selection-end-line="122" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/pojo/IdBuildPO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="98">
@@ -953,8 +927,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="49" column="28" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="28" />
+        <state relative-caret-position="97">
+          <caret line="58" column="12" lean-forward="true" selection-start-line="58" selection-start-column="12" selection-end-line="58" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/DBUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="133" column="43" selection-start-line="133" selection-start-column="43" selection-end-line="133" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

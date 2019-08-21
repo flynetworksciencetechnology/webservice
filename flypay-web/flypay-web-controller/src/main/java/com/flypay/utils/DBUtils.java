@@ -41,6 +41,148 @@ public class DBUtils {
         return query.executeUpdate();
     }
     /**
+     * @Description: 更新操作，适用于 delete ,update 操作，批量的，多条件的。
+     * @param updateStr
+     *            要执行的语句
+     * @param params
+     *            传入的参数
+     * @param queryType
+     *            HQL/SQl
+     * @return
+     * @author Li Weidong
+     * @date 2015-12-25
+     */
+    public Integer executeUpdate(final String updateStr,
+                                        final List<Object> params, final String queryType) {
+        checkQueryType(queryType);
+        Query query = createQuery(em, updateStr, queryType, false, null);
+
+        setParamters(params, query);
+        return query.executeUpdate();
+    }
+    /**
+     * @Description: 这是一个泛型方法，把查询结果映射成一个指定的对象，适合select 本地sql 查询
+     * @param entityClass
+     *            你要转换成的对对象。
+     * @param page
+     * @param queryStr
+     * @param params
+     * @return
+     * @throws Exception
+     * @author Li Weidong
+     * @date 2015-12-25
+     */
+    public <T> List<T> queryBySQL(final Class<T> entityClass, final Page page,final String queryStr, final List<Object> params) throws Exception {
+
+        Query query = em.createNativeQuery(queryStr);
+        query.unwrap(SQLQuery.class).setResultTransformer(
+                Transformers.aliasToBean(entityClass));
+
+        setParamters(params, query);
+        if (null != page) {
+            query.setFirstResult(page.getStartRow());
+            query.setMaxResults(page.getRows());
+        }
+        return query.getResultList();
+    }
+    /**
+     *
+     * 描述: 这是一个泛型方法，把查询结果映射成一个指定的对象，适合select 本地sql 查询 返回带泛型集合
+     * @author:  Liu Yufan
+     * @date:2018年8月3日 下午4:33:33
+     * @param entityClass   要转的对象
+     * @param page          分页对象
+     * @param queryStr      sql
+     * @param params        参数
+     * @return
+     * @throws Exception
+     */
+    public <T> List<T> queryBySQL(final String queryStr, final Page page,final Class<T> entityClass, final Object... params) throws Exception {
+
+        Query query = em.createNativeQuery(queryStr);
+        query.unwrap(SQLQuery.class).setResultTransformer(
+                Transformers.aliasToBean(entityClass));
+
+        setParamters(params, query);
+        return query.getResultList();
+    }
+    /**
+     * @Description: 查询总条数，通用的，可以是hql/sql
+     * @param queryStr
+     * @param params
+     * @param queryType
+     *            查询类型 HQL/SQL
+     * @return
+     * @throws Exception
+     * @author Li Weidong
+     * @date 2015-12-25
+     */
+    public Integer queryTotleRows(final String queryStr,
+                                         final List<Object> params, final String queryType) throws Exception {
+
+        checkQueryType(queryType);
+
+        Query query = null;
+        if (queryType.equals(QUERY_TYPE_HQL))
+            query = em.createQuery(queryStr);
+        if (queryType.equals(QUERY_TYPE_SQL))
+            query = em.createNativeQuery(queryStr);
+
+        setParamters(params, query);
+        List list = query.getResultList();
+        Object count = 0;
+        if( list != null && !list.isEmpty()) {
+            count = list.get(0);
+        }
+        Long l = Long.parseLong(count.toString());
+        return l.intValue();
+    }
+    /**
+     *
+     * 描述: 这是一个泛型方法，把查询结果映射成一个指定的对象，适合select 本地sql 查询 返回单个对象
+     * @author:  Liu Yufan
+     * @date:2018年8月3日 下午4:33:33
+     * @param entityClass   要转的对象
+     * @param queryStr      sql
+     * @param params        参数
+     * @return
+     * @throws Exception
+     */
+    public <T> T queryBySQL(final Class<T> entityClass,final String queryStr, final Object... params) throws Exception {
+
+        Query query = em.createNativeQuery(queryStr);
+        query.unwrap(SQLQuery.class).setResultTransformer(
+                Transformers.aliasToBean(entityClass));
+
+        setParamters(params, query);
+        List<T> res = query.getResultList();
+        if( res == null || res.isEmpty() || res.size() != 1)
+            return null;
+
+        return res.get(0);
+    }
+    /**
+     * @Description: sql查询，返回Map类型的结果集
+     * @param queryStr
+     * @param params
+     * @return
+     * @throws Exception
+     * @author Li Weidong
+     * @date 2016-5-11
+     */
+    public Map<String,Object> queryBySQL(final String queryStr, final Object... params) throws Exception {
+
+        Query query = em.createNativeQuery(queryStr);
+        query.unwrap(SQLQuery.class).setResultTransformer(
+                Transformers.ALIAS_TO_ENTITY_MAP);
+
+        setParamters(params, query);
+        List<Map<String,Object>> resultList = query.getResultList();
+        if( resultList != null && resultList.size() == 1)
+            return resultList.get(0);
+        return null;
+    }
+    /**
      * 分页查询返回list<map>
      * @param page
      * @param queryStr
@@ -59,7 +201,21 @@ public class DBUtils {
         }
         return query.getResultList();
     }
+    /**
+     * @Description: 检查参数合法性
+     * @param queryType
+     * @author Li Weidong
+     * @date 2015-12-25
+     */
+    private static void checkQueryType(final String queryType) {
 
+        if (!StringUtil.hasText(queryType)
+                || (!queryType.equals(QUERY_TYPE_HQL) && !queryType
+                .equals(QUERY_TYPE_SQL)))
+            throw new IllegalStateException(
+                    "param queryParam is error,allowed:HQL/SQL");
+
+    }
     /**
      * @Description: 根据查询类型创建query对象
      * @param em
@@ -76,9 +232,9 @@ public class DBUtils {
     private Query createQuery(EntityManager em, final String queryStr,
                                      final String queryType, boolean mapClass,Class entityClass) {
         Query query = null;
-        if ("HQL".equals(queryType))
+        if (QUERY_TYPE_HQL.equals(queryType))
             query = em.createQuery(queryStr);
-        if ("HQL".equals(queryType)) {
+        if (QUERY_TYPE_SQL.equals(queryType)) {
             if (mapClass) {
                 query = em.createNativeQuery(queryStr);
                 query.unwrap(SQLQuery.class).setResultTransformer(
@@ -177,4 +333,13 @@ public class DBUtils {
             }
         }
     }
+    private static void setParamters(Object[] params, Query query) {
+        if( params != null && params.length > 0) {
+            for (int i = 0; i < params.length; i++) {
+                query.setParameter(i + 1, params[i]);
+            }
+        }
+    }
+    private static final String QUERY_TYPE_SQL = "SQL";
+    private static final String QUERY_TYPE_HQL = "HQL";
 }
