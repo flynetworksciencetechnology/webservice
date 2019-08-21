@@ -3,6 +3,7 @@ package com.flypay.controller;
 import com.flypay.bp.PayService;
 import com.flypay.model.Result;
 import com.flypay.utils.DBUtils;
+import com.flypay.utils.RedisUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.log4j.Logger;
@@ -21,6 +22,8 @@ public class FacePayController {
     PayService pay;
     @Autowired
     DBUtils db;
+    @Autowired
+    RedisUtils redisUtils;
     @ApiOperation(value="初始化设备,根据设备编号,获取设备绑定的商户信息", notes="Test")
     @RequestMapping(value = "/init", method = RequestMethod.GET)
     public Result init(@RequestParam("uuid") String uuid){
@@ -63,9 +66,10 @@ public class FacePayController {
         Result result = new Result();
 
         Long 飞付科技 = db.creatId(db.id_bit, "飞付科技", DBUtils.TableIndex.business_info);
+        redisUtils.set("key","value");
         result.code = "0000";
         result.message = "获取成功";
-        result.data = 飞付科技;
+        result.data = redisUtils.get("key");
         return result;
     }
 }
