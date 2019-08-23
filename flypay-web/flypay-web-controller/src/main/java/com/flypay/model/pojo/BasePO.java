@@ -21,4 +21,9 @@ public class BasePO implements Serializable {
     public Date addTime;
     @Column(name = "update_time",nullable = false)
     public Date updateTime;
+
+    public BasePO() {
+        Date date = new Date(System.currentTimeMillis());
+        this.addTime = this.updateTime = date;
+    }
 }

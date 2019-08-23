@@ -119,10 +119,7 @@ public class Md5Digest {
 		return toHex(dg);
 	}
 	
-	public static void main(String[] args) {
-		System.out.println(md5("098f6bcd4621d373cade4e832627b4f6"));
-	}
-	
+
 	/**
 	 * 将byte[] 用16进制表示
 	 * @param input
@@ -156,9 +153,4 @@ public class Md5Digest {
 		}
 		return new String(chars);
 	}
-	
-/*	public static void main(String[] args) {
-		System.out.println(md5("wh19920325"));
-	}*/
-	
 }

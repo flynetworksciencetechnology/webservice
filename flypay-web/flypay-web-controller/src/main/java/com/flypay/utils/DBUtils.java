@@ -254,7 +254,7 @@ public class DBUtils {
     public static final Long order_bit = 1000L;
     @Transactional
     public Long creatId(Long bit ,String dbNo,TableIndex tableIndex){
-        if((StringUtil.hasText(dbNo) && !StringUtil.isNum(dbNo)) || dbNo.length() > 2){
+        if(!StringUtil.hasText(dbNo) || (StringUtil.hasText(dbNo) && !StringUtil.isNum(dbNo)) || dbNo.length() > 2){
             dbNo = getDistributeDBNo(dbNo);
         }
         long PKID = 0,id = 0;
@@ -316,7 +316,7 @@ public class DBUtils {
         return "00";
     }
     public enum TableIndex{
-        business_info;
+        merchan_info,equipment_info,service_provider_info,store_info;
     }
     /**
      * @Description: 处理查询参数

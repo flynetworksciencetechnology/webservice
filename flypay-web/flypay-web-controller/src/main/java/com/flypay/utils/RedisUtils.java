@@ -1,7 +1,9 @@
 package com.flypay.utils;
 
 import com.alibaba.fastjson.JSON;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -13,10 +15,11 @@ import redis.clients.jedis.JedisPool;
  */
 @Component
 public class RedisUtils {
-
+	private static final Logger logger = Logger.getLogger(RedisUtils.class);
 	@Autowired
 	private JedisPool jedisPool;
-
+	@Value("${spring.redis.open}")
+	private Boolean isOpen;
 	/**
 	 * 不设置过期时长
 	 */
@@ -32,6 +35,10 @@ public class RedisUtils {
 	 * @param expire  过期时间 单位：秒
 	 */
 	public void set(String key, Object value, RedisDBIndex dbIndex, int expire) {
+		if( !isOpen) {
+			logger.error("缓存未开启");
+			return;
+		}
 		Jedis jedis = getJedis(dbIndex);
 		jedis.set(key, toJson(value));
 		if (expire != NOT_EXPIRE) {
@@ -47,6 +54,10 @@ public class RedisUtils {
 	 * @param dbIndex 数据库索引 范围 0-15,默认0
 	 */
 	public void set(String key, Object value, RedisDBIndex dbIndex) {
+		if( !isOpen) {
+			logger.error("缓存未开启");
+			return;
+		}
 		set(key, value, dbIndex, NOT_EXPIRE);
 	}
 
@@ -57,6 +68,10 @@ public class RedisUtils {
 	 * @param value 值
 	 */
 	public void set(String key, Object value) {
+		if( !isOpen) {
+			logger.error("缓存未开启");
+			return;
+		}
 		set(key, value, RedisDBIndex.base, NOT_EXPIRE);
 	}
 
@@ -70,6 +85,10 @@ public class RedisUtils {
 	 * @return
 	 */
 	public <T> T get(String key, Class<T> clazz, RedisDBIndex dbIndex, int expire) {
+		if( !isOpen) {
+			logger.error("缓存未开启");
+			return null;
+		}
 		Jedis jedis = getJedis(dbIndex);
 		try {
 			String value = jedis.get(key);
@@ -91,6 +110,10 @@ public class RedisUtils {
 	 * @return
 	 */
 	public <T> T get(String key, Class<T> clazz, RedisDBIndex dbIndex) {
+		if( !isOpen) {
+			logger.error("缓存未开启");
+			return null;
+		}
 		return get(key, clazz, dbIndex, NOT_EXPIRE);
 	}
 
@@ -102,6 +125,10 @@ public class RedisUtils {
 	 * @return
 	 */
 	public <T> T get(String key, Class<T> clazz) {
+		if( !isOpen) {
+			logger.error("缓存未开启");
+			return null;
+		}
 		return get(key, clazz, RedisDBIndex.base, NOT_EXPIRE);
 	}
 
@@ -114,6 +141,10 @@ public class RedisUtils {
 	 * @return
 	 */
 	public String get(String key, RedisDBIndex dbIndex, int expire) {
+		if( !isOpen) {
+			logger.error("缓存未开启");
+			return null;
+		}
 		Jedis jedis = getJedis(dbIndex);
 		try {
 			String value = jedis.get(key);
@@ -134,6 +165,10 @@ public class RedisUtils {
 	 * @return
 	 */
 	public String get(String key, RedisDBIndex dbIndex) {
+		if( !isOpen) {
+			logger.error("缓存未开启");
+			return null;
+		}
 		return get(key, dbIndex, NOT_EXPIRE);
 	}
 
@@ -144,6 +179,10 @@ public class RedisUtils {
 	 * @return
 	 */
 	public String get(String key) {
+		if( !isOpen) {
+			logger.error("缓存未开启");
+			return null;
+		}
 		return get(key, RedisDBIndex.base, NOT_EXPIRE);
 	}
 
@@ -154,6 +193,10 @@ public class RedisUtils {
 	 * @param dbIndex 数据库索引 范围 0-15 默认0
 	 */
 	public void delete(String key, RedisDBIndex dbIndex) {
+		if( !isOpen) {
+			logger.error("缓存未开启");
+			return;
+		}
 		Jedis jedis = getJedis(dbIndex);
 		try {
 			jedis.del(key);
@@ -168,6 +211,10 @@ public class RedisUtils {
 	 * @param key 键
 	 */
 	public void delete(String key) {
+		if( !isOpen) {
+			logger.error("缓存未开启");
+			return;
+		}
 		delete(key, RedisDBIndex.base);
 	}
 
@@ -179,6 +226,10 @@ public class RedisUtils {
 	 * @param expire  过期时间 单位：秒
 	 */
 	public void expire(String key, RedisDBIndex dbIndex, int expire) {
+		if( !isOpen) {
+			logger.error("缓存未开启");
+			return;
+		}
 		Jedis jedis = getJedis(dbIndex);
 		try {
 			if (expire != NOT_EXPIRE) {
@@ -196,6 +247,10 @@ public class RedisUtils {
 	 * @param expire 过期时间 单位：秒
 	 */
 	public void expire(String key, int expire) {
+		if( !isOpen) {
+			logger.error("缓存未开启");
+			return;
+		}
 		expire(key, RedisDBIndex.base, expire);
 	}
 
@@ -205,6 +260,7 @@ public class RedisUtils {
 	 * @param dbIndex
 	 */
 	private Jedis getJedis(RedisDBIndex dbIndex) {
+
 		Jedis jedis = jedisPool.getResource();
 		Integer index = dbIndex.ordinal();
 		if (index == null || index > 15 || index < 0) {
@@ -237,4 +293,5 @@ public class RedisUtils {
 	public enum RedisDBIndex{
 		base;
 	}
+
 }

@@ -19,8 +19,4 @@ public class IdBuildPO extends BasePO{
     public String tableName;
     @Column(name = "current_no",nullable = false)
     public Long currentNo;
-    @Column(name = "add_time",nullable = false)
-    public Date addTime;
-    @Column(name = "update_time",nullable = false)
-    public Date updateTime;
 }

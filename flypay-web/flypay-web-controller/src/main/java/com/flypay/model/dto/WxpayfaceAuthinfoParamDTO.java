@@ -50,7 +50,7 @@ public class WxpayfaceAuthinfoParamDTO {
      * 子商户号(服务商模式)。
      */
     @XStreamAlias("sub_mch_id")
-    public String subMchId;
+    public String subMchid;
     /**
      * 取当前时间，10位unix时间戳。 例如：1239878956
      */
@@ -83,13 +83,15 @@ public class WxpayfaceAuthinfoParamDTO {
         this.nonceStr = CommonUtils.getRandomString(32);
     }
 
-    public WxpayfaceAuthinfoParamDTO(String storeId, String storeName, String deviceId, String rawdata, String appid, String mchId) {
+    public WxpayfaceAuthinfoParamDTO(String storeId, String storeName, String deviceId, String rawdata, String appid, String mchId ,String subAppid, String subMchid) {
         this.storeId = storeId;
         this.storeName = storeName;
         this.deviceId = deviceId;
         this.rawdata = rawdata;
         this.appid = appid;
         this.mchId = mchId;
+        this.subAppid =subAppid;
+        this.subMchid = subMchid;
         this.version = "1";
         this.signType = "MD5";
         this.now = String.valueOf(System.currentTimeMillis());
@@ -107,7 +109,7 @@ public class WxpayfaceAuthinfoParamDTO {
                 ", appid='" + appid + '\'' +
                 ", mchId='" + mchId + '\'' +
                 ", subAppid='" + subAppid + '\'' +
-                ", subMchId='" + subMchId + '\'' +
+                ", subMchId='" + subMchid + '\'' +
                 ", now='" + now + '\'' +
                 ", version='" + version + '\'' +
                 ", signType='" + signType + '\'' +
