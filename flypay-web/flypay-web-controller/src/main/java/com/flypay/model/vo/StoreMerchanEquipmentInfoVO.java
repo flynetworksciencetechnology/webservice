@@ -3,14 +3,22 @@ package com.flypay.model.vo;
 /**
  * 商户信息
  */
-public class BusinessInformationVO {
+public class StoreMerchanEquipmentInfoVO {
 
     /**
-     * 商户名称
+     * 门店名称
      */
     public String storeName;
     /**
-     * 商户id
+     * 门店地址
+     */
+    public String storeCity;
+    /**
+     * 门店地址
+     */
+    public String storeBrand;
+    /**
+     * 门店id
      */
     public String storeId;
     /**
@@ -25,7 +33,10 @@ public class BusinessInformationVO {
      * 商户编号
      */
     public String subMchid;
-
+    /**
+     * 商户名称
+     */
+    public String subMchName;
     /**
      * 服务商appid
      */
@@ -41,6 +52,6 @@ public class BusinessInformationVO {
      */
     public String key;
     public String serviceName;
-    public String serviceId;
     public String rawdata;
+    public String ip;
 }

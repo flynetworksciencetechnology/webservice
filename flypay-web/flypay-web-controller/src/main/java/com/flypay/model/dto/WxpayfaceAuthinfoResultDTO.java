@@ -1,5 +1,6 @@
 package com.flypay.model.dto;
 
+import com.flypay.model.pojo.OrderInfoPO;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 public class WxpayfaceAuthinfoResultDTO {
@@ -59,4 +60,6 @@ public class WxpayfaceAuthinfoResultDTO {
      */
     @XStreamAlias("sub_mch_id")
     public String subMchId;
+
+    public OrderInfoPO oi;
 }

@@ -316,7 +316,7 @@ public class DBUtils {
         return "00";
     }
     public enum TableIndex{
-        merchan_info,equipment_info,service_provider_info,store_info;
+        merchan_info,equipment_info,service_provider_info,store_info, order, order_info, order_detail_info;
     }
     /**
      * @Description: 处理查询参数

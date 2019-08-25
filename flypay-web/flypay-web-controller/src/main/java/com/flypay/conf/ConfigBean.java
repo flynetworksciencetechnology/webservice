@@ -26,7 +26,11 @@ public class ConfigBean {
      */
     @Value("${wechat.facepay.wxpayface_authinfo}")
     public String wxpayfaceAuthinfoURL;
-
+    /**
+     * 区域码 固定
+     */
+    @Value("${wechat.facepay.facepay}")
+    public String wxpayURL;
     @Value("${spring.redis.host}")
     public String host;
 
