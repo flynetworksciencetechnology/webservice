@@ -15,7 +15,7 @@ public class StringUtil {
      */
     public static boolean hasText(String arg){
         LOGGER.info("对字符串 :|" + arg + "|进行判断是否为空/串");
-        if( arg == null || "".equals(arg) || arg.isEmpty()) return false;
+        if( arg == null || "".equals(arg) || arg.isEmpty() || "null".equals(arg)) return false;
         arg = replaceBlank(arg);
         if("".equals(arg) || arg.isEmpty()) return false;
         return true;

@@ -90,11 +90,10 @@ public class WxpayfaceAuthinfoParamDTO {
         this.rawdata = rawdata;
         this.appid = appid;
         this.mchId = mchId;
-        this.subAppid =subAppid;
         this.subMchid = subMchid;
         this.version = "1";
         this.signType = "MD5";
-        this.now = String.valueOf(System.currentTimeMillis());
+        this.now = String.valueOf(System.currentTimeMillis() / 1000) ;
         this.nonceStr = CommonUtils.getRandomString(32);
     }
 

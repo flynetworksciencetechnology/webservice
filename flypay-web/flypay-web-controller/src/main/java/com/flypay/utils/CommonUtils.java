@@ -2,12 +2,16 @@ package com.flypay.utils;
 
 import com.flypay.model.dto.WxpayfaceAuthinfoParamDTO;
 import com.flypay.utils.comparator.ParamKeyComparator;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import org.apache.log4j.Logger;
 
 import java.lang.reflect.Field;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class CommonUtils {
     private static final String RESOURCE = "zxcvbnmlkjhgfdsaqwertyuiopQWERTYUIOPASDFGHJKLZXCVBNM1234567890";
+    private static final Logger logger = Logger.getLogger(CommonUtils.class);
     /**
      * 生成指定长度的随机字符串
      * @param length
@@ -71,11 +75,14 @@ public class CommonUtils {
             Field field = fields[i];
             field.setAccessible(true);
             String fieldType = field.getType().getName();
-            String fieldName = field.getName();
+            XStreamAlias streamAlias = field.getAnnotation(XStreamAlias.class);
+            String fieldName = streamAlias.value();
             if( TYPES1.contains(fieldType) || TYPES2.contains(fieldType)){
                 try {
                     String fieldValue = String.valueOf(field.get(obj));
-                    map.put(fieldName,fieldValue);
+                    if( StringUtil.hasText(fieldValue)){
+                        map.put(fieldName,fieldValue);
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -93,7 +100,7 @@ public class CommonUtils {
                 }
             }
         }
-        String stringA = sb.append("&key=").append(key).toString();
+        String stringA = sb.append("key=").append(key).toString();
         //MD5签名
         return Md5Digest.md5(stringA).toUpperCase();
     }

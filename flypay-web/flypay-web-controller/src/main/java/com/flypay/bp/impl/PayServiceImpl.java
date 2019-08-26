@@ -37,6 +37,8 @@ public class PayServiceImpl implements PayService {
         OrderInfoDao orderDao;
         @Autowired
         OrderDetailInfoDao odDao;
+        @Autowired
+        HttpUtils httpUtils;
         @Override
         public Result getStoreMerchanInfo(String uuid, String ip) {
                 Result result = new Result();
@@ -118,7 +120,7 @@ public class PayServiceImpl implements PayService {
         }
 
         @Override
-        public Result getWxpayfaceAuthinfo(String uuid,String amount,String orderno) {
+        public Result getWxpayfaceAuthinfo(String uuid,String amount,String orderno,String ip, String rawdata) {
                 Result result = new Result();
                 if(!StringUtil.hasText(uuid)){
                         result.code = "-1111";
@@ -145,7 +147,7 @@ public class PayServiceImpl implements PayService {
                         WxpayfaceAuthinfoResultDTO response = redis.get(key,WxpayfaceAuthinfoResultDTO.class, RedisUtils.RedisDBIndex.base);
                         if( response != null){
                                 //生成订单信息
-                                result = creatOrderInfo(uuid, amount,orderno);
+                                result = creatOrderInfo(uuid, amount,orderno,ip);
                                 if( result != null && "0000".equals(result)){
                                         //生成订单成功
                                         response.oi = (OrderInfoPO) result.data;
@@ -158,8 +160,8 @@ public class PayServiceImpl implements PayService {
                         //去微信请求
                         //准备参数
                         //获取商户信息
-                        Result businessRes = getStoreMerchanInfo(uuid,null);
-                        if( businessRes == null || "0000".equals(businessRes.code)){
+                        Result businessRes = getStoreMerchanInfo(uuid,ip);
+                        if( businessRes == null || !"0000".equals(businessRes.code)){
                                 result.code = "-111";
                                 result.message = "获取人脸支付认证信息失败,请检查商户信息";
                                 return result;
@@ -195,11 +197,12 @@ public class PayServiceImpl implements PayService {
                                 result.message = "服务商编号为空,请联系开发人员";
                                 return  result;
                         }
-                        WxpayfaceAuthinfoParamDTO wxParam = new WxpayfaceAuthinfoParamDTO(biVO.storeId,biVO.storeName,biVO.deviceId,biVO.rawdata,biVO.appid,biVO.mchid,biVO.subAppid,biVO.subMchid);
+                        WxpayfaceAuthinfoParamDTO wxParam = new WxpayfaceAuthinfoParamDTO(biVO.storeId,biVO.storeName,biVO.deviceId,rawdata,biVO.appid,biVO.mchid,biVO.subAppid,biVO.subMchid);
                         //获取签名
-                        wxParam.sign = CommonUtils.sign(wxParam,WxpayfaceAuthinfoParamDTO.class,key);
+                        wxParam.sign = CommonUtils.sign(wxParam,WxpayfaceAuthinfoParamDTO.class,biVO.key);
                         //调用方法
-                        String res = HttpUtils.sendRequest(HttpUtils.Method.POST,conf.wxpayfaceAuthinfoURL,null,XsteamUtil.toXml(wxParam,WxpayfaceAuthinfoParamDTO.class), HttpUtils.Encode.UTF8);
+                        logger.info("签名之后 :" + wxParam.sign);
+                        String res = httpUtils.sendRequest(HttpUtils.Method.POST,conf.wxpayfaceAuthinfoURL,null,XsteamUtil.toXml(wxParam,WxpayfaceAuthinfoParamDTO.class), HttpUtils.Encode.UTF8);
                         if( !StringUtil.hasText(res)){
                                 result.code = "-1111";
                                 result.message = "获取人脸支付认证失败,请检查网络信息";
@@ -208,7 +211,7 @@ public class PayServiceImpl implements PayService {
                         //将返回的xml转成对象
                         response = XsteamUtil.toBean(WxpayfaceAuthinfoResultDTO.class,res);
                         if( response != null && "SUCCESS".equals(response.returnCode)){
-                                result = creatOrderInfo(uuid, amount,orderno);
+                                result = creatOrderInfo(uuid, amount,orderno,ip);
                                 if( result != null && "0000".equals(result)){
                                         //生成订单成功
                                         response.oi = (OrderInfoPO) result.data;
@@ -230,9 +233,9 @@ public class PayServiceImpl implements PayService {
                 return result;
         }
 
-        private Result creatOrderInfo(String uuid, String amount,String orderno) {
+        private Result creatOrderInfo(String uuid, String amount,String orderno, String ip) {
                 Result result = new Result();
-                Result businessRes = getStoreMerchanInfo(uuid,null);
+                Result businessRes = getStoreMerchanInfo(uuid,ip);
                 if( businessRes == null || "0000".equals(businessRes.code)){
                         result.code = "-1111";
                         result.message = "生成订单失败,请联系开发人员";
@@ -282,7 +285,7 @@ public class PayServiceImpl implements PayService {
          */
         @Override
         @Transactional
-        public Result initEquipmentInfo(String uuid) {
+        public Result initEquipmentInfo(String uuid,String ip) {
                 Result result = new Result();
                 if(!StringUtil.hasText(uuid)){
                         result.code = "-1111";
@@ -290,8 +293,16 @@ public class PayServiceImpl implements PayService {
                         return  result;
                 }
                 try {
+                        EquipmentInfoPO eInfo = eDao.findByUUID(uuid);
+                        getStoreMerchanInfo(uuid,ip);
+                        if( eInfo != null){
+                                result.code = "0000";
+                                result.message = "初始化设备成功,设备信息已入库";
+                                result.data = eInfo;
+                                return result;
+                        }
                         //创建设备对象
-                        EquipmentInfoPO eInfo = new EquipmentInfoPO();
+                        eInfo = new EquipmentInfoPO();
                         eInfo.id = db.creatId(db.id_bit,null,DBUtils.TableIndex.equipment_info);
                         eInfo.uuid = uuid;
                         eInfo.type = 0;
@@ -312,7 +323,7 @@ public class PayServiceImpl implements PayService {
          * @return
          */
         @Override
-        public Result setRawdata(String uuid, String rawdata) {
+        public Result setRawdata(String uuid, String rawdata, String ip) {
                 Result result = new Result();
                 if(!StringUtil.hasText(uuid)){
                         result.code = "-1111";
@@ -325,8 +336,8 @@ public class PayServiceImpl implements PayService {
                         return  result;
                 }
                 //获取商户信息
-                Result res = getStoreMerchanInfo(uuid,null);
-                if( res == null || "0000".equals(res.code)){
+                Result res = getStoreMerchanInfo(uuid,ip);
+                if( res == null || !"0000".equals(res.code)){
                         result.code = "-1111";
                         result.message = "获取人脸支付认证信息失败,请检查商户信息";
                         return result;
@@ -340,18 +351,19 @@ public class PayServiceImpl implements PayService {
                 biVO.rawdata = rawdata;
                 //设置到redis
                 redis.set(uuid,biVO, RedisUtils.RedisDBIndex.base,3600);
+                logger.info("设置人脸支付rawdata成功");
                 result.code = "0000";
                 result.message = "设置成功";
                 return result;
         }
 
         @Override
-        public Result pay(String uuid, String openid, String faceCode,String orderno) {
+        public Result pay(String uuid, String openid, String faceCode,String orderno, String ip) {
                 //参数校验
                 Result result = new Result();
                 //其他参数获取
                 //获取门店以及商户信息
-                Result storeMerchanInfo = getStoreMerchanInfo(uuid,null);
+                Result storeMerchanInfo = getStoreMerchanInfo(uuid,ip);
                 if( storeMerchanInfo == null || !"0000".equals(storeMerchanInfo.code)){
                         logger.error(storeMerchanInfo.message);
                         storeMerchanInfo.message = "支付失败,请检查网络";
@@ -359,7 +371,7 @@ public class PayServiceImpl implements PayService {
                 }
                 StoreMerchanEquipmentInfoVO smeInfo = (StoreMerchanEquipmentInfoVO)storeMerchanInfo.data;
                 //调用认证
-                Result wxpayfaceAuthinfo = getWxpayfaceAuthinfo(uuid, null, orderno);
+                Result wxpayfaceAuthinfo = getWxpayfaceAuthinfo(uuid, null, orderno,ip,null);
                 if( wxpayfaceAuthinfo == null || !"0000".equals(wxpayfaceAuthinfo.code)){
                         logger.error(wxpayfaceAuthinfo.message);
                         wxpayfaceAuthinfo.message = "支付失败,请检查网络";
@@ -384,7 +396,7 @@ public class PayServiceImpl implements PayService {
                 //进行签名
                 paramDTO.sign = CommonUtils.sign(paramDTO,WxpayfaceParamDTO.class,smeInfo.key);
                 //进行请求
-                String request = HttpUtils.sendRequest(HttpUtils.Method.POST, conf.wxpayURL, null, XsteamUtil.toXml(paramDTO, WxpayfaceParamDTO.class), HttpUtils.Encode.UTF8);
+                String request = httpUtils.sendRequest(HttpUtils.Method.POST, conf.wxpayURL, null, XsteamUtil.toXml(paramDTO, WxpayfaceParamDTO.class), HttpUtils.Encode.UTF8);
                 //转成对象
                 WxpayfaceResultDTO wxpayfaceResultDTO = XsteamUtil.toBean(WxpayfaceResultDTO.class, request);
                 //返回验证
@@ -405,5 +417,25 @@ public class PayServiceImpl implements PayService {
                 }
                 //返回前端
                 return result;
+        }
+
+        @Override
+        public Result getAuthinfo(String uuid, String amount, String ip) {
+                Result result = new Result();
+                String key = uuid + "_WXPAYFACE_AUTHINFO";
+                WxpayfaceAuthinfoResultDTO response = redis.get(key,WxpayfaceAuthinfoResultDTO.class, RedisUtils.RedisDBIndex.base);
+                if( response != null){
+                        //生成订单信息
+                        result = creatOrderInfo(uuid, amount,null,ip);
+                        if( result != null && "0000".equals(result)){
+                                //生成订单成功
+                                response.oi = (OrderInfoPO) result.data;
+                        }
+                        result.code = "0000";
+                        result.message = "获取人脸支付认证信息成功";
+                        result.data = response;
+                        return result;
+                }
+                return null;
         }
 }

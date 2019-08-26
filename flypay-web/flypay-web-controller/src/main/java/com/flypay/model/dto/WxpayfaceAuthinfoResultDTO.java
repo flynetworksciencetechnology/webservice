@@ -2,7 +2,7 @@ package com.flypay.model.dto;
 
 import com.flypay.model.pojo.OrderInfoPO;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-
+@XStreamAlias("xml")
 public class WxpayfaceAuthinfoResultDTO {
 
     /**

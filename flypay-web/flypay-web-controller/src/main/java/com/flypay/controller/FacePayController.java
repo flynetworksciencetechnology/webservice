@@ -26,11 +26,11 @@ public class FacePayController {
     RedisUtils redisUtils;
     @ApiOperation(value="初始化设备,根据设备编号,获取设备绑定的商户信息", notes="Test")
     @RequestMapping(value = "/init", method = RequestMethod.GET)
-    public Result init(@RequestParam("uuid") String uuid){
+    public Result init(@RequestParam("uuid") String uuid, @RequestParam("ip") String ip){
         Result result = null;
         LOGGER.info("设备的UUID是 : " + uuid);
         try{
-            result = pay.initEquipmentInfo(uuid);
+            result = pay.initEquipmentInfo(uuid,ip);
         }catch (Exception e){
             LOGGER.error("系统异常,初始化设备失败",e);
         }
@@ -58,11 +58,11 @@ public class FacePayController {
     }
     @ApiOperation(value="初始化设备,根据设备编号,获取设备绑定的商户信息", notes="Test")
     @RequestMapping(value = "/setRawdata", method = RequestMethod.GET)
-    public Result setRawdata(@RequestParam("uuid") String uuid,@RequestParam("rawdata") String rawdata){
+    public Result setRawdata(@RequestParam("uuid") String uuid,@RequestParam("rawdata") String rawdata, @RequestParam("ip") String ip){
         Result result = null;
         LOGGER.info("设备的UUID是 : " + uuid);
         try{
-            result = pay.setRawdata(uuid,rawdata);
+            result = pay.setRawdata(uuid,rawdata,ip);
         }catch (Exception e){
             LOGGER.error("系统异常,设置rawdata失败",e);
         }
@@ -75,11 +75,11 @@ public class FacePayController {
 
     @ApiOperation(value="获取微信人脸支付凭证", notes="Test")
     @RequestMapping(value = "/wechat/authinfo", method = RequestMethod.GET)
-    public Result getWxpayfaceAuthinfo(@RequestParam("uuid") String uuid,@RequestParam("amount") String amount){
+    public Result getWxpayfaceAuthinfo(@RequestParam("rawdata") String rawdata,@RequestParam("uuid") String uuid,@RequestParam("amount") String amount, @RequestParam("ip") String ip){
 
         Result result = null;
         try{
-            result = pay.getWxpayfaceAuthinfo(uuid,amount,null);
+            result = pay.getWxpayfaceAuthinfo(uuid,amount,null,ip,rawdata);
         }catch (Exception e){
             LOGGER.error("系统异常,获取人脸支付认证失败",e);
         }
@@ -89,18 +89,37 @@ public class FacePayController {
         }
         return result;
     }
+    /**
+     * 支付
+     * @return
+     */
+    @ApiOperation(value="进行人脸支付", notes="Test")
+    @RequestMapping(value = "/getAuthinfo", method = RequestMethod.GET)
+    public Result getAuthinfo(@RequestParam("uuid") String uuid,@RequestParam("amount") String amount, @RequestParam("ip") String ip){
+        Result result = null;
 
+        try{
+            result = pay.getAuthinfo(uuid,amount,ip);
+        }catch (Exception e){
+            LOGGER.error("系统异常,人脸支付失败",e);
+        }
+        if( result == null){
+            result.code = "-1111";
+            result.message = "系统异常,人脸支付失败";
+        }
+        return result;
+    }
     /**
      * 支付
      * @return
      */
     @ApiOperation(value="进行人脸支付", notes="Test")
     @RequestMapping(value = "/pay", method = RequestMethod.POST)
-    public Result pay(@RequestParam("uuid") String uuid,@RequestParam("openid") String openid,@RequestParam("faceCode") String faceCode,@RequestParam("orderno") String orderno){
+    public Result pay(@RequestParam("uuid") String uuid,@RequestParam("openid") String openid,@RequestParam("faceCode") String faceCode,@RequestParam("orderno") String orderno, @RequestParam("ip") String ip){
         Result result = null;
 
         try{
-            result = pay.pay(uuid,openid,faceCode,orderno);
+            result = pay.pay(uuid,openid,faceCode,orderno,ip);
         }catch (Exception e){
             LOGGER.error("系统异常,人脸支付失败",e);
         }

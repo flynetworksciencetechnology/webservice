@@ -9,7 +9,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.log4j.Logger;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.io.ByteArrayOutputStream;
@@ -23,12 +23,12 @@ import java.util.Map;
 /**
  * Created by hadoop on 2018/6/13.
  */
-
+@Component
 public class HttpUtils {
     private static final Logger LOGGER = Logger.getLogger(HttpUtils.class);
     // 注入HttpClient实例
     @Resource(name = "HttpClientManagerFactoryBen")
-    private static CloseableHttpClient client;
+    private CloseableHttpClient client;
 
     /**
      *  http请求
@@ -40,12 +40,13 @@ public class HttpUtils {
      * @param encode 编码格式
      * @return String 字符串(一般都是xml)
      */
-    public static String sendRequest(Method method, String url, Map<String, String> header, String params,Encode encode){
-
+    public String sendRequest(Method method, String url, Map<String, String> header, String params,Encode encode){
+        LOGGER.info("请求连接为 :" + url);
+        LOGGER.info("请求参数为 :" + params);
         return parseHttpByteToString(send(method,url,header,params,encode),encode);
     }
 
-    private static byte[] send(Method method, String url,Map<String, String> header, String params, Encode encode) {
+    private byte[] send(Method method, String url,Map<String, String> header, String params, Encode encode) {
             //get请求
         byte[] bytes = null;
         if( Method.GET.equals(method)){
@@ -60,7 +61,7 @@ public class HttpUtils {
      * 发送post请求
      * 参数为xml
      */
-    private static byte[] doPost(String url, Map<String, String> header, String params,Encode encode) {
+    private byte[] doPost(String url, Map<String, String> header, String params,Encode encode) {
         //构建POST请求   请求地址请更换为自己的。
 
         CloseableHttpResponse response = null;
@@ -96,7 +97,7 @@ public class HttpUtils {
                 ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
                 int len = -1;
                 byte[] tmp = new byte[2048];
-                while ((len = is.read(tmp)) != -len) {
+                while ((len = is.read(tmp)) != -1) {
                     byteOut.write(tmp,0,len);
                 }
                 return byteOut.toByteArray();
@@ -134,8 +135,8 @@ public class HttpUtils {
      * @param http
      * @param header
      */
-    private static void setHeader(HttpEntityEnclosingRequestBase http, Map<String, String> header) {
-        if( header == null && header.isEmpty()){
+    private void setHeader(HttpEntityEnclosingRequestBase http, Map<String, String> header) {
+        if( header == null || header.isEmpty()){
             header = jsonHeaders;
         }else{
             header.putAll(jsonHeaders);
@@ -148,7 +149,7 @@ public class HttpUtils {
 
     }
 
-    public static enum Method{
+    public enum Method{
         GET,POST;
     }
     public static enum Encode{
@@ -167,7 +168,7 @@ public class HttpUtils {
      * @param bytes
      * @return
      */
-    private static String parseHttpByteToString(byte[] bytes,Encode encode){
+    private String parseHttpByteToString(byte[] bytes,Encode encode){
         try {
             return new String(bytes,encode.value);
         } catch (Exception e) {

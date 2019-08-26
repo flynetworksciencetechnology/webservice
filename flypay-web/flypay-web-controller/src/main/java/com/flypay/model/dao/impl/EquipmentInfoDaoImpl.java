@@ -11,4 +11,9 @@ public class EquipmentInfoDaoImpl extends AbstractBaseDao<EquipmentInfoPO> imple
     public EquipmentInfoPO save(EquipmentInfoPO eInfo) {
         return this.add(eInfo);
     }
+
+    @Override
+    public EquipmentInfoPO findByUUID(String uuid) {
+        return this.load("FROM EquipmentInfoPO WHERE uuid = ?",uuid);
+    }
 }

@@ -6,4 +6,6 @@ import com.flypay.model.pojo.EquipmentInfoPO;
 public interface EquipmentInfoDAO extends BaseDao<EquipmentInfoPO> {
 
     EquipmentInfoPO save(EquipmentInfoPO eInfo);
+
+    EquipmentInfoPO findByUUID(String uuid);
 }

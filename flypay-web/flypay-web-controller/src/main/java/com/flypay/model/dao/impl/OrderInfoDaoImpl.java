@@ -16,7 +16,7 @@ public class OrderInfoDaoImpl extends AbstractBaseDao<OrderInfoPO> implements Or
 
     @Override
     public OrderInfoPO findByOrderno(String orderno) {
-        String SQL = "SELECT * FROM order_info WHERE orderno = ?";
+        String SQL = "FROM OrderInfoPO WHERE orderno = ?";
         return this.load(SQL,orderno);
     }
 }
