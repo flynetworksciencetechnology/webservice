@@ -21,6 +21,8 @@ public class EquipmentInfoPO extends BasePO {
      */
     @Column
     public Integer type;
+    @Column(name = "device_id")
+    public String deviceId;
 
 
 }

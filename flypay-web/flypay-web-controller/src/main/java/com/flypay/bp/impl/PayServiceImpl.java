@@ -87,7 +87,7 @@ public class PayServiceImpl implements PayService {
                         sb.append(" spi.app_id AS appid,");
                         sb.append(" spi.service_name AS serviceName,");
                         sb.append(" spi.MD5_key as `key`,");
-                        sb.append(" CONCAT(ei.id,'') AS deviceId");
+                        sb.append(" CONCAT(ei.device_id,'') AS deviceId");
                         sb.append(" FROM");
                         sb.append(" `store_info` si");
                         sb.append(" LEFT JOIN merchan_info mi ON si.merchant_id = mi.id");
@@ -120,6 +120,7 @@ public class PayServiceImpl implements PayService {
         }
 
         @Override
+        @Transactional
         public Result getWxpayfaceAuthinfo(String uuid, String rawdata,String amount) {
                 Result result = new Result();
                 if(!StringUtil.hasText(uuid)){
@@ -167,7 +168,7 @@ public class PayServiceImpl implements PayService {
                                 result.message = "终端设备编号为空,请联系开发人员";
                                 return  result;
                         }
-                        if(!StringUtil.hasText(biVO.rawdata)){
+                        if(!StringUtil.hasText(rawdata)){
                                 result.code = "-1111";
                                 result.message = "初始化数据为空,请联系开发人员";
                                 return  result;
@@ -196,10 +197,12 @@ public class PayServiceImpl implements PayService {
                         WxpayfaceAuthinfoResultDTO response = XsteamUtil.toBean(WxpayfaceAuthinfoResultDTO.class,res);
                         if( response != null && "SUCCESS".equals(response.returnCode)){
                                 //创建订单
-                                Result or = creatOrderInfo(uuid, amount, null, null);
-                                if( or != null && "0000".equals(or)){
-                                        //生成订单成功
-                                        biVO.oi = (OrderInfoPO) or.data;
+                                if( StringUtil.hasText(amount)){
+                                        Result or = creatOrderInfo(uuid, amount, null, null);
+                                        if( or != null && "0000".equals(or)){
+                                                //生成订单成功
+                                                biVO.oi = (OrderInfoPO) or.data;
+                                        }
                                 }
                                 result.code = "0000";
                                 result.message = "获取人脸支付认证信息成功";
@@ -208,7 +211,7 @@ public class PayServiceImpl implements PayService {
                                 //放入redis
                                 Integer expiresIn = response.expiresIn;
                                 String key = uuid + "_AUTHINFO";
-                                redis.set(key,WxpayfaceAuthinfoResultDTO.class, RedisUtils.RedisDBIndex.base,(expiresIn - 60));
+                                redis.set(key,response, RedisUtils.RedisDBIndex.base,(expiresIn - 60));
                         }else{
                                 result.code = "-1111";
                                 result.message = "获取人脸支付认证失败,请检查网络信息";
@@ -223,7 +226,7 @@ public class PayServiceImpl implements PayService {
         private Result creatOrderInfo(String uuid, String amount,String orderno, String ip) {
                 Result result = new Result();
                 Result businessRes = getStoreMerchanInfo(uuid,ip);
-                if( businessRes == null || "0000".equals(businessRes.code)){
+                if( businessRes == null || !"0000".equals(businessRes.code)){
                         result.code = "-1111";
                         result.message = "生成订单失败,请联系开发人员";
                         return result;
@@ -404,6 +407,7 @@ public class PayServiceImpl implements PayService {
         }
 
         @Override
+        @Transactional
         public Result getAuthinfo(String uuid, String amount, String ip) {
                 Result result = new Result();
                 result.code = "-1111";
@@ -416,11 +420,11 @@ public class PayServiceImpl implements PayService {
                         Result storeMerchanInfo = getStoreMerchanInfo(uuid, ip);
                         StoreMerchanEquipmentInfoVO sm = (StoreMerchanEquipmentInfoVO)storeMerchanInfo.data;
                         //生成订单信息
-                        result = creatOrderInfo(uuid, amount,null,ip);
-                        if( result != null && "0000".equals(result)){
+                        Result or = creatOrderInfo(uuid, amount,null,ip);
+                        if( or != null && "0000".equals(or.code)){
                                 //生成订单成功
                                 //response.oi = (OrderInfoPO) result.data;
-                                sm.oi = (OrderInfoPO) result.data;
+                                sm.oi = (OrderInfoPO) or.data;
                                 //Long expiresIn = redis.ttl(key);
                                 //redis.set(key,WxpayfaceAuthinfoResultDTO.class, RedisUtils.RedisDBIndex.base,Integer.valueOf(String.valueOf(expiresIn)));
                         }

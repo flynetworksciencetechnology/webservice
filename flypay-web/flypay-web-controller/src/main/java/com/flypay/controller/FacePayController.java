@@ -2,6 +2,8 @@ package com.flypay.controller;
 
 import com.flypay.bp.PayService;
 import com.flypay.model.Result;
+import com.flypay.model.dao.OrderInfoDao;
+import com.flypay.model.pojo.OrderInfoPO;
 import com.flypay.utils.DBUtils;
 import com.flypay.utils.RedisUtils;
 import io.swagger.annotations.Api;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.transaction.Transactional;
 
 @Api(tags="提供刷脸支付相关接口")
 @RestController
@@ -84,12 +88,11 @@ public class FacePayController {
      * @param rawdata
      * @param uuid
      * @param amount
-     * @param ip
      * @return
      */
     @ApiOperation(value="获取微信人脸支付凭证", notes="Test")
-    @RequestMapping(value = "/wechat/authinfo", method = RequestMethod.GET)
-    public Result getWxpayfaceAuthinfo(@RequestParam("rawdata") String rawdata,@RequestParam("uuid") String uuid,@RequestParam("amount") String amount){
+    @RequestMapping(value = "/wechat/authinfo", method = RequestMethod.POST)
+    public Result getWxpayfaceAuthinfo(@RequestParam("rawdata") String rawdata,@RequestParam("uuid") String uuid,String amount){
 
         Result result = null;
         try{
