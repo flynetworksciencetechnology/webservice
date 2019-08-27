@@ -6,7 +6,7 @@ public interface PayService {
 
     Result getStoreMerchanInfo(String uuid, String ip);
 
-    Result getWxpayfaceAuthinfo(String uuid,String amount,String orderno, String ip,String rawdata);
+    Result getWxpayfaceAuthinfo(String uuid,String rawdata,String amount);
 
     Result initEquipmentInfo(String uuid, String ip);
 

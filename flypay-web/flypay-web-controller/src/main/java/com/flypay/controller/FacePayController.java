@@ -21,9 +21,15 @@ public class FacePayController {
     @Autowired
     PayService pay;
     @Autowired
-    DBUtils db;
-    @Autowired
     RedisUtils redisUtils;
+
+    /**
+     * 第一次初始化,将uuid入库
+     * 第二次查询出绑定的门店信息,存入缓存
+      * @param uuid
+     * @param ip
+     * @return
+     */
     @ApiOperation(value="初始化设备,根据设备编号,获取设备绑定的商户信息", notes="Test")
     @RequestMapping(value = "/init", method = RequestMethod.GET)
     public Result init(@RequestParam("uuid") String uuid, @RequestParam("ip") String ip){
@@ -73,13 +79,21 @@ public class FacePayController {
         return result;
     }
 
+    /**
+     * 获取调用认证,从redis中获取调用参数,获取到调用凭证放redis,备用
+     * @param rawdata
+     * @param uuid
+     * @param amount
+     * @param ip
+     * @return
+     */
     @ApiOperation(value="获取微信人脸支付凭证", notes="Test")
     @RequestMapping(value = "/wechat/authinfo", method = RequestMethod.GET)
-    public Result getWxpayfaceAuthinfo(@RequestParam("rawdata") String rawdata,@RequestParam("uuid") String uuid,@RequestParam("amount") String amount, @RequestParam("ip") String ip){
+    public Result getWxpayfaceAuthinfo(@RequestParam("rawdata") String rawdata,@RequestParam("uuid") String uuid,@RequestParam("amount") String amount){
 
         Result result = null;
         try{
-            result = pay.getWxpayfaceAuthinfo(uuid,amount,null,ip,rawdata);
+            result = pay.getWxpayfaceAuthinfo(uuid,rawdata,amount);
         }catch (Exception e){
             LOGGER.error("系统异常,获取人脸支付认证失败",e);
         }
@@ -90,10 +104,10 @@ public class FacePayController {
         return result;
     }
     /**
-     * 支付
+     * 获取凭证,并且返回商户信息和凭证信息,另起线程创建订单
      * @return
      */
-    @ApiOperation(value="进行人脸支付", notes="Test")
+    @ApiOperation(value="获取凭证", notes="Test")
     @RequestMapping(value = "/getAuthinfo", method = RequestMethod.GET)
     public Result getAuthinfo(@RequestParam("uuid") String uuid,@RequestParam("amount") String amount, @RequestParam("ip") String ip){
         Result result = null;
@@ -114,8 +128,8 @@ public class FacePayController {
      * @return
      */
     @ApiOperation(value="进行人脸支付", notes="Test")
-    @RequestMapping(value = "/pay", method = RequestMethod.POST)
-    public Result pay(@RequestParam("uuid") String uuid,@RequestParam("openid") String openid,@RequestParam("faceCode") String faceCode,@RequestParam("orderno") String orderno, @RequestParam("ip") String ip){
+    @RequestMapping(value = "/topay", method = RequestMethod.POST)
+        public Result pay(@RequestParam("uuid") String uuid,@RequestParam("openid") String openid,@RequestParam("faceCode") String faceCode,@RequestParam("orderno") String orderno, @RequestParam("ip") String ip){
         Result result = null;
 
         try{

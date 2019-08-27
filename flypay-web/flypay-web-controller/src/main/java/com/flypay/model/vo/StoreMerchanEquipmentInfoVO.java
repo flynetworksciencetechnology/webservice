@@ -1,5 +1,7 @@
 package com.flypay.model.vo;
 
+import com.flypay.model.pojo.OrderInfoPO;
+
 /**
  * 商户信息
  */
@@ -54,4 +56,6 @@ public class StoreMerchanEquipmentInfoVO {
     public String serviceName;
     public String rawdata;
     public String ip;
+    public String authinfo;
+    public OrderInfoPO oi;
 }

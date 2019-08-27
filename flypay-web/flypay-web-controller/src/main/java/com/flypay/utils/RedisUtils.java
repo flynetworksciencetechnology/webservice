@@ -290,6 +290,21 @@ public class RedisUtils {
 		return JSON.parseObject(json, clazz);
 	}
 
+	public Long ttl(String key) {
+		if( !isOpen) {
+			logger.error("缓存未开启");
+			return null;
+		}
+		return ttl(key,null);
+	}
+	public Long ttl(String key, RedisDBIndex index){
+		if( !isOpen) {
+			logger.error("缓存未开启");
+			return null;
+		}
+		Jedis jedis = getJedis(index);
+		return jedis.ttl(key);
+	}
 	public enum RedisDBIndex{
 		base;
 	}

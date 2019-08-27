@@ -120,7 +120,7 @@ public class PayServiceImpl implements PayService {
         }
 
         @Override
-        public Result getWxpayfaceAuthinfo(String uuid,String amount,String orderno,String ip, String rawdata) {
+        public Result getWxpayfaceAuthinfo(String uuid, String rawdata,String amount) {
                 Result result = new Result();
                 if(!StringUtil.hasText(uuid)){
                         result.code = "-1111";
@@ -142,25 +142,10 @@ public class PayServiceImpl implements PayService {
                         result.message = "获取人脸支付认证信息成功";
                         result.data = response;
                 }else{
-                        //从reids获取认证信息
-                        String key = uuid + "_WXPAYFACE_AUTHINFO";
-                        WxpayfaceAuthinfoResultDTO response = redis.get(key,WxpayfaceAuthinfoResultDTO.class, RedisUtils.RedisDBIndex.base);
-                        if( response != null){
-                                //生成订单信息
-                                result = creatOrderInfo(uuid, amount,orderno,ip);
-                                if( result != null && "0000".equals(result)){
-                                        //生成订单成功
-                                        response.oi = (OrderInfoPO) result.data;
-                                }
-                                result.code = "0000";
-                                result.message = "获取人脸支付认证信息成功";
-                                result.data = response;
-                                return result;
-                        }
                         //去微信请求
                         //准备参数
                         //获取商户信息
-                        Result businessRes = getStoreMerchanInfo(uuid,ip);
+                        Result businessRes = getStoreMerchanInfo(uuid,null);
                         if( businessRes == null || !"0000".equals(businessRes.code)){
                                 result.code = "-111";
                                 result.message = "获取人脸支付认证信息失败,请检查商户信息";
@@ -201,7 +186,6 @@ public class PayServiceImpl implements PayService {
                         //获取签名
                         wxParam.sign = CommonUtils.sign(wxParam,WxpayfaceAuthinfoParamDTO.class,biVO.key);
                         //调用方法
-                        logger.info("签名之后 :" + wxParam.sign);
                         String res = httpUtils.sendRequest(HttpUtils.Method.POST,conf.wxpayfaceAuthinfoURL,null,XsteamUtil.toXml(wxParam,WxpayfaceAuthinfoParamDTO.class), HttpUtils.Encode.UTF8);
                         if( !StringUtil.hasText(res)){
                                 result.code = "-1111";
@@ -209,18 +193,21 @@ public class PayServiceImpl implements PayService {
                                 return  result;
                         }
                         //将返回的xml转成对象
-                        response = XsteamUtil.toBean(WxpayfaceAuthinfoResultDTO.class,res);
+                        WxpayfaceAuthinfoResultDTO response = XsteamUtil.toBean(WxpayfaceAuthinfoResultDTO.class,res);
                         if( response != null && "SUCCESS".equals(response.returnCode)){
-                                result = creatOrderInfo(uuid, amount,orderno,ip);
-                                if( result != null && "0000".equals(result)){
+                                //创建订单
+                                Result or = creatOrderInfo(uuid, amount, null, null);
+                                if( or != null && "0000".equals(or)){
                                         //生成订单成功
-                                        response.oi = (OrderInfoPO) result.data;
+                                        biVO.oi = (OrderInfoPO) or.data;
                                 }
                                 result.code = "0000";
                                 result.message = "获取人脸支付认证信息成功";
-                                result.data = response;
+                                biVO.authinfo = response.authinfo;
+                                result.data = biVO;
                                 //放入redis
                                 Integer expiresIn = response.expiresIn;
+                                String key = uuid + "_AUTHINFO";
                                 redis.set(key,WxpayfaceAuthinfoResultDTO.class, RedisUtils.RedisDBIndex.base,(expiresIn - 60));
                         }else{
                                 result.code = "-1111";
@@ -294,19 +281,15 @@ public class PayServiceImpl implements PayService {
                 }
                 try {
                         EquipmentInfoPO eInfo = eDao.findByUUID(uuid);
-                        getStoreMerchanInfo(uuid,ip);
-                        if( eInfo != null){
-                                result.code = "0000";
-                                result.message = "初始化设备成功,设备信息已入库";
-                                result.data = eInfo;
-                                return result;
+                        if( eInfo == null){
+                                eInfo = new EquipmentInfoPO();
+                                eInfo.id = db.creatId(db.id_bit,null,DBUtils.TableIndex.equipment_info);
+                                eInfo.uuid = uuid;
+                                eInfo.type = 0;
+                                eInfo = eDao.save(eInfo);
+                        }else{
+                                getStoreMerchanInfo(uuid,ip);
                         }
-                        //创建设备对象
-                        eInfo = new EquipmentInfoPO();
-                        eInfo.id = db.creatId(db.id_bit,null,DBUtils.TableIndex.equipment_info);
-                        eInfo.uuid = uuid;
-                        eInfo.type = 0;
-                        eInfo = eDao.save(eInfo);
                         result.code = "0000";
                         result.message = "初始化设备成功,设备信息已入库";
                         result.data = eInfo;
@@ -371,7 +354,7 @@ public class PayServiceImpl implements PayService {
                 }
                 StoreMerchanEquipmentInfoVO smeInfo = (StoreMerchanEquipmentInfoVO)storeMerchanInfo.data;
                 //调用认证
-                Result wxpayfaceAuthinfo = getWxpayfaceAuthinfo(uuid, null, orderno,ip,null);
+                Result wxpayfaceAuthinfo = getAuthinfo(uuid, null,null);
                 if( wxpayfaceAuthinfo == null || !"0000".equals(wxpayfaceAuthinfo.code)){
                         logger.error(wxpayfaceAuthinfo.message);
                         wxpayfaceAuthinfo.message = "支付失败,请检查网络";
@@ -406,6 +389,7 @@ public class PayServiceImpl implements PayService {
                         result.message = "支付成功";
                 }else{
                         result.code = "-1111";
+                        result.message = "系统错误,请稍后再试";
                         //支付失败
                         if("FAIL".equals(wxpayfaceResultDTO.returnCode) ){
                                 //通讯有问题
@@ -422,20 +406,30 @@ public class PayServiceImpl implements PayService {
         @Override
         public Result getAuthinfo(String uuid, String amount, String ip) {
                 Result result = new Result();
-                String key = uuid + "_WXPAYFACE_AUTHINFO";
+                result.code = "-1111";
+                result.message = "获取失败,需要重新获取认证";
+                String key = uuid + "_AUTHINFO";
                 WxpayfaceAuthinfoResultDTO response = redis.get(key,WxpayfaceAuthinfoResultDTO.class, RedisUtils.RedisDBIndex.base);
                 if( response != null){
+
+                        //获取商户信息
+                        Result storeMerchanInfo = getStoreMerchanInfo(uuid, ip);
+                        StoreMerchanEquipmentInfoVO sm = (StoreMerchanEquipmentInfoVO)storeMerchanInfo.data;
                         //生成订单信息
                         result = creatOrderInfo(uuid, amount,null,ip);
                         if( result != null && "0000".equals(result)){
                                 //生成订单成功
-                                response.oi = (OrderInfoPO) result.data;
+                                //response.oi = (OrderInfoPO) result.data;
+                                sm.oi = (OrderInfoPO) result.data;
+                                //Long expiresIn = redis.ttl(key);
+                                //redis.set(key,WxpayfaceAuthinfoResultDTO.class, RedisUtils.RedisDBIndex.base,Integer.valueOf(String.valueOf(expiresIn)));
                         }
+                        sm.authinfo = response.authinfo;
                         result.code = "0000";
                         result.message = "获取人脸支付认证信息成功";
-                        result.data = response;
+                        result.data = sm;
                         return result;
                 }
-                return null;
+                return result;
         }
 }
