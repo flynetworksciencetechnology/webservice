@@ -19,6 +19,8 @@ public class OrderInfoPO extends BasePO{
     public String storeId;
     @Column(name = "transaction_id")
     public String transactionId;
+    @Column(name = "fee")
+    public String fee;
 
     public OrderInfoPO(String orderno, Double totalAmount, Date payTime, Integer status, String storeId) {
         this.orderno = orderno;
