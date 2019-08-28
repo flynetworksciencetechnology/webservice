@@ -352,40 +352,41 @@ public class PayServiceImpl implements PayService {
                 Result result = new Result();
                 //其他参数获取
                 //获取门店以及商户信息
-                Result storeMerchanInfo = getStoreMerchanInfo(uuid,ip);
-                if( storeMerchanInfo == null || !"0000".equals(storeMerchanInfo.code)){
-                        logger.error(storeMerchanInfo.message);
-                        storeMerchanInfo.message = "支付失败,请检查网络";
-                        return storeMerchanInfo;
-                }
-                StoreMerchanEquipmentInfoVO smeInfo = (StoreMerchanEquipmentInfoVO)storeMerchanInfo.data;
+//                Result storeMerchanInfo = getStoreMerchanInfo(uuid,ip);
+//                if( storeMerchanInfo == null || !"0000".equals(storeMerchanInfo.code)){
+//                        logger.error(storeMerchanInfo.message);
+//                        storeMerchanInfo.message = "支付失败,请检查网络";
+//                        return storeMerchanInfo;
+//                }
+//                StoreMerchanEquipmentInfoVO smeInfo = (StoreMerchanEquipmentInfoVO)storeMerchanInfo.data;
                 //调用认证
-                Result wxpayfaceAuthinfo = getAuthinfo(uuid, null,null);
+                Result wxpayfaceAuthinfo = getAuthinfo(uuid, null,null,orderno);
                 if( wxpayfaceAuthinfo == null || !"0000".equals(wxpayfaceAuthinfo.code)){
                         logger.error(wxpayfaceAuthinfo.message);
                         wxpayfaceAuthinfo.message = "支付失败,请检查网络";
                         return wxpayfaceAuthinfo;
                 }
-                WxpayfaceAuthinfoResultDTO waResult = (WxpayfaceAuthinfoResultDTO)wxpayfaceAuthinfo.data;
+                StoreMerchanEquipmentInfoVO waResult = (StoreMerchanEquipmentInfoVO)wxpayfaceAuthinfo.data;
                 //参数拼接
                 WxpayfaceParamDTO paramDTO = new WxpayfaceParamDTO();
-                paramDTO.appid = smeInfo.appid;
-                paramDTO.subAppid = smeInfo.subAppid;
-                paramDTO.mchid = smeInfo.mchid;
-                paramDTO.subMchid = smeInfo.subMchid;
-                paramDTO.deviceId = smeInfo.deviceId;
-                paramDTO.boby = smeInfo.storeBrand + "-" + smeInfo.storeCity + smeInfo.storeName + "-测试商品";
-                paramDTO.detail = "";
-                paramDTO.attach = "";
+                paramDTO.appid = waResult.appid;
+                //paramDTO.subAppid = waResult.subAppid;
+                paramDTO.mchid = waResult.mchid;
+                paramDTO.subMchid = waResult.subMchid;
+                paramDTO.deviceId = waResult.deviceId;
+                paramDTO.boby = waResult.storeBrand + "-" + waResult.storeCity + waResult.storeName + "-测试商品";
+                //paramDTO.detail = "";
+                //paramDTO.attach = "";
                 paramDTO.orderno = orderno;
-                paramDTO.totalFee = String.valueOf(waResult.oi.totalAmount);
-                paramDTO.spbillCreateIp = smeInfo.ip;
+                paramDTO.totalFee = String.valueOf(waResult.oi.fee);
+                paramDTO.spbillCreateIp = waResult.ip;
                 paramDTO.openid = openid;
                 paramDTO.faceCode = faceCode;
                 //进行签名
-                paramDTO.sign = CommonUtils.sign(paramDTO,WxpayfaceParamDTO.class,smeInfo.key);
+                paramDTO.sign = CommonUtils.sign(paramDTO,WxpayfaceParamDTO.class,waResult.key);
                 //进行请求
                 String request = httpUtils.sendRequest(HttpUtils.Method.POST, conf.wxpayURL, null, XsteamUtil.toXml(paramDTO, WxpayfaceParamDTO.class), HttpUtils.Encode.UTF8);
+                logger.error("支付结果 :" + request);
                 //转成对象
                 WxpayfaceResultDTO wxpayfaceResultDTO = XsteamUtil.toBean(WxpayfaceResultDTO.class, request);
                 //返回验证
@@ -411,7 +412,7 @@ public class PayServiceImpl implements PayService {
 
         @Override
         @Transactional
-        public Result getAuthinfo(String uuid, String amount, String ip) {
+        public Result getAuthinfo(String uuid, String amount, String ip,String orderno) {
                 Result result = new Result();
                 result.code = "-1111";
                 result.message = "获取失败,需要重新获取认证";
@@ -423,7 +424,7 @@ public class PayServiceImpl implements PayService {
                         Result storeMerchanInfo = getStoreMerchanInfo(uuid, ip);
                         StoreMerchanEquipmentInfoVO sm = (StoreMerchanEquipmentInfoVO)storeMerchanInfo.data;
                         //生成订单信息
-                        Result or = creatOrderInfo(uuid, amount,null,ip);
+                        Result or = creatOrderInfo(uuid, amount,orderno,ip);
                         if( or != null && "0000".equals(or.code)){
                                 //生成订单成功
                                 //response.oi = (OrderInfoPO) result.data;

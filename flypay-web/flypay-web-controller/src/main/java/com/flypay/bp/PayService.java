@@ -14,5 +14,5 @@ public interface PayService {
 
     Result pay(String uuid, String openid, String faceCode,String orderno, String ip);
 
-    Result getAuthinfo(String uuid, String amount, String ip);
+    Result getAuthinfo(String uuid, String amount, String ip, String orderno);
 }

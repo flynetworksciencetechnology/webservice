@@ -1,5 +1,6 @@
 package com.flypay.model.dto;
 
+import com.flypay.annotation.XStreamCDATA;
 import com.flypay.utils.CommonUtils;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
@@ -7,6 +8,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 public class WxpayfaceParamDTO {
 
     @XStreamAlias("appid")
+
     public String appid;
     @XStreamAlias("sub_appid")
     public String subAppid;
@@ -37,6 +39,7 @@ public class WxpayfaceParamDTO {
     @XStreamAlias("goods_tag")
     public String goodsTag;
     @XStreamAlias("openid")
+    @XStreamCDATA
     public String openid;
     @XStreamAlias("face_code")
     public String faceCode;

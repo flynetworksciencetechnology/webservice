@@ -3,19 +3,8 @@ package com.flypay.model.dto;
 import com.flypay.model.pojo.OrderInfoPO;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 @XStreamAlias("xml")
-public class WxpayfaceAuthinfoResultDTO {
+public class WxpayfaceAuthinfoResultDTO extends  BaseXML{
 
-    /**
-     * 错误码
-     */
-    @XStreamAlias("return_code")
-    public String returnCode;
-
-    /**
-     * 对错误码的描述
-     */
-    @XStreamAlias("return_msg")
-    public String returnMsg;
     /**
      * SDK调用凭证。用于调用SDK的人脸识别接口。
      */

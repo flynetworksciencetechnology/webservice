@@ -116,7 +116,7 @@ public class FacePayController {
         Result result = null;
 
         try{
-            result = pay.getAuthinfo(uuid,amount,ip);
+            result = pay.getAuthinfo(uuid,amount,ip,null);
         }catch (Exception e){
             LOGGER.error("系统异常,人脸支付失败",e);
         }
