@@ -1,15 +1,13 @@
 package com.flypay.bp.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.flypay.bp.PayService;
 import com.flypay.conf.ConfigBean;
 import com.flypay.model.Result;
 import com.flypay.model.dao.EquipmentInfoDAO;
 import com.flypay.model.dao.OrderDetailInfoDao;
 import com.flypay.model.dao.OrderInfoDao;
-import com.flypay.model.dto.WxpayfaceAuthinfoParamDTO;
-import com.flypay.model.dto.WxpayfaceAuthinfoResultDTO;
-import com.flypay.model.dto.WxpayfaceParamDTO;
-import com.flypay.model.dto.WxpayfaceResultDTO;
+import com.flypay.model.dto.*;
 import com.flypay.model.pojo.EquipmentInfoPO;
 import com.flypay.model.pojo.OrderDetailInfoPO;
 import com.flypay.model.pojo.OrderInfoPO;
@@ -270,11 +268,15 @@ public class PayServiceImpl implements PayService {
                 paramDTO.mchid = storeMerchanInfo.mchid;
                 paramDTO.subMchid = storeMerchanInfo.subMchid;
                 paramDTO.deviceId = storeMerchanInfo.deviceId;
+                String fee = redis.get(orderno);
                 paramDTO.boby = storeMerchanInfo.storeBrand + "-" + storeMerchanInfo.storeCity + storeMerchanInfo.storeName + "-测试商品";
-                //paramDTO.detail = "";
-                //paramDTO.attach = "";
+                OrderDetailDTO orderDetail = new OrderDetailDTO("test_goods","测试商品",1,Integer.valueOf(fee));
+                OrderDetailList ods = new OrderDetailList();
+                ods.goods_detail.add(orderDetail) ;
+                paramDTO.detail = JSON.toJSONString(ods);
+                paramDTO.attach = "测试商品购买";
                 paramDTO.orderno = orderno;
-                paramDTO.totalFee =redis.get(orderno);
+                paramDTO.totalFee = fee;
                 paramDTO.spbillCreateIp = storeMerchanInfo.ip;
                 paramDTO.openid = openid;
                 paramDTO.faceCode = faceCode;
