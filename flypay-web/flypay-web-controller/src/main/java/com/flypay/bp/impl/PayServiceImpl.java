@@ -19,9 +19,7 @@ import com.flypay.utils.*;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
-import java.math.BigDecimal;
 
 @Service
 public class PayServiceImpl implements PayService {
@@ -235,7 +233,7 @@ public class PayServiceImpl implements PayService {
                         EquipmentInfoPO eInfo = eDao.findByUUID(uuid);
                         if( eInfo == null){
                                 eInfo = new EquipmentInfoPO();
-                                eInfo.id = db.creatId(db.id_bit,null,DBUtils.TableIndex.equipment_info);
+                                eInfo.id = db.creatId(DBUtils.id_bit,null,DBUtils.TableIndex.equipment_info);
                                 eInfo.uuid = uuid;
                                 eInfo.type = 0;
                                 eInfo = eDao.save(eInfo);
@@ -258,6 +256,11 @@ public class PayServiceImpl implements PayService {
                 //其他参数获取
                 //获取设备信息
                 StoreMerchanEquipmentInfoVO storeMerchanInfo = getStoreMerchanInfo(uuid, null);
+                if( storeMerchanInfo == null){
+                        result.code = "-1111";
+                        result.message = "系统错误,请稍后再试";
+                        return result;
+                }
                 //参数拼接
                 WxpayfaceParamDTO paramDTO = new WxpayfaceParamDTO();
                 paramDTO.appid = storeMerchanInfo.appid;
@@ -293,12 +296,14 @@ public class PayServiceImpl implements PayService {
                         result.code = "-1111";
                         result.message = "系统错误,请稍后再试";
                         //支付失败
-                        if("FAIL".equals(wxpayfaceResultDTO.returnCode) ){
-                                //通讯有问题
-                                result.message = wxpayfaceResultDTO.returnMsg;
-                        }else if( "FAIL".equals(wxpayfaceResultDTO.resultCode)){
-                                //支付有问题
-                                result.message = wxpayfaceResultDTO.errCodedes;
+                        if( wxpayfaceResultDTO != null ){
+                                if("FAIL".equals(wxpayfaceResultDTO.returnCode) ){
+                                        //通讯有问题
+                                        result.message = wxpayfaceResultDTO.returnMsg;
+                                }else if( "FAIL".equals(wxpayfaceResultDTO.resultCode)){
+                                        //支付有问题
+                                        result.message = wxpayfaceResultDTO.errCodedes;
+                                }
                         }
                 }
                 updateOrder(flag,orderno,wxpayfaceResultDTO);
@@ -325,7 +330,7 @@ public class PayServiceImpl implements PayService {
                         result.message = "生成订单失败,请联系开发人员";
                         return result;
                 }
-                if( !StringUtil.hasText(amount)){
+                if( StringUtil.hasText(amount)){
                         String orderno = String.valueOf(db.creatId(DBUtils.order_bit,biVO.storeName, DBUtils.TableIndex.order));
                         //将金额放入redis
                         String fee = changeBranch(amount);
@@ -348,6 +353,7 @@ public class PayServiceImpl implements PayService {
                                 odi.orderno = orderno;
                                 odi.status = 0;
                                 odDao.save(odi);
+
                         }).start();
                         result.code = "0000";
                         result.message = "生成订单信息成功";
@@ -367,8 +373,9 @@ public class PayServiceImpl implements PayService {
          * @param amount
          * @return
          */
-        public static String changeBranch(String amount) {
-                String currency = amount.replaceAll("\\$|\\￥|\\,", ""); // 处理包含, ￥
+        static final String REG = "\\$|\\￥|\\,";
+        private static String changeBranch(String amount) {
+                String currency = amount.replaceAll(REG, ""); // 处理包含, ￥
                 // 或者$的金额
                 int index = currency.indexOf(".");
                 int length = currency.length();

@@ -2,10 +2,6 @@ package com.flypay.controller;
 
 import com.flypay.bp.PayService;
 import com.flypay.model.Result;
-import com.flypay.model.dao.OrderInfoDao;
-import com.flypay.model.pojo.OrderInfoPO;
-import com.flypay.utils.DBUtils;
-import com.flypay.utils.RedisUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.log4j.Logger;
@@ -14,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.transaction.Transactional;
 
 @Api(tags="提供刷脸支付相关接口")
 @RestController
@@ -43,13 +37,14 @@ public class FacePayController {
             LOGGER.error("系统异常,初始化设备失败",e);
         }
         if( result == null){
+            result = new Result();
             result.code = "-1111";
             result.message = "系统异常,初始化设备失败";
         }
         return result;
     }
     @ApiOperation(value="生成订单", notes="Test")
-    @RequestMapping(value = "/creatorder", method = RequestMethod.POST)
+    @RequestMapping(value = "/creatorder", method = RequestMethod.GET)
     public Result creatorder(@RequestParam("uuid") String uuid,@RequestParam("amount") String amount){
         Result result = null;
         try{
@@ -58,6 +53,7 @@ public class FacePayController {
             LOGGER.error("系统异常,生成订单失败",e);
         }
         if( result == null){
+            result = new Result();
             result.code = "-1111";
             result.message = "系统异常,生成订单失败";
         }
@@ -81,6 +77,7 @@ public class FacePayController {
             LOGGER.error("系统异常,获取人脸支付认证失败",e);
         }
         if( result == null){
+            result = new Result();
             result.code = "-1111";
             result.message = "系统异常,获取人脸支付认证失败";
         }
@@ -101,6 +98,7 @@ public class FacePayController {
             LOGGER.error("系统异常,人脸支付失败",e);
         }
         if( result == null){
+            result = new Result();
             result.code = "-1111";
             result.message = "系统异常,人脸支付失败";
         }

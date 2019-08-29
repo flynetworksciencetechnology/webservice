@@ -7,9 +7,12 @@ import com.flypay.model.pojo.OrderDetailInfoPO;
 import com.flypay.model.pojo.OrderInfoPO;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
+
 @Repository
 public class OrderDetailInfoDaoImpl extends AbstractBaseDao<OrderDetailInfoPO> implements OrderDetailInfoDao {
     @Override
+    @Transactional
     public OrderDetailInfoPO save(OrderDetailInfoPO eInfo) {
         return this.add(eInfo);
     }
