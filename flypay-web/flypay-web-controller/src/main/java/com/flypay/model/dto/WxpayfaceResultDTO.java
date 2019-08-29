@@ -17,7 +17,7 @@ public class WxpayfaceResultDTO extends BaseXML{
     @XStreamAlias("sub_mch_id")
     public String subMchid;
     @XStreamAlias("device_info")
-    public String deviceId;
+    public String device_info;
     @XStreamAlias("nonce_str")
     public String nonceStr;
     @XStreamAlias("sign")
@@ -58,4 +58,6 @@ public class WxpayfaceResultDTO extends BaseXML{
     public String promotionDetail;
     @XStreamAlias("time_end")
     public String timeEnd;
+    @XStreamAlias("bank_type")
+    public String bank_type;
 }

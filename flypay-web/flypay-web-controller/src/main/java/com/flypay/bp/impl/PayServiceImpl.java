@@ -126,7 +126,10 @@ public class PayServiceImpl implements PayService {
                         //从redis拿
                         String key = uuid + "_AUTHINFO";
                         FacePayResult facePayResult = redis.get(key, FacePayResult.class,RedisUtils.RedisDBIndex.base);
+
                         if( facePayResult != null){
+                                facePayResult.out_trade_no = orderno;
+                                redis.set(key,facePayResult, RedisUtils.RedisDBIndex.base,Integer.valueOf(String.valueOf(redis.ttl(key,RedisUtils.RedisDBIndex.base))));
                                 result.code = "0000";
                                 result.message = "获取人脸支付认证信息成功";
                                 result.data = facePayResult;
