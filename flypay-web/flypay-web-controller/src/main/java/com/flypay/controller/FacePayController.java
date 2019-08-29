@@ -44,7 +44,7 @@ public class FacePayController {
         return result;
     }
     @ApiOperation(value="生成订单", notes="Test")
-    @RequestMapping(value = "/creatorder", method = RequestMethod.GET)
+    @RequestMapping(value = "/creatorder", method = RequestMethod.POST)
     public Result creatorder(@RequestParam("uuid") String uuid,@RequestParam("amount") String amount){
         Result result = null;
         try{
@@ -68,7 +68,7 @@ public class FacePayController {
      */
     @ApiOperation(value="获取微信人脸支付凭证", notes="Test")
     @RequestMapping(value = "/wechat/authinfo", method = RequestMethod.POST)
-    public Result getWxpayfaceAuthinfo(@RequestParam("rawdata") String rawdata,@RequestParam("uuid") String uuid,String orderno){
+    public Result getWxpayfaceAuthinfo(String rawdata,@RequestParam("uuid") String uuid,String orderno){
 
         Result result = null;
         try{

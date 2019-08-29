@@ -276,9 +276,11 @@ public class PayServiceImpl implements PayService {
                 paramDTO.detail = JSON.toJSONString(ods);
                 paramDTO.attach = "测试商品购买";
                 paramDTO.orderno = orderno;
-                paramDTO.totalFee = fee;
+                paramDTO.totalFee = Integer.valueOf(fee);
                 paramDTO.spbillCreateIp = storeMerchanInfo.ip;
                 paramDTO.openid = openid;
+                //paramDTO.goodsTag = "";
+                //paramDTO.timeExpire = "";
                 paramDTO.faceCode = faceCode;
                 //进行签名
                 paramDTO.sign = CommonUtils.sign(paramDTO,WxpayfaceParamDTO.class,storeMerchanInfo.key);

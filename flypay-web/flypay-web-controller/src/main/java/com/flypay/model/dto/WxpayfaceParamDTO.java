@@ -22,16 +22,17 @@ public class WxpayfaceParamDTO {
     public String nonceStr;
     @XStreamAlias("sign")
     public String sign;
-    @XStreamAlias("boby")
+    @XStreamAlias("body")
     public String boby;
     @XStreamAlias("detail")
+    @XStreamCDATA
     public String detail;
     @XStreamAlias("attach")
     public String attach;
     @XStreamAlias("out_trade_no")
     public String orderno;
     @XStreamAlias("total_fee")
-    public String totalFee;
+    public Integer totalFee;
     @XStreamAlias("fee_type")
     public String feeType;
     @XStreamAlias("spbill_create_ip")
@@ -43,6 +44,8 @@ public class WxpayfaceParamDTO {
     public String openid;
     @XStreamAlias("face_code")
     public String faceCode;
+    @XStreamAlias("time_expire")
+    public String timeExpire;
 
     public WxpayfaceParamDTO() {
         this.nonceStr = CommonUtils.getRandomString(32);

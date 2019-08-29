@@ -54,7 +54,7 @@ public class CommonUtils {
     };
     static final List<String> TYPES2 = new ArrayList<String>(){
         {
-            add("Integer");
+            add("java.lang.Integer");
             add("java.lang.String");
             add("java.lang.Boolean");
             add("java.lang.Character");
@@ -101,6 +101,7 @@ public class CommonUtils {
             }
         }
         String stringA = sb.append("key=").append(key).toString();
+        logger.error("签名之前 : " + stringA);
         //MD5签名
         return Md5Digest.md5(stringA).toUpperCase();
     }
