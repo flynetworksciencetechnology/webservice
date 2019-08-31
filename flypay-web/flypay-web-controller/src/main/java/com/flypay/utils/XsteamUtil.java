@@ -20,9 +20,8 @@ import java.lang.reflect.Field;
  * xml转换工具
  */
 public class XsteamUtil {
-    private static XStream xstream = null;
-    static{
-        xstream = new XStream(new XppDomDriver(new NoNameCoder()){
+    private static XStream getXstream(){
+        XStream xstream = new XStream(new XppDomDriver(new NoNameCoder()){
             @Override
             public HierarchicalStreamWriter createWriter(Writer out) {
                 return new PrettyPrintWriter(out) {
@@ -54,40 +53,10 @@ public class XsteamUtil {
                 };
             }
         });
-//        xstream = new XStream(new XppDriver() {
-//
-//            @Override
-//            public HierarchicalStreamWriter createWriter(Writer out) {
-//                return new PrettyPrintWriter(out) {
-//                    boolean cdata = false;
-//                    Class<?> targetClass = null;
-//                    @Override
-//                    public void startNode(String name,
-//                                          @SuppressWarnings("rawtypes") Class clazz) {
-//                        super.startNode(name, clazz);
-//                        //业务处理，对于用XStreamCDATA标记的Field，需要加上CDATA标签
-//                        if(!name.equals("xml")){
-//                            cdata = needCDATA(targetClass, name);
-//                        }else{
-//                            targetClass = clazz;
-//                        }
-//                    }
-//
-//                    @Override
-//                    protected void writeText(QuickWriter writer, String text) {
-//                        if (cdata) {
-//                            writer.write(CDATA(text));
-//                        } else {
-//                            writer.write(text);
-//                        }
-//                    }
-//                };
-//            }
-//        });
         XStream.setupDefaultSecurity(xstream);
         xstream.allowTypes(new Class[]{WxpayfaceResultDTO.class, WxpayfaceAuthinfoParamDTO.class, WxpayfaceAuthinfoResultDTO.class, WxpayfaceParamDTO.class});
+        return xstream;
     }
-
     private static String CDATA(String text) {
         return "<![CDATA[" + text + "]]>";
     }
@@ -100,10 +69,11 @@ public class XsteamUtil {
      * @return
      */
     public static <T> T  toBean(Class<T> clazz, String xml) {
-            xstream.processAnnotations(clazz);
-            xstream.autodetectAnnotations(true);
-            xstream.setClassLoader(clazz.getClassLoader());
-            return (T)xstream.fromXML(xml);
+        XStream xstream = getXstream();
+        xstream.processAnnotations(clazz);
+        xstream.autodetectAnnotations(true);
+        xstream.setClassLoader(clazz.getClassLoader());
+        return (T)xstream.fromXML(xml);
     }
 
     /**
@@ -112,6 +82,7 @@ public class XsteamUtil {
      * @return
      */
     public static String toXml(Object obj,Class clazz){
+        XStream xstream = getXstream();
         xstream.processAnnotations(clazz);
         return xstream.toXML(obj);
     }

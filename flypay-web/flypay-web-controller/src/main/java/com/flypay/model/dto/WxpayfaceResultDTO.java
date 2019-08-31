@@ -4,9 +4,11 @@ import com.flypay.annotation.XStreamCDATA;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 @XStreamAlias("xml")
-public class WxpayfaceResultDTO extends BaseXML{
+public class WxpayfaceResultDTO{
 
-
+    @XStreamAlias("return_code")
+    public String returnCode;
+    @XStreamAlias("return_msg")
     public String returnMsg;
     @XStreamAlias("appid")
     public String appid;
