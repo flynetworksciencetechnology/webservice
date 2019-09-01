@@ -7,15 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ea1f3b4-ff87-4d64-be27-55bd6ed029f3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/doc/help.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/flypay_web_controller_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/flypay_web_controller_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/dto/BaseXML.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/dto/WxpayfaceAuthinfoResultDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/dto/WxpayfaceAuthinfoResultDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/dto/WxpayfaceResultDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/model/dto/WxpayfaceResultDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/XsteamUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/XsteamUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flypay-web-controller/target/classes/com/flypay/bp/impl/PayServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/flypay-web-controller/target/classes/com/flypay/bp/impl/PayServiceImpl.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -99,8 +91,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/XsteamUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="84" column="39" selection-start-line="84" selection-start-column="39" selection-end-line="84" selection-end-column="39" />
+            <state relative-caret-position="88">
+              <caret line="89" column="69" selection-start-line="89" selection-start-column="69" selection-end-line="89" selection-end-column="69" />
               <folding>
                 <element signature="e#1274#1303#1" expanded="true" />
                 <element signature="e#1770#1771#0" expanded="true" />
@@ -526,11 +518,18 @@
       <option name="project" value="LOCAL" />
       <updated>1567086353374</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="&lt;完善后台代码&gt;">
+      <created>1567220794943</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1567220794943</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="188206000" />
+    <option name="totallyTimeSpent" value="188895000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -952,8 +951,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/flypay-web-controller/src/main/java/com/flypay/utils/XsteamUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="84" column="39" selection-start-line="84" selection-start-column="39" selection-end-line="84" selection-end-column="39" />
+        <state relative-caret-position="88">
+          <caret line="89" column="69" selection-start-line="89" selection-start-column="69" selection-end-line="89" selection-end-column="69" />
           <folding>
             <element signature="e#1274#1303#1" expanded="true" />
             <element signature="e#1770#1771#0" expanded="true" />
