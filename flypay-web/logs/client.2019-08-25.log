@@ -1,0 +1,451 @@
+2019-08-25 09:34:03,938 com.flypay.WebApplication [main] (StartupInfoLogger.java:48) INFO  --> Starting WebApplication on WIN-BCPPR4T9TIQ with PID 1768 (started by Administrator in E:\Work Space\COM\webservice\flypay-web)
+2019-08-25 09:34:04,076 com.flypay.WebApplication [main] (SpringApplication.java:637) INFO  --> No active profile set, falling back to default profiles: default
+2019-08-25 09:34:04,286 org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext [main] (AbstractApplicationContext.java:582) INFO  --> Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1d7acb34: startup date [Sun Aug 25 09:34:04 CST 2019]; root of context hierarchy
+2019-08-25 09:34:04,819 org.hibernate.validator.internal.util.Version [background-preinit] (Version.java:30) INFO  --> HV000001: Hibernate Validator 5.3.4.Final
+2019-08-25 09:34:07,404 org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] (PostProcessorRegistrationDelegate.java:325) INFO  --> Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$bc3dc584] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-08-25 09:34:07,955 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer [main] (TomcatEmbeddedServletContainer.java:89) INFO  --> Tomcat initialized with port(s): 8762 (http)
+2019-08-25 09:34:08,103 org.springframework.web.context.ContextLoader [localhost-startStop-1] (EmbeddedWebApplicationContext.java:276) INFO  --> Root WebApplicationContext: initialization completed in 3817 ms
+2019-08-25 09:34:08,289 org.springframework.boot.web.servlet.ServletRegistrationBean [localhost-startStop-1] (ServletRegistrationBean.java:190) INFO  --> Mapping servlet: 'dispatcherServlet' to [/]
+2019-08-25 09:34:08,294 org.springframework.boot.web.servlet.FilterRegistrationBean [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) INFO  --> Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-08-25 09:34:09,516 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] (LocalContainerEntityManagerFactoryBean.java:349) INFO  --> Building JPA container EntityManagerFactory for persistence unit 'default'
+2019-08-25 09:34:09,538 org.hibernate.jpa.internal.util.LogHelper [main] (LogHelper.java:31) INFO  --> HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-08-25 09:34:09,702 org.hibernate.Version [main] (Version.java:37) INFO  --> HHH000412: Hibernate Core {5.0.12.Final}
+2019-08-25 09:34:09,703 org.hibernate.cfg.Environment [main] (Environment.java:213) INFO  --> HHH000206: hibernate.properties not found
+2019-08-25 09:34:09,705 org.hibernate.cfg.Environment [main] (Environment.java:317) INFO  --> HHH000021: Bytecode provider name : javassist
+2019-08-25 09:34:09,820 org.hibernate.annotations.common.Version [main] (JavaReflectionManager.java:66) INFO  --> HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-08-25 09:34:10,135 org.hibernate.dialect.Dialect [main] (Dialect.java:156) INFO  --> HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2019-08-25 09:34:10,961 org.hibernate.tool.hbm2ddl.SchemaUpdate [main] (SchemaUpdate.java:105) INFO  --> HHH000228: Running hbm2ddl schema update
+2019-08-25 09:34:11,407 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] (AbstractEntityManagerFactoryBean.java:379) INFO  --> Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-08-25 09:34:11,607 com.flypay.conf.JedisConfig [main] (JedisConfig.java:38) INFO  --> JedisPool注入成功！
+2019-08-25 09:34:13,057 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/init],methods=[GET]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.init(java.lang.String)
+2019-08-25 09:34:13,059 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/test],methods=[GET]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.test()
+2019-08-25 09:34:13,060 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/setRawdata],methods=[GET]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.setRawdata(java.lang.String,java.lang.String)
+2019-08-25 09:34:13,060 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/pay],methods=[GET]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.pay()
+2019-08-25 09:34:13,061 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/getStoreMerchanInfo],methods=[GET]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.getStoreMerchanInfo(java.lang.String)
+2019-08-25 09:34:13,061 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/wechat/authinfo],methods=[GET]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.getWxpayfaceAuthinfo(java.lang.String)
+2019-08-25 09:34:13,069 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/swagger-resources/configuration/security]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.SecurityConfiguration> springfox.documentation.swagger.web.ApiResourceController.securityConfiguration()
+2019-08-25 09:34:13,070 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/swagger-resources]}" onto public org.springframework.http.ResponseEntity<java.util.List<springfox.documentation.swagger.web.SwaggerResource>> springfox.documentation.swagger.web.ApiResourceController.swaggerResources()
+2019-08-25 09:34:13,071 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/swagger-resources/configuration/ui]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.UiConfiguration> springfox.documentation.swagger.web.ApiResourceController.uiConfiguration()
+2019-08-25 09:34:13,074 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-08-25 09:34:13,075 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-08-25 09:34:13,324 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter [main] (RequestMappingHandlerAdapter.java:534) INFO  --> Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1d7acb34: startup date [Sun Aug 25 09:34:04 CST 2019]; root of context hierarchy
+2019-08-25 09:34:13,503 springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping [main] (PropertySourcedRequestMappingHandlerMapping.java:69) INFO  --> Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-08-25 09:34:14,429 org.springframework.jmx.export.annotation.AnnotationMBeanExporter [main] (MBeanExporter.java:431) INFO  --> Registering beans for JMX exposure on startup
+2019-08-25 09:34:14,477 org.springframework.context.support.DefaultLifecycleProcessor [main] (DefaultLifecycleProcessor.java:343) INFO  --> Starting beans in phase 2147483647
+2019-08-25 09:34:14,477 springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] (DocumentationPluginsBootstrapper.java:147) INFO  --> Context refreshed
+2019-08-25 09:34:14,535 springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] (DocumentationPluginsBootstrapper.java:150) INFO  --> Found 1 custom documentation plugin(s)
+2019-08-25 09:34:14,651 springfox.documentation.spring.web.scanners.ApiListingReferenceScanner [main] (ApiListingReferenceScanner.java:41) INFO  --> Scanning for api listing references
+2019-08-25 09:34:15,023 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer [main] (TomcatEmbeddedServletContainer.java:198) INFO  --> Tomcat started on port(s): 8762 (http)
+2019-08-25 09:34:15,030 com.flypay.WebApplication [main] (StartupInfoLogger.java:57) INFO  --> Started WebApplication in 12.262 seconds (JVM running for 14.364)
+2019-08-25 09:34:15,034 com.flypay.utils.ConsistentHash [main] (ConsistentHash.java:55) INFO  --> 一致哈希初始化完成============ 
+2019-08-25 09:34:15,034 com.flypay.WebApplication [main] (WebApplication.java:39) INFO  --> ********************Web Server Started********************
+2019-08-25 09:34:36,799 org.springframework.web.servlet.DispatcherServlet [http-nio-8762-exec-1] (FrameworkServlet.java:489) INFO  --> FrameworkServlet 'dispatcherServlet': initialization started
+2019-08-25 09:34:36,822 org.springframework.web.servlet.DispatcherServlet [http-nio-8762-exec-1] (FrameworkServlet.java:508) INFO  --> FrameworkServlet 'dispatcherServlet': initialization completed in 23 ms
+2019-08-25 09:34:36,870 com.flypay.controller.FacePayController [http-nio-8762-exec-1] (FacePayController.java:47) INFO  --> 设备的UUID是 : 11111
+2019-08-25 09:34:36,875 com.flypay.utils.StringUtil [http-nio-8762-exec-1] (StringUtil.java:17) INFO  --> 对字符串 :|11111|进行判断是否为空/串
+2019-08-25 09:34:36,876 com.flypay.utils.RedisUtils [http-nio-8762-exec-1] (RedisUtils.java:114) ERROR --> 缓存未开启
+2019-08-25 09:34:37,213 com.flypay.utils.RedisUtils [http-nio-8762-exec-1] (RedisUtils.java:39) ERROR --> 缓存未开启
+2019-08-25 09:34:37,428 org.springframework.web.servlet.PageNotFound [http-nio-8762-exec-2] (DispatcherServlet.java:1172) WARN  --> No mapping found for HTTP request with URI [/favicon.ico] in DispatcherServlet with name 'dispatcherServlet'
+2019-08-25 09:35:11,141 com.flypay.WebApplication [main] (StartupInfoLogger.java:48) INFO  --> Starting WebApplication on WIN-BCPPR4T9TIQ with PID 2000 (started by Administrator in E:\Work Space\COM\webservice\flypay-web)
+2019-08-25 09:35:11,144 com.flypay.WebApplication [main] (SpringApplication.java:637) INFO  --> No active profile set, falling back to default profiles: default
+2019-08-25 09:35:11,208 org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext [main] (AbstractApplicationContext.java:582) INFO  --> Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1d7acb34: startup date [Sun Aug 25 09:35:11 CST 2019]; root of context hierarchy
+2019-08-25 09:35:11,735 org.hibernate.validator.internal.util.Version [background-preinit] (Version.java:30) INFO  --> HV000001: Hibernate Validator 5.3.4.Final
+2019-08-25 09:35:13,913 org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] (PostProcessorRegistrationDelegate.java:325) INFO  --> Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$e171101] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-08-25 09:35:14,231 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer [main] (TomcatEmbeddedServletContainer.java:89) INFO  --> Tomcat initialized with port(s): 8762 (http)
+2019-08-25 09:35:14,366 org.springframework.web.context.ContextLoader [localhost-startStop-1] (EmbeddedWebApplicationContext.java:276) INFO  --> Root WebApplicationContext: initialization completed in 3158 ms
+2019-08-25 09:35:14,491 org.springframework.boot.web.servlet.ServletRegistrationBean [localhost-startStop-1] (ServletRegistrationBean.java:190) INFO  --> Mapping servlet: 'dispatcherServlet' to [/]
+2019-08-25 09:35:14,495 org.springframework.boot.web.servlet.FilterRegistrationBean [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) INFO  --> Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-08-25 09:35:15,057 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] (LocalContainerEntityManagerFactoryBean.java:349) INFO  --> Building JPA container EntityManagerFactory for persistence unit 'default'
+2019-08-25 09:35:15,070 org.hibernate.jpa.internal.util.LogHelper [main] (LogHelper.java:31) INFO  --> HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-08-25 09:35:15,138 org.hibernate.Version [main] (Version.java:37) INFO  --> HHH000412: Hibernate Core {5.0.12.Final}
+2019-08-25 09:35:15,140 org.hibernate.cfg.Environment [main] (Environment.java:213) INFO  --> HHH000206: hibernate.properties not found
+2019-08-25 09:35:15,141 org.hibernate.cfg.Environment [main] (Environment.java:317) INFO  --> HHH000021: Bytecode provider name : javassist
+2019-08-25 09:35:15,186 org.hibernate.annotations.common.Version [main] (JavaReflectionManager.java:66) INFO  --> HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-08-25 09:35:15,327 org.hibernate.dialect.Dialect [main] (Dialect.java:156) INFO  --> HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2019-08-25 09:35:15,906 org.hibernate.tool.hbm2ddl.SchemaUpdate [main] (SchemaUpdate.java:105) INFO  --> HHH000228: Running hbm2ddl schema update
+2019-08-25 09:35:16,260 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] (AbstractEntityManagerFactoryBean.java:379) INFO  --> Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-08-25 09:35:16,412 com.flypay.conf.JedisConfig [main] (JedisConfig.java:38) INFO  --> JedisPool注入成功！
+2019-08-25 09:35:17,068 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/init],methods=[GET]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.init(java.lang.String)
+2019-08-25 09:35:17,069 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/test],methods=[GET]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.test()
+2019-08-25 09:35:17,070 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/getStoreMerchanInfo],methods=[GET]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.getStoreMerchanInfo(java.lang.String)
+2019-08-25 09:35:17,070 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/wechat/authinfo],methods=[GET]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.getWxpayfaceAuthinfo(java.lang.String)
+2019-08-25 09:35:17,070 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/pay],methods=[GET]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.pay()
+2019-08-25 09:35:17,071 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/setRawdata],methods=[GET]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.setRawdata(java.lang.String,java.lang.String)
+2019-08-25 09:35:17,077 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/swagger-resources/configuration/security]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.SecurityConfiguration> springfox.documentation.swagger.web.ApiResourceController.securityConfiguration()
+2019-08-25 09:35:17,078 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/swagger-resources]}" onto public org.springframework.http.ResponseEntity<java.util.List<springfox.documentation.swagger.web.SwaggerResource>> springfox.documentation.swagger.web.ApiResourceController.swaggerResources()
+2019-08-25 09:35:17,079 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/swagger-resources/configuration/ui]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.UiConfiguration> springfox.documentation.swagger.web.ApiResourceController.uiConfiguration()
+2019-08-25 09:35:17,082 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-08-25 09:35:17,082 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-08-25 09:35:17,295 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter [main] (RequestMappingHandlerAdapter.java:534) INFO  --> Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1d7acb34: startup date [Sun Aug 25 09:35:11 CST 2019]; root of context hierarchy
+2019-08-25 09:35:17,466 springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping [main] (PropertySourcedRequestMappingHandlerMapping.java:69) INFO  --> Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-08-25 09:35:18,060 org.springframework.jmx.export.annotation.AnnotationMBeanExporter [main] (MBeanExporter.java:431) INFO  --> Registering beans for JMX exposure on startup
+2019-08-25 09:35:18,070 org.springframework.context.support.DefaultLifecycleProcessor [main] (DefaultLifecycleProcessor.java:343) INFO  --> Starting beans in phase 2147483647
+2019-08-25 09:35:18,070 springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] (DocumentationPluginsBootstrapper.java:147) INFO  --> Context refreshed
+2019-08-25 09:35:18,086 springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] (DocumentationPluginsBootstrapper.java:150) INFO  --> Found 1 custom documentation plugin(s)
+2019-08-25 09:35:18,124 springfox.documentation.spring.web.scanners.ApiListingReferenceScanner [main] (ApiListingReferenceScanner.java:41) INFO  --> Scanning for api listing references
+2019-08-25 09:35:18,353 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer [main] (TomcatEmbeddedServletContainer.java:198) INFO  --> Tomcat started on port(s): 8762 (http)
+2019-08-25 09:35:18,362 com.flypay.WebApplication [main] (StartupInfoLogger.java:57) INFO  --> Started WebApplication in 7.599 seconds (JVM running for 8.507)
+2019-08-25 09:35:18,368 com.flypay.utils.ConsistentHash [main] (ConsistentHash.java:55) INFO  --> 一致哈希初始化完成============ 
+2019-08-25 09:35:18,368 com.flypay.WebApplication [main] (WebApplication.java:39) INFO  --> ********************Web Server Started********************
+2019-08-25 09:35:25,731 org.springframework.web.servlet.DispatcherServlet [http-nio-8762-exec-1] (FrameworkServlet.java:489) INFO  --> FrameworkServlet 'dispatcherServlet': initialization started
+2019-08-25 09:35:25,753 org.springframework.web.servlet.DispatcherServlet [http-nio-8762-exec-1] (FrameworkServlet.java:508) INFO  --> FrameworkServlet 'dispatcherServlet': initialization completed in 21 ms
+2019-08-25 09:35:25,781 com.flypay.controller.FacePayController [http-nio-8762-exec-1] (FacePayController.java:47) INFO  --> 设备的UUID是 : 11111
+2019-08-25 09:35:25,786 com.flypay.utils.StringUtil [http-nio-8762-exec-1] (StringUtil.java:17) INFO  --> 对字符串 :|11111|进行判断是否为空/串
+2019-08-25 09:35:32,359 com.flypay.controller.FacePayController [http-nio-8762-exec-2] (FacePayController.java:47) INFO  --> 设备的UUID是 : 11111
+2019-08-25 09:35:32,366 com.flypay.utils.StringUtil [http-nio-8762-exec-2] (StringUtil.java:17) INFO  --> 对字符串 :|11111|进行判断是否为空/串
+2019-08-25 09:35:44,242 com.flypay.controller.FacePayController [http-nio-8762-exec-4] (FacePayController.java:47) INFO  --> 设备的UUID是 : 11111
+2019-08-25 09:35:44,243 com.flypay.utils.StringUtil [http-nio-8762-exec-4] (StringUtil.java:17) INFO  --> 对字符串 :|11111|进行判断是否为空/串
+2019-08-25 17:41:39,918 com.flypay.WebApplication [main] (StartupInfoLogger.java:48) INFO  --> Starting WebApplication on WIN-BCPPR4T9TIQ with PID 5956 (started by Administrator in E:\Work Space\COM\webservice\flypay-web)
+2019-08-25 17:41:39,921 com.flypay.WebApplication [main] (SpringApplication.java:637) INFO  --> No active profile set, falling back to default profiles: default
+2019-08-25 17:41:40,002 org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext [main] (AbstractApplicationContext.java:582) INFO  --> Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1d7acb34: startup date [Sun Aug 25 17:41:40 CST 2019]; root of context hierarchy
+2019-08-25 17:41:40,707 org.hibernate.validator.internal.util.Version [background-preinit] (Version.java:30) INFO  --> HV000001: Hibernate Validator 5.3.4.Final
+2019-08-25 17:41:42,569 org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] (PostProcessorRegistrationDelegate.java:325) INFO  --> Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$dce80aed] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-08-25 17:41:42,924 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer [main] (TomcatEmbeddedServletContainer.java:89) INFO  --> Tomcat initialized with port(s): 8762 (http)
+2019-08-25 17:41:43,089 org.springframework.web.context.ContextLoader [localhost-startStop-1] (EmbeddedWebApplicationContext.java:276) INFO  --> Root WebApplicationContext: initialization completed in 3086 ms
+2019-08-25 17:41:43,263 org.springframework.boot.web.servlet.ServletRegistrationBean [localhost-startStop-1] (ServletRegistrationBean.java:190) INFO  --> Mapping servlet: 'dispatcherServlet' to [/]
+2019-08-25 17:41:43,269 org.springframework.boot.web.servlet.FilterRegistrationBean [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) INFO  --> Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-08-25 17:41:43,855 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] (LocalContainerEntityManagerFactoryBean.java:349) INFO  --> Building JPA container EntityManagerFactory for persistence unit 'default'
+2019-08-25 17:41:43,869 org.hibernate.jpa.internal.util.LogHelper [main] (LogHelper.java:31) INFO  --> HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-08-25 17:41:43,939 org.hibernate.Version [main] (Version.java:37) INFO  --> HHH000412: Hibernate Core {5.0.12.Final}
+2019-08-25 17:41:43,941 org.hibernate.cfg.Environment [main] (Environment.java:213) INFO  --> HHH000206: hibernate.properties not found
+2019-08-25 17:41:43,943 org.hibernate.cfg.Environment [main] (Environment.java:317) INFO  --> HHH000021: Bytecode provider name : javassist
+2019-08-25 17:41:43,986 org.hibernate.annotations.common.Version [main] (JavaReflectionManager.java:66) INFO  --> HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-08-25 17:41:44,136 org.hibernate.dialect.Dialect [main] (Dialect.java:156) INFO  --> HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2019-08-25 17:41:44,711 org.hibernate.tool.hbm2ddl.SchemaUpdate [main] (SchemaUpdate.java:105) INFO  --> HHH000228: Running hbm2ddl schema update
+2019-08-25 17:41:44,877 org.hibernate.tool.schema.extract.internal.InformationExtractorJdbcDatabaseMetaDataImpl [main] (InformationExtractorJdbcDatabaseMetaDataImpl.java:365) INFO  --> HHH000262: Table not found: order_detail_info
+2019-08-25 17:41:44,878 org.hibernate.tool.schema.extract.internal.InformationExtractorJdbcDatabaseMetaDataImpl [main] (InformationExtractorJdbcDatabaseMetaDataImpl.java:365) INFO  --> HHH000262: Table not found: order_detail_info
+2019-08-25 17:41:45,007 org.hibernate.tool.schema.extract.internal.InformationExtractorJdbcDatabaseMetaDataImpl [main] (InformationExtractorJdbcDatabaseMetaDataImpl.java:365) INFO  --> HHH000262: Table not found: order_info
+2019-08-25 17:41:45,009 org.hibernate.tool.schema.extract.internal.InformationExtractorJdbcDatabaseMetaDataImpl [main] (InformationExtractorJdbcDatabaseMetaDataImpl.java:365) INFO  --> HHH000262: Table not found: order_info
+2019-08-25 17:41:45,299 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] (AbstractEntityManagerFactoryBean.java:379) INFO  --> Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-08-25 17:41:45,395 com.flypay.conf.JedisConfig [main] (JedisConfig.java:38) INFO  --> JedisPool注入成功！
+2019-08-25 17:41:45,986 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/init],methods=[GET]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.init(java.lang.String)
+2019-08-25 17:41:45,987 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/getStoreMerchanInfo],methods=[GET]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.getStoreMerchanInfo(java.lang.String,java.lang.String)
+2019-08-25 17:41:45,987 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/wechat/authinfo],methods=[GET]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.getWxpayfaceAuthinfo(java.lang.String,java.lang.String)
+2019-08-25 17:41:45,988 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/pay],methods=[POST]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.pay(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+2019-08-25 17:41:45,988 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/setRawdata],methods=[GET]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.setRawdata(java.lang.String,java.lang.String)
+2019-08-25 17:41:45,993 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/swagger-resources]}" onto public org.springframework.http.ResponseEntity<java.util.List<springfox.documentation.swagger.web.SwaggerResource>> springfox.documentation.swagger.web.ApiResourceController.swaggerResources()
+2019-08-25 17:41:45,994 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/swagger-resources/configuration/ui]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.UiConfiguration> springfox.documentation.swagger.web.ApiResourceController.uiConfiguration()
+2019-08-25 17:41:45,994 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/swagger-resources/configuration/security]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.SecurityConfiguration> springfox.documentation.swagger.web.ApiResourceController.securityConfiguration()
+2019-08-25 17:41:45,997 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-08-25 17:41:45,998 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-08-25 17:41:46,178 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter [main] (RequestMappingHandlerAdapter.java:534) INFO  --> Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1d7acb34: startup date [Sun Aug 25 17:41:40 CST 2019]; root of context hierarchy
+2019-08-25 17:41:46,303 springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping [main] (PropertySourcedRequestMappingHandlerMapping.java:69) INFO  --> Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-08-25 17:41:46,961 org.springframework.jmx.export.annotation.AnnotationMBeanExporter [main] (MBeanExporter.java:431) INFO  --> Registering beans for JMX exposure on startup
+2019-08-25 17:41:46,971 org.springframework.context.support.DefaultLifecycleProcessor [main] (DefaultLifecycleProcessor.java:343) INFO  --> Starting beans in phase 2147483647
+2019-08-25 17:41:46,972 springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] (DocumentationPluginsBootstrapper.java:147) INFO  --> Context refreshed
+2019-08-25 17:41:46,987 springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] (DocumentationPluginsBootstrapper.java:150) INFO  --> Found 1 custom documentation plugin(s)
+2019-08-25 17:41:47,024 springfox.documentation.spring.web.scanners.ApiListingReferenceScanner [main] (ApiListingReferenceScanner.java:41) INFO  --> Scanning for api listing references
+2019-08-25 17:41:47,247 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer [main] (TomcatEmbeddedServletContainer.java:198) INFO  --> Tomcat started on port(s): 8762 (http)
+2019-08-25 17:41:47,253 com.flypay.WebApplication [main] (StartupInfoLogger.java:57) INFO  --> Started WebApplication in 7.697 seconds (JVM running for 8.665)
+2019-08-25 17:41:47,257 com.flypay.utils.ConsistentHash [main] (ConsistentHash.java:55) INFO  --> 一致哈希初始化完成============ 
+2019-08-25 17:41:47,257 com.flypay.WebApplication [main] (WebApplication.java:39) INFO  --> ********************Web Server Started********************
+2019-08-25 17:53:57,229 org.springframework.web.servlet.DispatcherServlet [http-nio-8762-exec-1] (FrameworkServlet.java:489) INFO  --> FrameworkServlet 'dispatcherServlet': initialization started
+2019-08-25 17:53:57,277 org.springframework.web.servlet.DispatcherServlet [http-nio-8762-exec-1] (FrameworkServlet.java:508) INFO  --> FrameworkServlet 'dispatcherServlet': initialization completed in 48 ms
+2019-08-25 17:53:57,332 com.flypay.controller.FacePayController [http-nio-8762-exec-1] (FacePayController.java:31) INFO  --> 设备的UUID是 : ffffffff-b5dc-550d-b5dc-550d00000000
+2019-08-25 17:53:57,499 com.flypay.utils.StringUtil [http-nio-8762-exec-1] (StringUtil.java:17) INFO  --> 对字符串 :|ffffffff-b5dc-550d-b5dc-550d00000000|进行判断是否为空/串
+2019-08-25 17:53:57,504 com.flypay.utils.StringUtil [http-nio-8762-exec-1] (StringUtil.java:17) INFO  --> 对字符串 :|null|进行判断是否为空/串
+2019-08-25 17:53:57,504 com.flypay.utils.StringUtil [http-nio-8762-exec-1] (StringUtil.java:17) INFO  --> 对字符串 :|null|进行判断是否为空/串
+2019-08-25 17:53:57,715 org.hibernate.engine.jdbc.spi.SqlExceptionHelper [http-nio-8762-exec-1] (SqlExceptionHelper.java:127) WARN  --> SQL Error: 1364, SQLState: HY000
+2019-08-25 17:53:57,716 org.hibernate.engine.jdbc.spi.SqlExceptionHelper [http-nio-8762-exec-1] (SqlExceptionHelper.java:129) ERROR --> Field 'id' doesn't have a default value
+2019-08-25 17:53:57,726 com.flypay.utils.DBUtils [http-nio-8762-exec-1] (DBUtils.java:291) ERROR --> 生成id失败使用默认id
+javax.persistence.PersistenceException: org.hibernate.exception.GenericJDBCException: could not execute statement
+	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1692)
+	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1602)
+	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.throwPersistenceException(AbstractEntityManagerImpl.java:1700)
+	at org.hibernate.jpa.spi.AbstractQueryImpl.executeUpdate(AbstractQueryImpl.java:70)
+	at com.flypay.utils.DBUtils.creatId(DBUtils.java:279)
+	at com.flypay.utils.DBUtils$$FastClassBySpringCGLIB$$5a080a0a.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:721)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:282)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:656)
+	at com.flypay.utils.DBUtils$$EnhancerBySpringCGLIB$$b0dec3cd.creatId(<generated>)
+	at com.flypay.bp.impl.PayServiceImpl.initEquipmentInfo(PayServiceImpl.java:295)
+	at com.flypay.bp.impl.PayServiceImpl$$FastClassBySpringCGLIB$$9b243c7.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:721)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:282)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:656)
+	at com.flypay.bp.impl.PayServiceImpl$$EnhancerBySpringCGLIB$$f55cef24.initEquipmentInfo(<generated>)
+	at com.flypay.controller.FacePayController.init(FacePayController.java:33)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:116)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:622)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:230)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:474)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:349)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:783)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:798)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1434)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.hibernate.exception.GenericJDBCException: could not execute statement
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:47)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:109)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:95)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:207)
+	at org.hibernate.engine.query.spi.NativeSQLQueryPlan.performExecuteUpdate(NativeSQLQueryPlan.java:194)
+	at org.hibernate.internal.SessionImpl.executeNativeUpdate(SessionImpl.java:1373)
+	at org.hibernate.internal.SQLQueryImpl.executeUpdate(SQLQueryImpl.java:373)
+	at org.hibernate.jpa.internal.QueryImpl.internalExecuteUpdate(QueryImpl.java:405)
+	at org.hibernate.jpa.spi.AbstractQueryImpl.executeUpdate(AbstractQueryImpl.java:61)
+	... 65 more
+Caused by: java.sql.SQLException: Field 'id' doesn't have a default value
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:964)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3973)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3909)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2527)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2680)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2501)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1858)
+	at com.mysql.jdbc.PreparedStatement.executeUpdateInternal(PreparedStatement.java:2079)
+	at com.mysql.jdbc.PreparedStatement.executeUpdateInternal(PreparedStatement.java:2013)
+	at com.mysql.jdbc.PreparedStatement.executeLargeUpdate(PreparedStatement.java:5104)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:1998)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:204)
+	... 70 more
+2019-08-25 17:53:57,733 com.flypay.bp.impl.PayServiceImpl [http-nio-8762-exec-1] (PayServiceImpl.java:303) ERROR --> 初始化设备失败,请联系开发人员
+javax.persistence.PersistenceException: org.hibernate.exception.GenericJDBCException: could not execute statement
+	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1692)
+	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1602)
+	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.throwPersistenceException(AbstractEntityManagerImpl.java:1700)
+	at org.hibernate.jpa.spi.AbstractQueryImpl.executeUpdate(AbstractQueryImpl.java:70)
+	at com.flypay.utils.DBUtils.creatId(DBUtils.java:279)
+	at com.flypay.utils.DBUtils$$FastClassBySpringCGLIB$$5a080a0a.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:721)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:282)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:656)
+	at com.flypay.utils.DBUtils$$EnhancerBySpringCGLIB$$b0dec3cd.creatId(<generated>)
+	at com.flypay.bp.impl.PayServiceImpl.initEquipmentInfo(PayServiceImpl.java:295)
+	at com.flypay.bp.impl.PayServiceImpl$$FastClassBySpringCGLIB$$9b243c7.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:721)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:282)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:656)
+	at com.flypay.bp.impl.PayServiceImpl$$EnhancerBySpringCGLIB$$f55cef24.initEquipmentInfo(<generated>)
+	at com.flypay.controller.FacePayController.init(FacePayController.java:33)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:116)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:622)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:230)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:474)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:349)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:783)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:798)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1434)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.hibernate.exception.GenericJDBCException: could not execute statement
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:47)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:109)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:95)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:207)
+	at org.hibernate.engine.query.spi.NativeSQLQueryPlan.performExecuteUpdate(NativeSQLQueryPlan.java:194)
+	at org.hibernate.internal.SessionImpl.executeNativeUpdate(SessionImpl.java:1373)
+	at org.hibernate.internal.SQLQueryImpl.executeUpdate(SQLQueryImpl.java:373)
+	at org.hibernate.jpa.internal.QueryImpl.internalExecuteUpdate(QueryImpl.java:405)
+	at org.hibernate.jpa.spi.AbstractQueryImpl.executeUpdate(AbstractQueryImpl.java:61)
+	... 65 more
+Caused by: java.sql.SQLException: Field 'id' doesn't have a default value
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:964)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3973)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3909)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2527)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2680)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2501)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1858)
+	at com.mysql.jdbc.PreparedStatement.executeUpdateInternal(PreparedStatement.java:2079)
+	at com.mysql.jdbc.PreparedStatement.executeUpdateInternal(PreparedStatement.java:2013)
+	at com.mysql.jdbc.PreparedStatement.executeLargeUpdate(PreparedStatement.java:5104)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:1998)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:204)
+	... 70 more
+2019-08-25 17:53:57,740 com.flypay.controller.FacePayController [http-nio-8762-exec-1] (FacePayController.java:35) ERROR --> 系统异常,初始化设备失败
+org.springframework.transaction.TransactionSystemException: Could not commit JPA transaction; nested exception is javax.persistence.RollbackException: Transaction marked as rollbackOnly
+	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:526)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:761)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:730)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:504)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:292)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:656)
+	at com.flypay.bp.impl.PayServiceImpl$$EnhancerBySpringCGLIB$$f55cef24.initEquipmentInfo(<generated>)
+	at com.flypay.controller.FacePayController.init(FacePayController.java:33)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:116)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:622)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:230)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:474)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:349)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:783)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:798)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1434)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: javax.persistence.RollbackException: Transaction marked as rollbackOnly
+	at org.hibernate.jpa.internal.TransactionImpl.commit(TransactionImpl.java:58)
+	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:517)
+	... 51 more
+2019-08-25 17:56:03,062 com.flypay.controller.FacePayController [http-nio-8762-exec-3] (FacePayController.java:31) INFO  --> 设备的UUID是 : ffffffff-b5dc-550d-b5dc-550d00000000
+2019-08-25 17:56:03,065 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|ffffffff-b5dc-550d-b5dc-550d00000000|进行判断是否为空/串
+2019-08-25 17:56:03,067 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|null|进行判断是否为空/串
+2019-08-25 17:56:03,068 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|null|进行判断是否为空/串
+2019-08-25 19:40:42,316 com.flypay.WebApplication [main] (StartupInfoLogger.java:48) INFO  --> Starting WebApplication on WIN-BCPPR4T9TIQ with PID 1768 (started by Administrator in E:\Work Space\COM\webservice\flypay-web)
+2019-08-25 19:40:42,321 com.flypay.WebApplication [main] (SpringApplication.java:637) INFO  --> No active profile set, falling back to default profiles: default
+2019-08-25 19:40:42,453 org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext [main] (AbstractApplicationContext.java:582) INFO  --> Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@69379752: startup date [Sun Aug 25 19:40:42 CST 2019]; root of context hierarchy
+2019-08-25 19:40:43,476 org.hibernate.validator.internal.util.Version [background-preinit] (Version.java:30) INFO  --> HV000001: Hibernate Validator 5.3.4.Final
+2019-08-25 19:40:45,968 org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] (PostProcessorRegistrationDelegate.java:325) INFO  --> Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$9025cf47] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-08-25 19:40:46,379 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer [main] (TomcatEmbeddedServletContainer.java:89) INFO  --> Tomcat initialized with port(s): 8762 (http)
+2019-08-25 19:40:46,631 org.springframework.web.context.ContextLoader [localhost-startStop-1] (EmbeddedWebApplicationContext.java:276) INFO  --> Root WebApplicationContext: initialization completed in 4178 ms
+2019-08-25 19:40:46,748 org.springframework.boot.web.servlet.ServletRegistrationBean [localhost-startStop-1] (ServletRegistrationBean.java:190) INFO  --> Mapping servlet: 'dispatcherServlet' to [/]
+2019-08-25 19:40:46,753 org.springframework.boot.web.servlet.FilterRegistrationBean [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) INFO  --> Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-08-25 19:40:47,594 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] (LocalContainerEntityManagerFactoryBean.java:349) INFO  --> Building JPA container EntityManagerFactory for persistence unit 'default'
+2019-08-25 19:40:47,618 org.hibernate.jpa.internal.util.LogHelper [main] (LogHelper.java:31) INFO  --> HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-08-25 19:40:47,824 org.hibernate.Version [main] (Version.java:37) INFO  --> HHH000412: Hibernate Core {5.0.12.Final}
+2019-08-25 19:40:47,826 org.hibernate.cfg.Environment [main] (Environment.java:213) INFO  --> HHH000206: hibernate.properties not found
+2019-08-25 19:40:47,828 org.hibernate.cfg.Environment [main] (Environment.java:317) INFO  --> HHH000021: Bytecode provider name : javassist
+2019-08-25 19:40:47,934 org.hibernate.annotations.common.Version [main] (JavaReflectionManager.java:66) INFO  --> HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-08-25 19:40:48,164 org.hibernate.dialect.Dialect [main] (Dialect.java:156) INFO  --> HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2019-08-25 19:40:49,086 org.hibernate.tool.hbm2ddl.SchemaUpdate [main] (SchemaUpdate.java:105) INFO  --> HHH000228: Running hbm2ddl schema update
+2019-08-25 19:40:49,780 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] (AbstractEntityManagerFactoryBean.java:379) INFO  --> Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-08-25 19:40:49,921 com.flypay.conf.JedisConfig [main] (JedisConfig.java:38) INFO  --> JedisPool注入成功！
+2019-08-25 19:40:50,825 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/init],methods=[GET]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.init(java.lang.String)
+2019-08-25 19:40:50,827 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/getStoreMerchanInfo],methods=[GET]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.getStoreMerchanInfo(java.lang.String,java.lang.String)
+2019-08-25 19:40:50,827 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/wechat/authinfo],methods=[GET]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.getWxpayfaceAuthinfo(java.lang.String,java.lang.String)
+2019-08-25 19:40:50,827 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/pay],methods=[POST]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.pay(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+2019-08-25 19:40:50,828 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/setRawdata],methods=[GET]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.setRawdata(java.lang.String,java.lang.String)
+2019-08-25 19:40:50,833 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/swagger-resources/configuration/security]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.SecurityConfiguration> springfox.documentation.swagger.web.ApiResourceController.securityConfiguration()
+2019-08-25 19:40:50,834 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/swagger-resources]}" onto public org.springframework.http.ResponseEntity<java.util.List<springfox.documentation.swagger.web.SwaggerResource>> springfox.documentation.swagger.web.ApiResourceController.swaggerResources()
+2019-08-25 19:40:50,834 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/swagger-resources/configuration/ui]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.UiConfiguration> springfox.documentation.swagger.web.ApiResourceController.uiConfiguration()
+2019-08-25 19:40:50,838 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-08-25 19:40:50,838 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-08-25 19:40:51,033 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter [main] (RequestMappingHandlerAdapter.java:534) INFO  --> Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@69379752: startup date [Sun Aug 25 19:40:42 CST 2019]; root of context hierarchy
+2019-08-25 19:40:51,203 springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping [main] (PropertySourcedRequestMappingHandlerMapping.java:69) INFO  --> Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-08-25 19:40:51,959 org.springframework.jmx.export.annotation.AnnotationMBeanExporter [main] (MBeanExporter.java:431) INFO  --> Registering beans for JMX exposure on startup
+2019-08-25 19:40:51,975 org.springframework.context.support.DefaultLifecycleProcessor [main] (DefaultLifecycleProcessor.java:343) INFO  --> Starting beans in phase 2147483647
+2019-08-25 19:40:51,976 springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] (DocumentationPluginsBootstrapper.java:147) INFO  --> Context refreshed
+2019-08-25 19:40:52,037 springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] (DocumentationPluginsBootstrapper.java:150) INFO  --> Found 1 custom documentation plugin(s)
+2019-08-25 19:40:52,151 springfox.documentation.spring.web.scanners.ApiListingReferenceScanner [main] (ApiListingReferenceScanner.java:41) INFO  --> Scanning for api listing references
+2019-08-25 19:40:52,397 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer [main] (TomcatEmbeddedServletContainer.java:198) INFO  --> Tomcat started on port(s): 8762 (http)
+2019-08-25 19:40:52,403 com.flypay.WebApplication [main] (StartupInfoLogger.java:57) INFO  --> Started WebApplication in 10.647 seconds (JVM running for 12.244)
+2019-08-25 19:40:52,407 com.flypay.utils.ConsistentHash [main] (ConsistentHash.java:55) INFO  --> 一致哈希初始化完成============ 
+2019-08-25 19:40:52,407 com.flypay.WebApplication [main] (WebApplication.java:39) INFO  --> ********************Web Server Started********************

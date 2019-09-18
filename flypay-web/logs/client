@@ -1,0 +1,303 @@
+2019-08-30 00:00:33,896 com.flypay.WebApplication [main] (StartupInfoLogger.java:48) INFO  --> Starting WebApplication on WIN-BCPPR4T9TIQ with PID 3096 (started by Administrator in E:\Work Space\COM\webservice\flypay-web)
+2019-08-30 00:00:33,986 com.flypay.WebApplication [main] (SpringApplication.java:637) INFO  --> No active profile set, falling back to default profiles: default
+2019-08-30 00:00:34,099 org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext [main] (AbstractApplicationContext.java:582) INFO  --> Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1d7acb34: startup date [Fri Aug 30 00:00:34 CST 2019]; root of context hierarchy
+2019-08-30 00:00:34,650 org.hibernate.validator.internal.util.Version [background-preinit] (Version.java:30) INFO  --> HV000001: Hibernate Validator 5.3.4.Final
+2019-08-30 00:00:36,270 org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] (PostProcessorRegistrationDelegate.java:325) INFO  --> Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$39e1c174] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-08-30 00:00:36,569 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer [main] (TomcatEmbeddedServletContainer.java:89) INFO  --> Tomcat initialized with port(s): 8762 (http)
+2019-08-30 00:00:36,701 org.springframework.web.context.ContextLoader [localhost-startStop-1] (EmbeddedWebApplicationContext.java:276) INFO  --> Root WebApplicationContext: initialization completed in 2602 ms
+2019-08-30 00:00:36,818 org.springframework.boot.web.servlet.ServletRegistrationBean [localhost-startStop-1] (ServletRegistrationBean.java:190) INFO  --> Mapping servlet: 'dispatcherServlet' to [/]
+2019-08-30 00:00:36,823 org.springframework.boot.web.servlet.FilterRegistrationBean [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) INFO  --> Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-08-30 00:00:37,375 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] (LocalContainerEntityManagerFactoryBean.java:349) INFO  --> Building JPA container EntityManagerFactory for persistence unit 'default'
+2019-08-30 00:00:37,387 org.hibernate.jpa.internal.util.LogHelper [main] (LogHelper.java:31) INFO  --> HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-08-30 00:00:37,451 org.hibernate.Version [main] (Version.java:37) INFO  --> HHH000412: Hibernate Core {5.0.12.Final}
+2019-08-30 00:00:37,452 org.hibernate.cfg.Environment [main] (Environment.java:213) INFO  --> HHH000206: hibernate.properties not found
+2019-08-30 00:00:37,453 org.hibernate.cfg.Environment [main] (Environment.java:317) INFO  --> HHH000021: Bytecode provider name : javassist
+2019-08-30 00:00:37,495 org.hibernate.annotations.common.Version [main] (JavaReflectionManager.java:66) INFO  --> HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-08-30 00:00:37,636 org.hibernate.dialect.Dialect [main] (Dialect.java:156) INFO  --> HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2019-08-30 00:00:38,211 org.hibernate.tool.hbm2ddl.SchemaUpdate [main] (SchemaUpdate.java:105) INFO  --> HHH000228: Running hbm2ddl schema update
+2019-08-30 00:00:38,624 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] (AbstractEntityManagerFactoryBean.java:379) INFO  --> Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-08-30 00:00:38,716 com.flypay.conf.JedisConfig [main] (JedisConfig.java:38) INFO  --> JedisPool注入成功！
+2019-08-30 00:00:39,308 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/init],methods=[GET]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.init(java.lang.String,java.lang.String)
+2019-08-30 00:00:39,309 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/wechat/authinfo],methods=[POST]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.getWxpayfaceAuthinfo(java.lang.String,java.lang.String,java.lang.String)
+2019-08-30 00:00:39,310 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/topay],methods=[POST]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.pay(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+2019-08-30 00:00:39,310 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/creatorder],methods=[POST]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.creatorder(java.lang.String,java.lang.String)
+2019-08-30 00:00:39,315 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/swagger-resources/configuration/security]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.SecurityConfiguration> springfox.documentation.swagger.web.ApiResourceController.securityConfiguration()
+2019-08-30 00:00:39,316 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/swagger-resources]}" onto public org.springframework.http.ResponseEntity<java.util.List<springfox.documentation.swagger.web.SwaggerResource>> springfox.documentation.swagger.web.ApiResourceController.swaggerResources()
+2019-08-30 00:00:39,316 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/swagger-resources/configuration/ui]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.UiConfiguration> springfox.documentation.swagger.web.ApiResourceController.uiConfiguration()
+2019-08-30 00:00:39,320 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-08-30 00:00:39,320 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-08-30 00:00:39,490 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter [main] (RequestMappingHandlerAdapter.java:534) INFO  --> Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1d7acb34: startup date [Fri Aug 30 00:00:34 CST 2019]; root of context hierarchy
+2019-08-30 00:00:39,606 springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping [main] (PropertySourcedRequestMappingHandlerMapping.java:69) INFO  --> Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-08-30 00:00:40,186 org.springframework.jmx.export.annotation.AnnotationMBeanExporter [main] (MBeanExporter.java:431) INFO  --> Registering beans for JMX exposure on startup
+2019-08-30 00:00:40,197 org.springframework.context.support.DefaultLifecycleProcessor [main] (DefaultLifecycleProcessor.java:343) INFO  --> Starting beans in phase 2147483647
+2019-08-30 00:00:40,197 springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] (DocumentationPluginsBootstrapper.java:147) INFO  --> Context refreshed
+2019-08-30 00:00:40,212 springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] (DocumentationPluginsBootstrapper.java:150) INFO  --> Found 1 custom documentation plugin(s)
+2019-08-30 00:00:40,247 springfox.documentation.spring.web.scanners.ApiListingReferenceScanner [main] (ApiListingReferenceScanner.java:41) INFO  --> Scanning for api listing references
+2019-08-30 00:00:40,445 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer [main] (TomcatEmbeddedServletContainer.java:198) INFO  --> Tomcat started on port(s): 8762 (http)
+2019-08-30 00:00:40,450 com.flypay.WebApplication [main] (StartupInfoLogger.java:57) INFO  --> Started WebApplication in 6.915 seconds (JVM running for 7.844)
+2019-08-30 00:00:40,454 com.flypay.utils.ConsistentHash [main] (ConsistentHash.java:55) INFO  --> 一致哈希初始化完成============ 
+2019-08-30 00:00:40,454 com.flypay.WebApplication [main] (WebApplication.java:39) INFO  --> ********************Web Server Started********************
+2019-08-30 00:00:51,200 org.springframework.web.servlet.DispatcherServlet [http-nio-8762-exec-1] (FrameworkServlet.java:489) INFO  --> FrameworkServlet 'dispatcherServlet': initialization started
+2019-08-30 00:00:51,219 org.springframework.web.servlet.DispatcherServlet [http-nio-8762-exec-1] (FrameworkServlet.java:508) INFO  --> FrameworkServlet 'dispatcherServlet': initialization completed in 19 ms
+2019-08-30 00:00:51,249 com.flypay.utils.StringUtil [http-nio-8762-exec-1] (StringUtil.java:17) INFO  --> 对字符串 :|ffffffff-b5dc-550d-b5dc-550d00000000|进行判断是否为空/串
+2019-08-30 00:00:51,275 com.flypay.utils.StringUtil [http-nio-8762-exec-1] (StringUtil.java:17) INFO  --> 对字符串 :|0.01|进行判断是否为空/串
+2019-08-30 00:00:51,337 com.flypay.utils.StringUtil [http-nio-8762-exec-1] (StringUtil.java:17) INFO  --> 对字符串 :|测试门店1|进行判断是否为空/串
+2019-08-30 00:00:51,338 com.flypay.utils.StringUtil [http-nio-8762-exec-1] (StringUtil.java:17) INFO  --> 对字符串 :|测试门店1|进行判断是否为空/串
+2019-08-30 00:00:51,338 com.flypay.utils.StringUtil [http-nio-8762-exec-1] (StringUtil.java:17) INFO  --> 对字符串 :|测试门店1|进行判断是否为空/串
+2019-08-30 00:00:51,463 com.flypay.utils.StringUtil [Thread-25] (StringUtil.java:17) INFO  --> 对字符串 :|测试门店1|进行判断是否为空/串
+2019-08-30 00:00:51,464 com.flypay.utils.StringUtil [Thread-25] (StringUtil.java:17) INFO  --> 对字符串 :|测试门店1|进行判断是否为空/串
+2019-08-30 00:00:51,464 com.flypay.utils.StringUtil [Thread-25] (StringUtil.java:17) INFO  --> 对字符串 :|测试门店1|进行判断是否为空/串
+2019-08-30 00:00:51,615 com.flypay.utils.StringUtil [Thread-25] (StringUtil.java:17) INFO  --> 对字符串 :|测试门店1|进行判断是否为空/串
+2019-08-30 00:00:51,616 com.flypay.utils.StringUtil [Thread-25] (StringUtil.java:17) INFO  --> 对字符串 :|测试门店1|进行判断是否为空/串
+2019-08-30 00:00:51,616 com.flypay.utils.StringUtil [Thread-25] (StringUtil.java:17) INFO  --> 对字符串 :|测试门店1|进行判断是否为空/串
+2019-08-30 00:00:55,866 com.flypay.utils.StringUtil [http-nio-8762-exec-2] (StringUtil.java:17) INFO  --> 对字符串 :|ffffffff-b5dc-550d-b5dc-550d00000000|进行判断是否为空/串
+2019-08-30 00:01:01,770 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|ffffffff-b5dc-550d-b5dc-550d00000000|进行判断是否为空/串
+2019-08-30 00:01:01,779 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|null|进行判断是否为空/串
+2019-08-30 00:01:01,793 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|wx5e5307635a345231|进行判断是否为空/串
+2019-08-30 00:01:01,793 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|null|进行判断是否为空/串
+2019-08-30 00:01:01,794 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|1490348042|进行判断是否为空/串
+2019-08-30 00:01:01,794 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|1496999022|进行判断是否为空/串
+2019-08-30 00:01:01,794 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|FPAL11926011028TYA12606|进行判断是否为空/串
+2019-08-30 00:01:01,795 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|pTXmtIe4Se7bOaquej5GdV8NMiVxRZze|进行判断是否为空/串
+2019-08-30 00:01:01,795 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|null|进行判断是否为空/串
+2019-08-30 00:01:01,795 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|测试品台-邢台测试门店1-测试商品|进行判断是否为空/串
+2019-08-30 00:01:01,797 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|{"goods_detail":[{"goods_id":"test_goods","goods_name":"测试商品","goods_num":1,"price":1}]}|进行判断是否为空/串
+2019-08-30 00:01:01,798 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|测试商品购买|进行判断是否为空/串
+2019-08-30 00:01:01,798 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|8871104102|进行判断是否为空/串
+2019-08-30 00:01:01,798 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|1|进行判断是否为空/串
+2019-08-30 00:01:01,799 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|CNY|进行判断是否为空/串
+2019-08-30 00:01:01,799 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|null|进行判断是否为空/串
+2019-08-30 00:01:01,799 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|null|进行判断是否为空/串
+2019-08-30 00:01:01,800 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|oSKbaw8u5RMozUYogEkBPoY2Emvc|进行判断是否为空/串
+2019-08-30 00:01:01,801 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|1bddbaeb-9fc5-4cf3-b616-8d06882b0fc7|进行判断是否为空/串
+2019-08-30 00:01:01,801 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|null|进行判断是否为空/串
+2019-08-30 00:01:01,801 com.flypay.utils.CommonUtils [http-nio-8762-exec-3] (CommonUtils.java:104) ERROR --> 签名之前 : appid=wx5e5307635a345231&attach=测试商品购买&body=测试品台-邢台测试门店1-测试商品&detail={"goods_detail":[{"goods_id":"test_goods","goods_name":"测试商品","goods_num":1,"price":1}]}&device_info=FPAL11926011028TYA12606&face_code=1bddbaeb-9fc5-4cf3-b616-8d06882b0fc7&fee_type=CNY&mch_id=1490348042&nonce_str=pTXmtIe4Se7bOaquej5GdV8NMiVxRZze&openid=oSKbaw8u5RMozUYogEkBPoY2Emvc&out_trade_no=8871104102&sub_mch_id=1496999022&total_fee=1&key=5DD1959F432DE0F068AE8A1D84423008
+2019-08-30 00:01:01,942 com.flypay.utils.HttpUtils [http-nio-8762-exec-3] (HttpUtils.java:44) INFO  --> 请求连接为 :https://api.mch.weixin.qq.com/pay/facepay
+2019-08-30 00:01:01,942 com.flypay.utils.HttpUtils [http-nio-8762-exec-3] (HttpUtils.java:45) INFO  --> 请求参数为 :<xml>
+  <appid>wx5e5307635a345231</appid>
+  <mch_id>1490348042</mch_id>
+  <sub_mch_id>1496999022</sub_mch_id>
+  <device_info>FPAL11926011028TYA12606</device_info>
+  <nonce_str>pTXmtIe4Se7bOaquej5GdV8NMiVxRZze</nonce_str>
+  <sign>FEB2170DF3576D61376185124CE0255D</sign>
+  <body>测试品台-邢台测试门店1-测试商品</body>
+  <detail><![CDATA[{"goods_detail":[{"goods_id":"test_goods","goods_name":"测试商品","goods_num":1,"price":1}]}]]></detail>
+  <attach>测试商品购买</attach>
+  <out_trade_no>8871104102</out_trade_no>
+  <total_fee>1</total_fee>
+  <fee_type>CNY</fee_type>
+  <openid><![CDATA[oSKbaw8u5RMozUYogEkBPoY2Emvc]]></openid>
+  <face_code>1bddbaeb-9fc5-4cf3-b616-8d06882b0fc7</face_code>
+</xml>
+2019-08-30 00:01:03,485 com.flypay.bp.impl.PayServiceImpl [http-nio-8762-exec-3] (PayServiceImpl.java:292) ERROR --> 支付结果 :<xml><return_code><![CDATA[SUCCESS]]></return_code>
+<return_msg><![CDATA[OK]]></return_msg>
+<appid><![CDATA[wx5e5307635a345231]]></appid>
+<mch_id><![CDATA[1490348042]]></mch_id>
+<sub_mch_id><![CDATA[1496999022]]></sub_mch_id>
+<device_info><![CDATA[FPAL11926011028TYA12606]]></device_info>
+<nonce_str><![CDATA[JZB7cCcU7OlfpKY5]]></nonce_str>
+<sign><![CDATA[69C6EC2767D10674CCA1D3EB9CF1A172]]></sign>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<openid><![CDATA[oSKbaw8u5RMozUYogEkBPoY2Emvc]]></openid>
+<trade_type><![CDATA[FACEPAY]]></trade_type>
+<bank_type><![CDATA[CFT]]></bank_type>
+<total_fee>1</total_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<transaction_id><![CDATA[4200000395201908305872155119]]></transaction_id>
+<out_trade_no><![CDATA[8871104102]]></out_trade_no>
+<attach><![CDATA[测试商品购买]]></attach>
+<time_end><![CDATA[20190830000104]]></time_end>
+<cash_fee>1</cash_fee>
+<cash_fee_type><![CDATA[CNY]]></cash_fee_type>
+<promotion_detail><![CDATA[{}]]></promotion_detail>
+</xml>
+2019-08-30 00:01:03,509 com.flypay.controller.FacePayController [http-nio-8762-exec-3] (FacePayController.java:98) ERROR --> 系统异常,人脸支付失败
+com.thoughtworks.xstream.converters.reflection.AbstractReflectionConverter$UnknownFieldException: No such field com.flypay.model.dto.WxpayfaceResultDTO.bank_type
+---- Debugging information ----
+message             : No such field com.flypay.model.dto.WxpayfaceResultDTO.bank_type
+field               : bank_type
+class               : com.flypay.model.dto.WxpayfaceResultDTO
+required-type       : com.flypay.model.dto.WxpayfaceResultDTO
+converter-type      : com.thoughtworks.xstream.converters.reflection.ReflectionConverter
+path                : /xml/bank_type
+version             : 1.4.10
+-------------------------------
+	at com.thoughtworks.xstream.converters.reflection.AbstractReflectionConverter.handleUnknownField(AbstractReflectionConverter.java:524)
+	at com.thoughtworks.xstream.converters.reflection.AbstractReflectionConverter.doUnmarshal(AbstractReflectionConverter.java:375)
+	at com.thoughtworks.xstream.converters.reflection.AbstractReflectionConverter.unmarshal(AbstractReflectionConverter.java:281)
+	at com.thoughtworks.xstream.core.TreeUnmarshaller.convert(TreeUnmarshaller.java:72)
+	at com.thoughtworks.xstream.core.AbstractReferenceUnmarshaller.convert(AbstractReferenceUnmarshaller.java:70)
+	at com.thoughtworks.xstream.core.TreeUnmarshaller.convertAnother(TreeUnmarshaller.java:66)
+	at com.thoughtworks.xstream.core.TreeUnmarshaller.convertAnother(TreeUnmarshaller.java:50)
+	at com.thoughtworks.xstream.core.TreeUnmarshaller.start(TreeUnmarshaller.java:134)
+	at com.thoughtworks.xstream.core.AbstractTreeMarshallingStrategy.unmarshal(AbstractTreeMarshallingStrategy.java:32)
+	at com.thoughtworks.xstream.XStream.unmarshal(XStream.java:1486)
+	at com.thoughtworks.xstream.XStream.unmarshal(XStream.java:1466)
+	at com.thoughtworks.xstream.XStream.fromXML(XStream.java:1337)
+	at com.thoughtworks.xstream.XStream.fromXML(XStream.java:1328)
+	at com.flypay.utils.XsteamUtil.toBean(XsteamUtil.java:106)
+	at com.flypay.bp.impl.PayServiceImpl.pay(PayServiceImpl.java:294)
+	at com.flypay.bp.impl.PayServiceImpl$$FastClassBySpringCGLIB$$9b243c7.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:652)
+	at com.flypay.bp.impl.PayServiceImpl$$EnhancerBySpringCGLIB$$91968394.pay(<generated>)
+	at com.flypay.controller.FacePayController.pay(FacePayController.java:96)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:116)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:872)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:648)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:230)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:474)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:349)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:783)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:798)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1434)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+2019-08-30 00:01:51,617 com.flypay.WebApplication [main] (StartupInfoLogger.java:48) INFO  --> Starting WebApplication on WIN-BCPPR4T9TIQ with PID 3256 (started by Administrator in E:\Work Space\COM\webservice\flypay-web)
+2019-08-30 00:01:51,620 com.flypay.WebApplication [main] (SpringApplication.java:637) INFO  --> No active profile set, falling back to default profiles: default
+2019-08-30 00:01:51,678 org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext [main] (AbstractApplicationContext.java:582) INFO  --> Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1d7acb34: startup date [Fri Aug 30 00:01:51 CST 2019]; root of context hierarchy
+2019-08-30 00:01:52,409 org.hibernate.validator.internal.util.Version [background-preinit] (Version.java:30) INFO  --> HV000001: Hibernate Validator 5.3.4.Final
+2019-08-30 00:01:54,325 org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] (PostProcessorRegistrationDelegate.java:325) INFO  --> Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$bc98a303] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-08-30 00:01:54,639 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer [main] (TomcatEmbeddedServletContainer.java:89) INFO  --> Tomcat initialized with port(s): 8762 (http)
+2019-08-30 00:01:54,772 org.springframework.web.context.ContextLoader [localhost-startStop-1] (EmbeddedWebApplicationContext.java:276) INFO  --> Root WebApplicationContext: initialization completed in 3094 ms
+2019-08-30 00:01:54,901 org.springframework.boot.web.servlet.ServletRegistrationBean [localhost-startStop-1] (ServletRegistrationBean.java:190) INFO  --> Mapping servlet: 'dispatcherServlet' to [/]
+2019-08-30 00:01:54,907 org.springframework.boot.web.servlet.FilterRegistrationBean [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) INFO  --> Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-08-30 00:01:55,547 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] (LocalContainerEntityManagerFactoryBean.java:349) INFO  --> Building JPA container EntityManagerFactory for persistence unit 'default'
+2019-08-30 00:01:55,562 org.hibernate.jpa.internal.util.LogHelper [main] (LogHelper.java:31) INFO  --> HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-08-30 00:01:55,635 org.hibernate.Version [main] (Version.java:37) INFO  --> HHH000412: Hibernate Core {5.0.12.Final}
+2019-08-30 00:01:55,637 org.hibernate.cfg.Environment [main] (Environment.java:213) INFO  --> HHH000206: hibernate.properties not found
+2019-08-30 00:01:55,638 org.hibernate.cfg.Environment [main] (Environment.java:317) INFO  --> HHH000021: Bytecode provider name : javassist
+2019-08-30 00:01:55,680 org.hibernate.annotations.common.Version [main] (JavaReflectionManager.java:66) INFO  --> HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-08-30 00:01:55,811 org.hibernate.dialect.Dialect [main] (Dialect.java:156) INFO  --> HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2019-08-30 00:01:56,408 org.hibernate.tool.hbm2ddl.SchemaUpdate [main] (SchemaUpdate.java:105) INFO  --> HHH000228: Running hbm2ddl schema update
+2019-08-30 00:01:56,830 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] (AbstractEntityManagerFactoryBean.java:379) INFO  --> Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-08-30 00:01:56,953 com.flypay.conf.JedisConfig [main] (JedisConfig.java:38) INFO  --> JedisPool注入成功！
+2019-08-30 00:01:57,579 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/init],methods=[GET]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.init(java.lang.String,java.lang.String)
+2019-08-30 00:01:57,580 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/wechat/authinfo],methods=[POST]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.getWxpayfaceAuthinfo(java.lang.String,java.lang.String,java.lang.String)
+2019-08-30 00:01:57,581 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/topay],methods=[POST]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.pay(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+2019-08-30 00:01:57,581 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/fly/pay/creatorder],methods=[POST]}" onto public com.flypay.model.Result com.flypay.controller.FacePayController.creatorder(java.lang.String,java.lang.String)
+2019-08-30 00:01:57,586 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/swagger-resources]}" onto public org.springframework.http.ResponseEntity<java.util.List<springfox.documentation.swagger.web.SwaggerResource>> springfox.documentation.swagger.web.ApiResourceController.swaggerResources()
+2019-08-30 00:01:57,588 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/swagger-resources/configuration/ui]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.UiConfiguration> springfox.documentation.swagger.web.ApiResourceController.uiConfiguration()
+2019-08-30 00:01:57,589 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/swagger-resources/configuration/security]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.SecurityConfiguration> springfox.documentation.swagger.web.ApiResourceController.securityConfiguration()
+2019-08-30 00:01:57,592 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-08-30 00:01:57,592 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [main] (AbstractHandlerMethodMapping.java:543) INFO  --> Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-08-30 00:01:57,758 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter [main] (RequestMappingHandlerAdapter.java:534) INFO  --> Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1d7acb34: startup date [Fri Aug 30 00:01:51 CST 2019]; root of context hierarchy
+2019-08-30 00:01:57,862 springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping [main] (PropertySourcedRequestMappingHandlerMapping.java:69) INFO  --> Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-08-30 00:01:58,434 org.springframework.jmx.export.annotation.AnnotationMBeanExporter [main] (MBeanExporter.java:431) INFO  --> Registering beans for JMX exposure on startup
+2019-08-30 00:01:58,448 org.springframework.context.support.DefaultLifecycleProcessor [main] (DefaultLifecycleProcessor.java:343) INFO  --> Starting beans in phase 2147483647
+2019-08-30 00:01:58,449 springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] (DocumentationPluginsBootstrapper.java:147) INFO  --> Context refreshed
+2019-08-30 00:01:58,490 springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] (DocumentationPluginsBootstrapper.java:150) INFO  --> Found 1 custom documentation plugin(s)
+2019-08-30 00:01:58,526 springfox.documentation.spring.web.scanners.ApiListingReferenceScanner [main] (ApiListingReferenceScanner.java:41) INFO  --> Scanning for api listing references
+2019-08-30 00:01:58,727 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer [main] (TomcatEmbeddedServletContainer.java:198) INFO  --> Tomcat started on port(s): 8762 (http)
+2019-08-30 00:01:58,733 com.flypay.WebApplication [main] (StartupInfoLogger.java:57) INFO  --> Started WebApplication in 7.518 seconds (JVM running for 8.44)
+2019-08-30 00:01:58,739 com.flypay.utils.ConsistentHash [main] (ConsistentHash.java:55) INFO  --> 一致哈希初始化完成============ 
+2019-08-30 00:01:58,739 com.flypay.WebApplication [main] (WebApplication.java:39) INFO  --> ********************Web Server Started********************
+2019-08-30 00:02:14,703 org.springframework.web.servlet.DispatcherServlet [http-nio-8762-exec-1] (FrameworkServlet.java:489) INFO  --> FrameworkServlet 'dispatcherServlet': initialization started
+2019-08-30 00:02:14,724 org.springframework.web.servlet.DispatcherServlet [http-nio-8762-exec-1] (FrameworkServlet.java:508) INFO  --> FrameworkServlet 'dispatcherServlet': initialization completed in 21 ms
+2019-08-30 00:02:14,754 com.flypay.utils.StringUtil [http-nio-8762-exec-1] (StringUtil.java:17) INFO  --> 对字符串 :|ffffffff-b5dc-550d-b5dc-550d00000000|进行判断是否为空/串
+2019-08-30 00:02:14,779 com.flypay.utils.StringUtil [http-nio-8762-exec-1] (StringUtil.java:17) INFO  --> 对字符串 :|0.01|进行判断是否为空/串
+2019-08-30 00:02:14,841 com.flypay.utils.StringUtil [http-nio-8762-exec-1] (StringUtil.java:17) INFO  --> 对字符串 :|测试门店1|进行判断是否为空/串
+2019-08-30 00:02:14,842 com.flypay.utils.StringUtil [http-nio-8762-exec-1] (StringUtil.java:17) INFO  --> 对字符串 :|测试门店1|进行判断是否为空/串
+2019-08-30 00:02:14,842 com.flypay.utils.StringUtil [http-nio-8762-exec-1] (StringUtil.java:17) INFO  --> 对字符串 :|测试门店1|进行判断是否为空/串
+2019-08-30 00:02:14,976 com.flypay.utils.StringUtil [Thread-25] (StringUtil.java:17) INFO  --> 对字符串 :|测试门店1|进行判断是否为空/串
+2019-08-30 00:02:14,978 com.flypay.utils.StringUtil [Thread-25] (StringUtil.java:17) INFO  --> 对字符串 :|测试门店1|进行判断是否为空/串
+2019-08-30 00:02:14,978 com.flypay.utils.StringUtil [Thread-25] (StringUtil.java:17) INFO  --> 对字符串 :|测试门店1|进行判断是否为空/串
+2019-08-30 00:02:15,102 com.flypay.utils.StringUtil [Thread-25] (StringUtil.java:17) INFO  --> 对字符串 :|测试门店1|进行判断是否为空/串
+2019-08-30 00:02:15,102 com.flypay.utils.StringUtil [Thread-25] (StringUtil.java:17) INFO  --> 对字符串 :|测试门店1|进行判断是否为空/串
+2019-08-30 00:02:15,102 com.flypay.utils.StringUtil [Thread-25] (StringUtil.java:17) INFO  --> 对字符串 :|测试门店1|进行判断是否为空/串
+2019-08-30 00:02:15,138 com.flypay.utils.StringUtil [http-nio-8762-exec-2] (StringUtil.java:17) INFO  --> 对字符串 :|ffffffff-b5dc-550d-b5dc-550d00000000|进行判断是否为空/串
+2019-08-30 00:02:27,761 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|ffffffff-b5dc-550d-b5dc-550d00000000|进行判断是否为空/串
+2019-08-30 00:02:27,770 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|null|进行判断是否为空/串
+2019-08-30 00:02:27,789 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|wx5e5307635a345231|进行判断是否为空/串
+2019-08-30 00:02:27,791 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|null|进行判断是否为空/串
+2019-08-30 00:02:27,791 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|1490348042|进行判断是否为空/串
+2019-08-30 00:02:27,792 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|1496999022|进行判断是否为空/串
+2019-08-30 00:02:27,793 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|FPAL11926011028TYA12606|进行判断是否为空/串
+2019-08-30 00:02:27,794 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|ERuPyqeDu1Vw9bMeU3mONGx9epwRi891|进行判断是否为空/串
+2019-08-30 00:02:27,794 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|null|进行判断是否为空/串
+2019-08-30 00:02:27,795 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|测试品台-邢台测试门店1-测试商品|进行判断是否为空/串
+2019-08-30 00:02:27,797 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|{"goods_detail":[{"goods_id":"test_goods","goods_name":"测试商品","goods_num":1,"price":1}]}|进行判断是否为空/串
+2019-08-30 00:02:27,797 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|测试商品购买|进行判断是否为空/串
+2019-08-30 00:02:27,797 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|8871104103|进行判断是否为空/串
+2019-08-30 00:02:27,798 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|1|进行判断是否为空/串
+2019-08-30 00:02:27,798 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|CNY|进行判断是否为空/串
+2019-08-30 00:02:27,798 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|null|进行判断是否为空/串
+2019-08-30 00:02:27,798 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|null|进行判断是否为空/串
+2019-08-30 00:02:27,799 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|oSKbaw8u5RMozUYogEkBPoY2Emvc|进行判断是否为空/串
+2019-08-30 00:02:27,799 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|1c19ea63-2352-4352-b58f-31abe20a8da2|进行判断是否为空/串
+2019-08-30 00:02:27,800 com.flypay.utils.StringUtil [http-nio-8762-exec-3] (StringUtil.java:17) INFO  --> 对字符串 :|null|进行判断是否为空/串
+2019-08-30 00:02:27,800 com.flypay.utils.CommonUtils [http-nio-8762-exec-3] (CommonUtils.java:104) ERROR --> 签名之前 : appid=wx5e5307635a345231&attach=测试商品购买&body=测试品台-邢台测试门店1-测试商品&detail={"goods_detail":[{"goods_id":"test_goods","goods_name":"测试商品","goods_num":1,"price":1}]}&device_info=FPAL11926011028TYA12606&face_code=1c19ea63-2352-4352-b58f-31abe20a8da2&fee_type=CNY&mch_id=1490348042&nonce_str=ERuPyqeDu1Vw9bMeU3mONGx9epwRi891&openid=oSKbaw8u5RMozUYogEkBPoY2Emvc&out_trade_no=8871104103&sub_mch_id=1496999022&total_fee=1&key=5DD1959F432DE0F068AE8A1D84423008
+2019-08-30 00:02:27,939 com.flypay.utils.HttpUtils [http-nio-8762-exec-3] (HttpUtils.java:44) INFO  --> 请求连接为 :https://api.mch.weixin.qq.com/pay/facepay
+2019-08-30 00:02:27,940 com.flypay.utils.HttpUtils [http-nio-8762-exec-3] (HttpUtils.java:45) INFO  --> 请求参数为 :<xml>
+  <appid>wx5e5307635a345231</appid>
+  <mch_id>1490348042</mch_id>
+  <sub_mch_id>1496999022</sub_mch_id>
+  <device_info>FPAL11926011028TYA12606</device_info>
+  <nonce_str>ERuPyqeDu1Vw9bMeU3mONGx9epwRi891</nonce_str>
+  <sign>C38461C407078FBA01E686A9FCA2781C</sign>
+  <body>测试品台-邢台测试门店1-测试商品</body>
+  <detail><![CDATA[{"goods_detail":[{"goods_id":"test_goods","goods_name":"测试商品","goods_num":1,"price":1}]}]]></detail>
+  <attach>测试商品购买</attach>
+  <out_trade_no>8871104103</out_trade_no>
+  <total_fee>1</total_fee>
+  <fee_type>CNY</fee_type>
+  <openid><![CDATA[oSKbaw8u5RMozUYogEkBPoY2Emvc]]></openid>
+  <face_code>1c19ea63-2352-4352-b58f-31abe20a8da2</face_code>
+</xml>
+2019-08-30 00:02:29,578 com.flypay.bp.impl.PayServiceImpl [http-nio-8762-exec-3] (PayServiceImpl.java:292) ERROR --> 支付结果 :<xml><return_code><![CDATA[SUCCESS]]></return_code>
+<return_msg><![CDATA[OK]]></return_msg>
+<appid><![CDATA[wx5e5307635a345231]]></appid>
+<mch_id><![CDATA[1490348042]]></mch_id>
+<sub_mch_id><![CDATA[1496999022]]></sub_mch_id>
+<device_info><![CDATA[FPAL11926011028TYA12606]]></device_info>
+<nonce_str><![CDATA[5F3s5dSwACAxVtkj]]></nonce_str>
+<sign><![CDATA[3D706A66C4E12D08BBA3F65D2D8AF5F6]]></sign>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<openid><![CDATA[oSKbaw8u5RMozUYogEkBPoY2Emvc]]></openid>
+<trade_type><![CDATA[FACEPAY]]></trade_type>
+<bank_type><![CDATA[CFT]]></bank_type>
+<total_fee>1</total_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<transaction_id><![CDATA[4200000376201908302808778749]]></transaction_id>
+<out_trade_no><![CDATA[8871104103]]></out_trade_no>
+<attach><![CDATA[测试商品购买]]></attach>
+<time_end><![CDATA[20190830000230]]></time_end>
+<cash_fee>1</cash_fee>
+<cash_fee_type><![CDATA[CNY]]></cash_fee_type>
+<promotion_detail><![CDATA[{}]]></promotion_detail>
+</xml>

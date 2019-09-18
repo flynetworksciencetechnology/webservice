@@ -1,0 +1,47 @@
+Manifest-Version: 1.0
+Class-Path: lib/httpclient-4.5.3.jar lib/spring-aop-4.3.7.RELEASE.jar 
+ lib/hamcrest-core-1.3.jar lib/spring-boot-starter-jdbc-1.5.2.RELEASE.
+ jar lib/slf4j-api-1.7.24.jar lib/spring-webmvc-4.3.7.RELEASE.jar lib/
+ spring-core-4.3.7.RELEASE.jar lib/spring-boot-autoconfigure-1.5.2.REL
+ EASE.jar lib/json-smart-2.2.1.jar lib/spring-beans-4.3.7.RELEASE.jar 
+ lib/commons-codec-1.10.jar lib/spring-expression-4.3.7.RELEASE.jar li
+ b/swagger-models-1.5.13.jar lib/spring-web-4.3.7.RELEASE.jar lib/spri
+ ngfox-spring-web-2.7.0.jar lib/spring-boot-starter-1.5.2.RELEASE.jar 
+ lib/spring-boot-starter-data-jpa-1.5.2.RELEASE.jar lib/spring-test-4.
+ 3.7.RELEASE.jar lib/spring-jdbc-4.3.7.RELEASE.jar lib/hibernate-jpa-2
+ .1-api-1.0.0.Final.jar lib/springfox-core-2.7.0.jar lib/log4j-1.2.17.
+ jar lib/spring-plugin-core-1.2.0.RELEASE.jar lib/xstream-1.4.10.jar l
+ ib/springfox-swagger-common-2.7.0.jar lib/spring-data-commons-1.13.1.
+ RELEASE.jar lib/json-path-2.2.0.jar lib/spring-orm-4.3.7.RELEASE.jar 
+ lib/javassist-3.21.0-GA.jar lib/spring-context-4.3.7.RELEASE.jar lib/
+ xpp3_min-1.1.4c.jar lib/spring-aspects-4.3.7.RELEASE.jar lib/byte-bud
+ dy-1.6.14.jar lib/validation-api-1.1.0.Final.jar lib/spring-boot-test
+ -1.5.2.RELEASE.jar lib/jandex-2.0.0.Final.jar lib/httpcore-4.4.6.jar 
+ lib/tomcat-embed-core-8.5.11.jar lib/junit-4.12.jar lib/springfox-sch
+ ema-2.7.0.jar lib/hibernate-core-5.0.12.Final.jar lib/swagger-annotat
+ ions-1.5.13.jar lib/classmate-1.3.3.jar lib/jcl-over-slf4j-1.7.24.jar
+  lib/spring-boot-starter-web-1.5.2.RELEASE.jar lib/spring-tx-4.3.7.RE
+ LEASE.jar lib/asm-5.0.3.jar lib/jedis-2.9.0.jar lib/jackson-annotatio
+ ns-2.8.0.jar lib/reflections-0.9.11.jar lib/spring-boot-1.5.2.RELEASE
+ .jar lib/jboss-logging-3.3.0.Final.jar lib/guava-18.0.jar lib/hiberna
+ te-validator-5.3.4.Final.jar lib/xmlpull-1.1.3.1.jar lib/tomcat-embed
+ -websocket-8.5.11.jar lib/fastjson-1.2.46.jar lib/jul-to-slf4j-1.7.24
+ .jar lib/mysql-connector-java-5.1.41.jar lib/springfox-swagger-ui-2.7
+ .0.jar lib/antlr-2.7.7.jar lib/spring-boot-test-autoconfigure-1.5.2.R
+ ELEASE.jar lib/slf4j-log4j12-1.7.24.jar lib/android-json-0.0.20131108
+ .vaadin1.jar lib/assertj-core-2.6.0.jar lib/hibernate-entitymanager-5
+ .0.12.Final.jar lib/snakeyaml-1.17.jar lib/spring-plugin-metadata-1.2
+ .0.RELEASE.jar lib/springfox-spi-2.7.0.jar lib/tomcat-embed-el-8.5.11
+ .jar lib/jsonassert-1.4.0.jar lib/tomcat-jdbc-8.5.11.jar lib/springfo
+ x-swagger2-2.7.0.jar lib/commons-pool2-2.4.2.jar lib/spring-data-jpa-
+ 1.11.1.RELEASE.jar lib/aspectjweaver-1.8.9.jar lib/javax.transaction-
+ api-1.2.jar lib/jackson-databind-2.8.7.jar lib/tomcat-juli-8.5.11.jar
+  lib/hamcrest-library-1.3.jar lib/spring-boot-starter-test-1.5.2.RELE
+ ASE.jar lib/accessors-smart-1.1.jar lib/jackson-core-2.8.7.jar lib/hi
+ bernate-commons-annotations-5.0.1.Final.jar lib/mockito-core-1.10.19.
+ jar lib/dom4j-1.6.1.jar lib/spring-boot-starter-log4j-1.3.8.RELEASE.j
+ ar lib/spring-boot-starter-aop-1.5.2.RELEASE.jar lib/spring-boot-star
+ ter-tomcat-1.5.2.RELEASE.jar lib/objenesis-2.1.jar lib/mapstruct-1.1.
+ 0.Final.jar
+Main-Class: com.flypay.WebApplication
+
