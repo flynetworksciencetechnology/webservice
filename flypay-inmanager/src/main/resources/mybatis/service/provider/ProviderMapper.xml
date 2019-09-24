@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.flypay.project.service.mapper.ProviderMapper">
+<mapper namespace="com.flypay.project.service.provider.mapper.ProviderMapper">
 
 	<resultMap type="Provider" id="ProviderResult">
 		<id     property="providerId" column="id"/>

@@ -1,7 +1,6 @@
-package com.flypay.project.service.mapper;
+package com.flypay.project.service.provider.mapper;
 
-import com.flypay.project.service.domain.Provider;
-import com.flypay.project.system.role.domain.Role;
+import com.flypay.project.service.provider.domain.Provider;
 
 import java.util.List;
 

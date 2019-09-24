@@ -1,4 +1,4 @@
-package com.flypay.project.service.controller;
+package com.flypay.project.service.provider.controller;
 
 import com.flypay.common.constant.UserConstants;
 import com.flypay.framework.aspectj.lang.annotation.Log;
@@ -6,9 +6,8 @@ import com.flypay.framework.aspectj.lang.enums.BusinessType;
 import com.flypay.framework.web.controller.BaseController;
 import com.flypay.framework.web.domain.AjaxResult;
 import com.flypay.framework.web.page.TableDataInfo;
-import com.flypay.project.service.domain.Provider;
-import com.flypay.project.service.service.IProviderService;
-import com.flypay.project.system.role.domain.Role;
+import com.flypay.project.service.provider.domain.Provider;
+import com.flypay.project.service.provider.service.IProviderService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

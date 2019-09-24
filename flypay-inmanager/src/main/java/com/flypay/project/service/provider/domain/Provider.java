@@ -1,10 +1,9 @@
-package com.flypay.project.service.domain;
+package com.flypay.project.service.provider.domain;
 
 import com.flypay.framework.aspectj.lang.annotation.Excel;
 import com.flypay.framework.web.domain.BaseEntity;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 public class Provider extends BaseEntity {
     private static final long serialVersionUID = 1L;

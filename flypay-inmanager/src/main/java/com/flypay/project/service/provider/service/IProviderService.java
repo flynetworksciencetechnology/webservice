@@ -1,6 +1,6 @@
-package com.flypay.project.service.service;
+package com.flypay.project.service.provider.service;
 
-import com.flypay.project.service.domain.Provider;
+import com.flypay.project.service.provider.domain.Provider;
 
 import java.util.List;
 

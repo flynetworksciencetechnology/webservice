@@ -1,26 +1,15 @@
-package com.flypay.project.service.service;
+package com.flypay.project.service.provider.service;
 
 import com.flypay.common.constant.ServiceConstansts;
-import com.flypay.common.constant.UserConstants;
 import com.flypay.common.exception.BusinessException;
 import com.flypay.common.utils.StringUtils;
 import com.flypay.common.utils.security.ShiroUtils;
-import com.flypay.common.utils.spring.SpringUtils;
 import com.flypay.common.utils.text.Convert;
 import com.flypay.framework.aspectj.lang.annotation.DataScope;
-import com.flypay.project.service.domain.Provider;
-import com.flypay.project.service.mapper.ProviderMapper;
-import com.flypay.project.system.role.domain.Role;
-import com.flypay.project.system.role.domain.RoleDept;
-import com.flypay.project.system.role.domain.RoleMenu;
-import com.flypay.project.system.role.mapper.RoleDeptMapper;
-import com.flypay.project.system.role.mapper.RoleMapper;
-import com.flypay.project.system.role.mapper.RoleMenuMapper;
-import com.flypay.project.system.user.domain.UserRole;
-import com.flypay.project.system.user.mapper.UserRoleMapper;
+import com.flypay.project.service.provider.domain.Provider;
+import com.flypay.project.service.provider.mapper.ProviderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
