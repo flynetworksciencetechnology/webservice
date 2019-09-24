@@ -167,8 +167,7 @@ public class RoleServiceImpl implements IRoleService
      */
     @Override
     @Transactional
-    public int insertRole(Role role)
-    {
+    public int insertRole(Role role){
         role.setCreateBy(ShiroUtils.getLoginName());
         // 新增角色信息
         roleMapper.insertRole(role);

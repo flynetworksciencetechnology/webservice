@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.flypay.project.service.mapper.ProviderMapper">
+
+	<resultMap type="Provider" id="ProviderResult">
+		<id     property="providerId" column="id"/>
+		<result property="providerName" column="provider_name"/>
+		<result property="providerSort" column="provider_sort"/>
+		<result property="appId" column="app_id"/>
+		<result property="MD5Key" column="MD5_key"/>
+		<result property="mchId" column="mch_id"/>
+		<result property="status" column="status"/>
+		<result property="delFlag" column="del_flag"/>
+		<result property="createBy" column="create_by"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateBy" column="update_by"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="remark" column="remark"/>
+	</resultMap>
+	
+	<!--  查询服务商对象	-->
+    <sql id="selectProviderVo">
+		select sp.id, sp.provider_name,sp.provider_sort, sp.app_id, sp.status, sp.MD5_key, sp.mch_id,sp.create_time,sp.update_time, sp.remark
+        from service_provider sp
+	</sql>
+	<!--  查询服务商集合分页条件	-->
+	<select id="selectProviderList" parameterType="Provider" resultMap="ProviderResult">
+		<include refid="selectProviderVo"/>
+		where sp.del_flag = '0'
+		<if test="providerId != null and providerId != ''">
+			AND sp.id like concat('%', #{providerId}, '%')
+		</if>
+		<if test="providerName != null and providerName != ''">
+			AND sp.provider_name like concat('%', #{providerName}, '%')
+		</if>
+		<if test="status != null and status != ''">
+			AND sp.status = #{status}
+		</if>
+		<if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
+			and date_format(sp.create_time,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')
+		</if>
+		<if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
+			and date_format(sp.create_time,'%y%m%d') &lt;= date_format(#{params.endTime},'%y%m%d')
+		</if>
+	</select>
+    <!--  根据主键更新服务商	-->
+	<update id="updateProvider" parameterType="Provider">
+		update service_provider
+		<set>
+			<if test="providerName != null and providerName != ''">provider_name = #{providerName},</if>
+			<if test="providerSort != null and providerSort != ''">provider_sort = #{providerSort},</if>
+			<if test="appId != null and appId != ''">app_id = #{appId},</if>
+			<if test="MD5Key != null and MD5Key != ''">MD5_key = #{MD5Key},</if>
+			<if test="mchId != null and mchId != ''">mch_id = #{mchId},</if>
+			<if test="status != null and status != ''">status = #{status},</if>
+			<if test="remark != null">remark = #{remark},</if>
+			<if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			update_time = sysdate()
+		</set>
+		where id = #{providerId}
+	</update>
+	<!--  根据id查询服务商	-->
+	<select id="selectProviderById" parameterType="Long" resultMap="ProviderResult">
+		<include refid="selectProviderVo"/>
+		where sp.del_flag = '0' and sp.id = #{providerId}
+	</select>
+
+	<delete id="deleteProviderByIds" parameterType="Long">
+		update service_provider set del_flag = '2' where id in
+		<foreach collection="array" item="providerId" open="(" separator="," close=")">
+			#{providerId}
+		</foreach>
+	</delete>
+	<select id="checkProviderNameUnique" parameterType="String" resultMap="ProviderResult">
+		<include refid="selectProviderVo"/>
+		where provider_name=#{providerName}
+	</select>
+	<select id="checkProviderAppIdUnique" parameterType="String" resultMap="ProviderResult">
+		<include refid="selectProviderVo"/>
+		where app_id=#{appId}
+	</select>
+	<insert id="insertProvider" parameterType="Provider" useGeneratedKeys="true" keyProperty="providerId">
+		insert into service_provider(
+		<if test="providerName != null and providerName != ''">provider_name,</if>
+		<if test="appId != null and appId != ''">app_id,</if>
+		<if test="MD5Key != null and MD5Key != ''">MD5_key,</if>
+		<if test="mchId != null and mchId != ''">mch_id,</if>
+		<if test="providerSort != null and providerSort != ''">provider_sort,</if>
+		<if test="status != null and status != ''">status,</if>
+		<if test="remark != null and remark != ''">remark,</if>
+		<if test="createBy != null and createBy != ''">create_by,</if>
+		create_time
+		)values(
+		<if test="providerName != null and providerName != ''">#{providerName},</if>
+		<if test="appId != null and appId != ''">#{appId},</if>
+		<if test="MD5Key != null and MD5Key != ''">#{MD5Key},</if>
+		<if test="mchId != null and mchId != ''">#{mchId},</if>
+		<if test="providerSort != null and providerSort != ''">#{providerSort},</if>
+		<if test="status != null and status != ''">#{status},</if>
+		<if test="remark != null and remark != ''">#{remark},</if>
+		<if test="createBy != null and createBy != ''">#{createBy},</if>
+		sysdate()
+		)
+	</insert>
+</mapper> 
