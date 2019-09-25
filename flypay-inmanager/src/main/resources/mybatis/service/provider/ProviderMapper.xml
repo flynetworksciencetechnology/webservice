@@ -22,8 +22,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!--  查询服务商对象	-->
     <sql id="selectProviderVo">
-		select sp.id, sp.provider_name,sp.provider_sort, sp.app_id, sp.status, sp.MD5_key, sp.mch_id,sp.create_time,sp.update_time, sp.remark
+		select sp.id, sp.provider_name,sp.provider_sort, sp.app_id, sp.status, sp.MD5_key, sp.mch_id,sp.del_flag,sp.create_time,sp.update_time, sp.remark
         from service_provider sp
+	</sql>
+	<sql id="timelimit">
+		<if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
+			and date_format(sp.create_time,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')
+		</if>
+		<if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
+			and date_format(sp.create_time,'%y%m%d') &lt;= date_format(#{params.endTime},'%y%m%d')
+		</if>
 	</sql>
 	<!--  查询服务商集合分页条件	-->
 	<select id="selectProviderList" parameterType="Provider" resultMap="ProviderResult">
@@ -38,13 +46,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="status != null and status != ''">
 			AND sp.status = #{status}
 		</if>
-		<if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
-			and date_format(sp.create_time,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')
+		<if test="params != null ">
+			<include refid="timelimit"/>
 		</if>
-		<if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
-			and date_format(sp.create_time,'%y%m%d') &lt;= date_format(#{params.endTime},'%y%m%d')
-		</if>
+
 	</select>
+
     <!--  根据主键更新服务商	-->
 	<update id="updateProvider" parameterType="Provider">
 		update service_provider

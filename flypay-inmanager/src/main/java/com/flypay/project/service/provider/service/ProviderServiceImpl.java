@@ -6,8 +6,12 @@ import com.flypay.common.utils.StringUtils;
 import com.flypay.common.utils.security.ShiroUtils;
 import com.flypay.common.utils.text.Convert;
 import com.flypay.framework.aspectj.lang.annotation.DataScope;
+import com.flypay.project.service.merchant.domain.Merchant;
+import com.flypay.project.service.merchant.service.IMerchantService;
+import com.flypay.project.service.merchant.task.MerchantTaskJob;
 import com.flypay.project.service.provider.domain.Provider;
 import com.flypay.project.service.provider.mapper.ProviderMapper;
+import com.flypay.project.service.provider.task.ProviderTaskJob;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +27,12 @@ public class ProviderServiceImpl implements IProviderService
 {
     @Autowired
     private ProviderMapper providerMapper;
-
+    @Autowired
+    private MerchantTaskJob merchantTaskJob;
+    @Autowired
+    private IMerchantService merchantService;
+    @Autowired
+    private ProviderTaskJob providerTaskJob;
     @Override
     @DataScope(deptAlias = "d")
     public List<Provider> selectProviderList(Provider provider) {
@@ -41,6 +50,7 @@ public class ProviderServiceImpl implements IProviderService
         //异步的关闭服务商绑定的商户和商户绑定的门店
         if( provider != null && "1".equals(provider.getStatus())) {
             //如果是关闭则需要把与服务商相关的商户和门店全部关闭
+            merchantTaskJob.changeStatus(provider.getStatus(),provider.getProviderId());
         }
         return providerMapper.updateProvider(provider);
     }
@@ -55,6 +65,7 @@ public class ProviderServiceImpl implements IProviderService
     public int deleteProviderByIds(String ids) {
         //解析ids
         Long[] providerIds = Convert.toLongArray(ids);
+        List<Provider> ps = new ArrayList<>();
         for (Long providerId : providerIds){
             Provider provider = selectProviderById(providerId);
             if( provider == null ) {
@@ -64,8 +75,14 @@ public class ProviderServiceImpl implements IProviderService
             if (countMerchantByProviderId(providerId) > 0){
                 throw new BusinessException(String.format("%1$s已分配,不能删除", provider.getProviderName()));
             }
+            ps.add(provider);
         }
-        return providerMapper.deleteProviderByIds(providerIds);
+        int i = providerMapper.deleteProviderByIds(providerIds);
+        if( i >= 0){
+            //更新服务商状态为停用
+            providerTaskJob.closeProvideStatus(ps);
+        }
+        return i;
     }
 
     /**
@@ -142,6 +159,7 @@ public class ProviderServiceImpl implements IProviderService
      * @return
      */
     private int countMerchantByProviderId(Long providerId) {
-        return 0;
+
+        return merchantService.countMerchantByProviderId(providerId);
     }
 }

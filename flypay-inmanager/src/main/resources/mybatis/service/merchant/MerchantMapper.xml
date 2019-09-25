@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.flypay.project.service.merchant.mapper.MerchantMapper">
+
+	<resultMap type="Merchant" id="MerchantResult">
+		<id     property="merchantId" column="id"/>
+		<result property="merchantName" column="merchant_name"/>
+		<result property="merchantSort" column="merchant_sort"/>
+		<result property="appId" column="app_id"/>
+		<result property="MD5Key" column="MD5_key"/>
+		<result property="mchId" column="mch_id"/>
+		<result property="status" column="status"/>
+		<result property="delFlag" column="del_flag"/>
+		<result property="providerId" column="provider_id"/>
+		<result property="providerName" column="provider_Name"/>
+		<result property="createBy" column="create_by"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateBy" column="update_by"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="remark" column="remark"/>
+	</resultMap>
+	
+	<!--  查询商户对象	-->
+    <sql id="selectMerchantVo">
+		select sm.id, sm.merchant_name,sm.merchant_sort, sm.app_id, sm.status, sm.MD5_key, sm.mch_id,sm.provider_id,sp.provider_name,sm.create_time,sm.update_time, sm.remark
+        from service_merchant sm left join service_provider sp on sp.id = sm.provider_id
+	</sql>
+	<!--  查询商户集合分页条件	-->
+	<select id="selectMerchantList" parameterType="Merchant" resultMap="MerchantResult">
+		<include refid="selectMerchantVo"/>
+		where sm.del_flag = '0'
+		<if test="merchantId != null and merchantId != ''">
+			AND sm.id like concat('%', #{merchantId}, '%')
+		</if>
+		<if test="merchantName != null and merchantName != ''">
+			AND sm.merchant_name like concat('%', #{merchantName}, '%')
+		</if>
+		<if test="status != null and status != ''">
+			AND sm.status = #{status}
+		</if>
+		<if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
+			and date_format(sm.create_time,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')
+		</if>
+		<if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
+			and date_format(sm.create_time,'%y%m%d') &lt;= date_format(#{params.endTime},'%y%m%d')
+		</if>
+	</select>
+    <!--  根据主键更新商户	-->
+	<update id="updateMerchant" parameterType="Merchant" >
+		update service_merchant
+		<set>
+			<if test="merchantName != null and merchantName != ''">merchant_name = #{merchantName},</if>
+			<if test="merchantSort != null and merchantSort != ''">merchant_sort = #{merchantSort},</if>
+			<if test="appId != null and appId != ''">app_id = #{appId},</if>
+			<if test="MD5Key != null and MD5Key != ''">MD5_key = #{MD5Key},</if>
+			<if test="mchId != null and mchId != ''">mch_id = #{mchId},</if>
+			<if test="status != null and status != ''">status = #{status},</if>
+			<if test="remark != null">remark = #{remark},</if>
+			<if test="merchantId != null and merchantId != 0">
+				<if test="providerId != null">provider_id = #{providerId},</if>
+			</if>
+			<if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			update_time = sysdate()
+		</set>
+
+		<if test="merchantId == null or merchantId == 0">
+			where provider_id = #{providerId}
+		</if>
+		<if test="merchantId != null and merchantId != 0">
+			where id = #{merchantId}
+		</if>
+	</update>
+	<!--  根据id查询商户	-->
+	<select id="selectMerchantById" parameterType="Long" resultMap="MerchantResult">
+		<include refid="selectMerchantVo"/>
+		where sm.del_flag = '0' and sm.id = #{merchantId}
+	</select>
+	<select id="countMerchantByProviderId" parameterType="Long" resultType="Integer">
+		select count(1) from service_merchant where del_flag = '0' and provider_id = #{providerId}
+	</select>
+	<delete id="deleteMerchantByIds" parameterType="Long">
+		update service_merchant set del_flag = '2' where id in
+		<foreach collection="array" item="merchantId" open="(" separator="," close=")">
+			#{merchantId}
+		</foreach>
+	</delete>
+	<select id="checkMerchantNameUnique" parameterType="String" resultMap="MerchantResult">
+		<include refid="selectMerchantVo"/>
+		where merchant_name=#{merchantName}
+	</select>
+	<select id="checkMerchantAppIdUnique" parameterType="String" resultMap="MerchantResult">
+		<include refid="selectMerchantVo"/>
+		where sm.app_id=#{appId}
+	</select>
+	<insert id="insertMerchant" parameterType="Merchant" useGeneratedKeys="true" keyProperty="merchantId">
+		insert into service_merchant(
+		<if test="merchantName != null and merchantName != ''">merchant_name,</if>
+		<if test="appId != null and appId != ''">app_id,</if>
+		<if test="MD5Key != null and MD5Key != ''">MD5_key,</if>
+		<if test="mchId != null and mchId != ''">mch_id,</if>
+		<if test="merchantSort != null and merchantSort != ''">merchant_sort,</if>
+		<if test="status != null and status != ''">status,</if>
+		<if test="remark != null and remark != ''">remark,</if>
+		<if test="providerId != null and providerId != 0">provider_id,</if>
+		<if test="createBy != null and createBy != ''">create_by,</if>
+		create_time
+		)values(
+		<if test="merchantName != null and merchantName != ''">#{merchantName},</if>
+		<if test="appId != null and appId != ''">#{appId},</if>
+		<if test="MD5Key != null and MD5Key != ''">#{MD5Key},</if>
+		<if test="mchId != null and mchId != ''">#{mchId},</if>
+		<if test="merchantSort != null and merchantSort != ''">#{merchantSort},</if>
+		<if test="status != null and status != ''">#{status},</if>
+		<if test="remark != null and remark != ''">#{remark},</if>
+		<if test="providerId != null and providerId != 0">#{providerId},</if>
+		<if test="createBy != null and createBy != ''">#{createBy},</if>
+		sysdate()
+		)
+	</insert>
+</mapper> 

@@ -1,6 +1,7 @@
 package com.flypay.project.service.provider.service;
 
 import com.flypay.project.service.provider.domain.Provider;
+import com.flypay.project.service.provider.vo.ProviderVo;
 
 import java.util.List;
 
@@ -67,4 +68,5 @@ public interface IProviderService
      * @return
      */
     int updateProvider(Provider provider);
+
 }

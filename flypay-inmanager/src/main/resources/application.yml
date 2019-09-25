@@ -16,7 +16,7 @@ flypay:
 # 开发环境配置
 server:
   # 服务器的HTTP端口，默认为80
-  port: 80
+  port: 8085
   servlet:
     # 应用的访问路径
     context-path: /
@@ -78,6 +78,9 @@ mybatis:
     mapperLocations: classpath:mybatis/**/*Mapper.xml
     # 加载全局的配置文件
     configLocation: classpath:mybatis/mybatis-config.xml
+    #自动生成表
+    table :
+       auto : update
 
 # PageHelper分页插件
 pagehelper: 
