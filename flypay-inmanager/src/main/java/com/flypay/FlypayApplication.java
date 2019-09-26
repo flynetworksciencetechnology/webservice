@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  * 启动程序
@@ -12,6 +13,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
  * @author flypay
  */
 @SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })
+@EnableAsync
 public class FlypayApplication {
     private static final Logger logger = LoggerFactory.getLogger("FlypayApplication");
     public static void main(String[] args){

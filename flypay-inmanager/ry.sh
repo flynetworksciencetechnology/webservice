@@ -1,5 +1,5 @@
-#!/bin/bash
-
+##!/usr/bin/env bash
+##!/bin/bash
 AppName=flypay-inmanager.jar
 
 #JVM参数

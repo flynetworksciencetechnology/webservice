@@ -79,8 +79,8 @@ mybatis:
     # 加载全局的配置文件
     configLocation: classpath:mybatis/mybatis-config.xml
     #自动生成表
-    table :
-       auto : update
+      #table :
+  #auto : update
 
 # PageHelper分页插件
 pagehelper: 
@@ -142,3 +142,9 @@ gen:
   autoRemovePre: true
   # 表前缀（生成类名不会包含表前缀，多个用逗号分隔）
   tablePrefix: sys_
+async:
+  executor:
+    thread:
+      core_pool_size: 10
+      max_pool_size: 20
+      queue_capacity: 200

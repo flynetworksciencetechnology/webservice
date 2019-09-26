@@ -3,7 +3,6 @@ package com.flypay.project.service.merchant.task;
 import com.flypay.common.constant.ServiceConstansts;
 import com.flypay.project.service.merchant.domain.Merchant;
 import com.flypay.project.service.merchant.mapper.MerchantMapper;
-import com.flypay.project.service.merchant.service.IMerchantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
@@ -23,15 +22,15 @@ public class MerchantTaskJob {
      * @param providerId
      * @return
      */
-    @Async
-    public int changeStatus(String status,Long providerId){
+    @Async("asyncExecutor")
+    public void changeStatus(String status,Long providerId){
         Merchant merchant = new Merchant();
         merchant.setStatus(status);
         merchant.setProviderId(providerId);
-        return merchantMapper.updateMerchant(merchant);
+        merchantMapper.updateMerchant(merchant);
     }
 
-    @Async
+    @Async("asyncExecutor")
     public void closeMerchantStatus(List<Merchant> ms) {
         if( ms != null && !ms.isEmpty()){
             for ( Merchant m : ms) {
