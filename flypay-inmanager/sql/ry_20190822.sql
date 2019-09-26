@@ -690,3 +690,66 @@
       update_time       datetime                                   comment '更新时间',
       primary key (column_id)
     ) engine=innodb auto_increment=1 comment = '代码生成业务表字段';
+    /*
+ Navicat Premium Data Transfer
+
+ Source Server         : 39.98.198.47
+ Source Server Type    : MySQL
+ Source Server Version : 50562
+ Source Host           : localhost:3306
+ Source Schema         : ry
+
+ Target Server Type    : MySQL
+ Target Server Version : 50562
+ File Encoding         : 65001
+
+ Date: 26/09/2019 11:10:17
+*/
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for service_merchant
+-- ----------------------------
+DROP TABLE IF EXISTS `service_merchant`;
+CREATE TABLE `service_merchant`  (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '商户id',
+  `merchant_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '商户名字',
+  `merchant_sort` int(4) NULL DEFAULT NULL COMMENT '商户序号',
+  `app_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '商户appid',
+  `MD5_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '商户支付key',
+  `mch_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '商户编号',
+  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '商户状态 0 停用 1启用',
+  `del_flag` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
+  `provider_id` bigint(20) NULL DEFAULT NULL COMMENT '绑定的商户id',
+  `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '创建者',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '更新者',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
+  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for service_provider
+-- ----------------------------
+DROP TABLE IF EXISTS `service_provider`;
+CREATE TABLE `service_provider`  (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '服务商id',
+  `provider_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '服务商名字',
+  `provider_sort` int(4) NULL DEFAULT NULL COMMENT '服务商序号',
+  `app_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '服务商appid',
+  `MD5_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '服务商支付key',
+  `mch_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '服务商编号',
+  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '服务商状态 0 停用 1启用',
+  `del_flag` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
+  `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '创建者',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '更新者',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
+  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Compact;
+
+SET FOREIGN_KEY_CHECKS = 1;
