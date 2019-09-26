@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.flypay.project.service.equipment.mapper.EquipmentMapper">
+
+	<resultMap type="Equipment" id="EquipmentResult">
+		<id     property="equipmentId" column="id"/>
+		<result property="equipmentSort" column="equipment_sort"/>
+		<result property="deviceId" column="device_id"/>
+		<result property="status" column="status"/>
+		<result property="isBand" column="is_band"/>
+		<result property="type" column="type"/>
+		<result property="providerId" column="provider_id"/>
+		<result property="providerName" column="provider_name"/>
+		<result property="delFlag" column="del_flag"/>
+		<result property="createBy" column="create_by"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateBy" column="update_by"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="remark" column="remark"/>
+	</resultMap>
+	
+	<!--  查询服务商对象	-->
+    <sql id="selectEquipmentVo">
+		select se.id, se.device_id,se.equipment_sort,se.type, se.status, se.provider_id,se.is_band, sp.provider_name, se.del_flag,se.create_time,se.update_time, se.remark
+        from service_equipment se left join service_provider sp on sp.id = se.provider_id
+	</sql>
+	<sql id="timelimit">
+		<if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
+			and date_format(se.create_time,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')
+		</if>
+		<if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
+			and date_format(se.create_time,'%y%m%d') &lt;= date_format(#{params.endTime},'%y%m%d')
+		</if>
+	</sql>
+	<!--  查询服务商集合分页条件	-->
+	<select id="selectEquipmentList" parameterType="Equipment" resultMap="EquipmentResult">
+		<include refid="selectEquipmentVo"/>
+		where se.del_flag = '0'
+		<if test="equipmentId != null and equipmentId != ''">
+			AND se.id like concat('%', #{equipmentId}, '%')
+		</if>
+		<if test="providerId != null and providerId != ''">
+			AND se.provider_id = #{providerId}
+		</if>
+		<if test="isBand != null and isBand != ''">
+			AND se.is_band = #{isBand}
+		</if>
+		<if test="status != null and status != ''">
+			AND se.status = #{status}
+		</if>
+		<if test="type != null and type != ''">
+			AND se.type = #{type}
+		</if>
+		<if test="params != null ">
+			<include refid="timelimit"/>
+		</if>
+
+	</select>
+
+    <!--  根据主键更新服务商	-->
+	<update id="updateEquipment" parameterType="Equipment">
+		update service_equipment
+		<set>
+			<if test="deviceId != null and deviceId != ''">device_id = #{deviceId},</if>
+			<if test="equipmentSort != null and equipmentSort != ''">equipment_sort = #{equipmentSort},</if>
+			<if test="providerId != null and providerId != ''">provider_id = #{providerId},</if>
+			<if test="status != null and status != ''">status = #{status},</if>
+			<if test="isBand != null and isBand != ''">is_band = #{isBand},</if>
+			<if test="remark != null">remark = #{remark},</if>
+			<if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			update_time = sysdate()
+		</set>
+		where id = #{equipmentId}
+	</update>
+	<!--  根据id查询服务商	-->
+	<select id="selectEquipmentById" parameterType="Long" resultMap="EquipmentResult">
+		<include refid="selectEquipmentVo"/>
+		where se.del_flag = '0' and se.id = #{equipmentId}
+	</select>
+
+	<delete id="deleteEquipmentByIds" parameterType="Long">
+		update service_equipment set del_flag = '2' where id in
+		<foreach collection="array" item="equipmentId" open="(" separator="," close=")">
+			#{equipmentId}
+		</foreach>
+	</delete>
+	<select id="checkEquipmentDeviceIdUnique" parameterType="String" resultMap="EquipmentResult">
+		<include refid="selectEquipmentVo"/>
+		where device_id=#{deviceId}
+	</select>
+
+	<insert id="insertEquipment" parameterType="Equipment" useGeneratedKeys="true" keyProperty="equipmentId">
+		insert into service_equipment(
+		<if test="deviceId != null and deviceId != ''">device_id,</if>
+		<if test="equipmentSort != null and equipmentSort != ''">equipment_sort,</if>
+		<if test="status != null and status != ''">status,</if>
+		<if test="providerId != null and providerId != ''">provider_id,</if>
+		<if test="remark != null and remark != ''">remark,</if>
+		<if test="createBy != null and createBy != ''">create_by,</if>
+		create_time
+		)values(
+		<if test="deviceId != null and deviceId != ''">#{deviceId},</if>
+		<if test="equipmentSort != null and equipmentSort != ''">#{equipmentSort},</if>
+		<if test="status != null and status != ''">#{status},</if>
+		<if test="providerId != null and providerId != ''">#{providerId},</if>
+		<if test="remark != null and remark != ''">#{remark},</if>
+		<if test="createBy != null and createBy != ''">#{createBy},</if>
+		sysdate()
+		)
+	</insert>
+</mapper> 
