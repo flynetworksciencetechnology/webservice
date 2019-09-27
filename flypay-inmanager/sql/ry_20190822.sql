@@ -753,3 +753,19 @@ CREATE TABLE `service_provider`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Compact;
 
 SET FOREIGN_KEY_CHECKS = 1;
+CREATE TABLE `service_equipment` (
+`id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '设备id',
+`device_id` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '设备编号',
+`equipment_sort` int(4) DEFAULT NULL COMMENT '设备序号',
+`status` char(1) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '设备状态 0 停用 1启用',
+`provider_id` bigint(20) DEFAULT NULL COMMENT '所属服务商',
+`is_band` char(1) COLLATE utf8mb4_bin DEFAULT '0' COMMENT '是否绑定（0未绑定 1绑定）',
+`del_flag` char(1) COLLATE utf8mb4_bin DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
+`type` char(1) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '设备类型',
+`create_by` varchar(64) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '创建者',
+`create_time` datetime DEFAULT NULL COMMENT '创建时间',
+`update_by` varchar(64) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '更新者',
+`update_time` datetime DEFAULT NULL COMMENT '更新时间',
+`remark` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '备注',
+PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=COMPACT  COMMENT '设备表';
