@@ -47,8 +47,14 @@ public class ProviderServiceImpl implements IProviderService
      */
     @Override
     public int changeStatus(Provider provider) {
+
         //异步的关闭服务商绑定的商户和商户绑定的门店
         if( provider != null && "1".equals(provider.getStatus())) {
+            //同步查看旗下是否有正在运行的设备,如果有则判断关闭策略
+
+            //关闭策略1,等设备运行完毕立即关闭设备
+            //启动线程执行定时任务,轮询设备状态,设备处于闲,只执行策略2置就直接关闭(暂时不执行)
+            //关闭策略2,不关闭服务商及设备
             //如果是关闭则需要把与服务商相关的商户和门店全部关闭
             merchantTaskJob.changeStatus(provider.getStatus(),provider.getProviderId());
         }
