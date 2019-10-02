@@ -39,4 +39,15 @@ public class DictService
     {
         return dictDataService.selectDictLabel(dictType, dictValue);
     }
+    /**
+     * 根据字典类型和字典键值查询字典数据信息
+     *
+     * @param dictType 字典类型
+     * @param dictValue 字典键值
+     * @return 字典标签
+     */
+    public String getValue(String dictType, String dictLabel)
+    {
+        return dictDataService.selectDictValue(dictType, dictLabel);
+    }
 }

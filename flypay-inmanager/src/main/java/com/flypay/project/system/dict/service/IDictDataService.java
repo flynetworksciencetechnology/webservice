@@ -74,4 +74,12 @@ public interface IDictDataService
      * @return 结果
      */
     public int updateDictData(DictData dictData);
+
+    /**
+     * 根据字典类型和显示label获取字典值
+     * @param dictType
+     * @param dictLabel
+     * @return
+     */
+    String selectDictValue(String dictType, String dictLabel);
 }

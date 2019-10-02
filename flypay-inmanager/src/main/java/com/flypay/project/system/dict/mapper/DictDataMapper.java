@@ -92,4 +92,6 @@ public interface DictDataMapper
      * @return 结果
      */
     public int updateDictDataType(@Param("oldDictType") String oldDictType, @Param("newDictType") String newDictType);
+
+    String selectDictValue(String dictType, String dictLabel);
 }

@@ -49,6 +49,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select dict_label from sys_dict_data
 		where dict_type = #{dictType} and dict_value = #{dictValue}
 	</select>
+	<select id="selectDictValue" resultType="String">
+		select dict_label from sys_dict_data
+		where dict_type = #{dictType} and dict_label = #{dictLabel}
+	</select>
 	
 	<select id="selectDictDataById" parameterType="Long" resultMap="DictDataResult">
 		<include refid="selectDictDataVo"/>

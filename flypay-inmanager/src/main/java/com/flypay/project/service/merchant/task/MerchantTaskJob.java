@@ -24,6 +24,9 @@ public class MerchantTaskJob {
      */
     @Async("asyncExecutor")
     public void changeStatus(String status,Long providerId){
+        //需要先停止所有设备(此服务商下的)
+        //然后关闭所有商户
+        //然后关闭所有门店
         Merchant merchant = new Merchant();
         merchant.setStatus(status);
         merchant.setProviderId(providerId);

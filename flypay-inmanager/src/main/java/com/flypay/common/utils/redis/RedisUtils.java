@@ -9,6 +9,10 @@ import org.springframework.stereotype.Component;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 /**
  * @author chunhui.tan
  * @version 创建时间：2018年10月18日 下午2:31:35
@@ -131,6 +135,32 @@ public class RedisUtils {
 			return null;
 		}
 		return get(key, clazz, RedisDBIndex.base, NOT_EXPIRE);
+	}/**
+	 * 取值-对象
+	 *
+	 * @param key   键
+	 * @return
+	 */
+	public List<String> getByKeys(String key,RedisDBIndex dbIndex) {
+		if( !isOpen) {
+			logger.error("缓存未开启");
+			return null;
+		}
+		//获取所有key
+		Jedis jedis = getJedis(dbIndex);
+		Set<String> keys = jedis.keys(key);
+		if( keys == null || "".equals(keys)){
+			logger.error("此key :" + key + " 无对应键值");
+			return null;
+		}
+		List<String> values = new ArrayList<>();
+		for (String k: keys) {
+			String value = get(key,dbIndex);
+			if( value != null && "".equals(value)){
+				values.add(value);
+			}
+		}
+		return values;
 	}
 
 	/**

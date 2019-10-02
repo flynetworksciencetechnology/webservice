@@ -49,6 +49,7 @@ public class IMerchantServiceImpl implements IMerchantService
         //异步的关闭商户绑定的门店
         if( merchant != null && "1".equals(merchant.getStatus())) {
             //如果是关闭则需要把与商户相关的门店全部关闭
+
         }else if(merchant != null && "0".equals(merchant.getStatus())){
             //开启的时候查看父级服务商是否开启如果是停用则不允许开启
             //查询商户

@@ -26,4 +26,12 @@ public class ServiceConstansts {
     /** 删除状态*/
     public final static String DEL_FLAG = "2";
     public final static String NOT_DEL_FLAG = "0";
+
+    public final static String REDIS_SEPARATOR = ":";
+    public final static String REDIS_WILDCARD = "*";
+
+    public final static String EQUIPMENT_RUN_STATUS = "equipment_run_status";
+    public static enum EQUIPMENT_RUN_NAME{
+        运行中,闲置,停止运行;
+    }
 }

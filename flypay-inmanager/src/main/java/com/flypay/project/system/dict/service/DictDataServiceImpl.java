@@ -117,4 +117,16 @@ public class DictDataServiceImpl implements IDictDataService
         dictData.setUpdateBy(ShiroUtils.getLoginName());
         return dictDataMapper.updateDictData(dictData);
     }
+
+    /**
+     * 根据字典类型和显示label获取字典值
+     *
+     * @param dictType
+     * @param dictLabel
+     * @return
+     */
+    @Override
+    public String selectDictValue(String dictType, String dictLabel) {
+        return dictDataMapper.selectDictValue(dictType, dictLabel);
+    }
 }
