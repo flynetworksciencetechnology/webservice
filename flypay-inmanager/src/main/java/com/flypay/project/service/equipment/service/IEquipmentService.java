@@ -25,6 +25,12 @@ public interface IEquipmentService
      * @return
      */
     int changeStatus(Equipment equipment);
+    /**
+     * 批量修改设备状态
+     * @param eIds
+     * @return
+     */
+    int changeStatus(List<Long> eIds,String status);
 
     /**
      * 根据id批量删除设备

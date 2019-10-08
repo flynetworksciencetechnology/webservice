@@ -65,14 +65,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<set>
 			<if test="deviceId != null and deviceId != ''">device_id = #{deviceId},</if>
 			<if test="equipmentSort != null and equipmentSort != ''">equipment_sort = #{equipmentSort},</if>
-			<if test="providerId != null and providerId != ''">provider_id = #{providerId},</if>
+			<if test="providerId != null and providerId != 0">provider_id = #{providerId},</if>
 			<if test="status != null and status != ''">status = #{status},</if>
 			<if test="isBand != null and isBand != ''">is_band = #{isBand},</if>
 			<if test="remark != null">remark = #{remark},</if>
 			<if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
 			update_time = sysdate()
 		</set>
-		where id = #{equipmentId}
+		<if test="equipmentId == null or equipmentId == 0">
+			where provider_id = #{providerId}
+		</if>
+		<if test="equipmentId != null and equipmentId != 0">
+			where id = #{equipmentId}
+		</if>
+
 	</update>
 	<!--  根据id查询服务商	-->
 	<select id="selectEquipmentById" parameterType="Long" resultMap="EquipmentResult">

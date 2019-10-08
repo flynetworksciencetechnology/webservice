@@ -135,7 +135,8 @@ public class RedisUtils {
 			return null;
 		}
 		return get(key, clazz, RedisDBIndex.base, NOT_EXPIRE);
-	}/**
+	}
+	/**
 	 * 取值-对象
 	 *
 	 * @param key   键
@@ -162,7 +163,26 @@ public class RedisUtils {
 		}
 		return values;
 	}
-
+	/**
+	 * 取值-对象
+	 *
+	 * @param key   键
+	 * @return
+	 */
+	public Set<String> getKeys(String key,RedisDBIndex dbIndex) {
+		if( !isOpen) {
+			logger.error("缓存未开启");
+			return null;
+		}
+		//获取所有key
+		Jedis jedis = getJedis(dbIndex);
+		Set<String> keys = jedis.keys(key);
+		if( keys == null || "".equals(keys)){
+			logger.error("此key :" + key + " 无对应键值");
+			return null;
+		}
+		return keys;
+	}
 	/**
 	 * 取值-字符串,指定数据库索引,设置过期时间
 	 *

@@ -34,4 +34,7 @@ public class ServiceConstansts {
     public static enum EQUIPMENT_RUN_NAME{
         运行中,闲置,停止运行;
     }
+    public static enum EQUIPMENT_REDIS_TYPE{
+        RUN_TYPE,INFO;
+    }
 }

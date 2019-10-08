@@ -58,4 +58,11 @@ public interface IServiceStoreService
      * @return 结果
      */
     public int deleteServiceStoreById(Long id);
+
+    /**
+     * 修改门店状态
+     * @param store
+     */
+    int changeStatus(ServiceStore store,Long providerId);
+
 }

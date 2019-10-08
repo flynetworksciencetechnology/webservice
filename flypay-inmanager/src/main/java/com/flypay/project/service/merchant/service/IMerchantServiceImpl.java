@@ -12,6 +12,9 @@ import com.flypay.project.service.merchant.task.MerchantTaskJob;
 import com.flypay.project.service.provider.vo.ProviderVo;
 import com.flypay.project.service.provider.domain.Provider;
 import com.flypay.project.service.provider.mapper.ProviderMapper;
+import com.flypay.project.service.store.domain.ServiceStore;
+import com.flypay.project.service.store.service.IServiceStoreService;
+import com.flypay.project.service.store.service.StoreInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +35,10 @@ public class IMerchantServiceImpl implements IMerchantService
     private ProviderMapper providerMapper;
     @Autowired
     private MerchantTaskJob merchantTaskJob;
+    @Autowired
+    private StoreInterface storeInterface;
+    @Autowired
+    private IServiceStoreService storeService;
     @Override
     @DataScope(deptAlias = "d")
     public List<Merchant> selectMerchantList(Merchant merchant) {
@@ -46,10 +53,43 @@ public class IMerchantServiceImpl implements IMerchantService
      */
     @Override
     public int changeStatus(Merchant merchant) {
-        //异步的关闭商户绑定的门店
+
         if( merchant != null && "1".equals(merchant.getStatus())) {
             //如果是关闭则需要把与商户相关的门店全部关闭
-
+            if( merchant.getProviderId() != null && merchant.getMerchantId() == null){
+                //服务商关闭,则查询服务商下是否有运行中的设备
+                Integer count = storeInterface.getRunningEquipmentCount(merchant.getProviderId(),null,null,null);
+                if( !Integer.valueOf(0).equals(count)){
+                    //关闭策略1,等设备运行完毕立即关闭设备
+                    //启动线程执行定时任务,轮询设备状态,设备处于闲,只执行策略2置就直接关闭(暂时不执行)
+                    //关闭策略2,不关闭服务商及设备
+                    //如果是关闭则需要把与服务商相关的商户和门店全部关闭
+                    throw new BusinessException("该服务商有正在运行的设备,无法停用");
+                }
+                //如果没有则关闭商户下所有门店
+                //同步关闭门店
+                ServiceStore store = new ServiceStore();
+                store.setStatus(merchant.getStatus());
+                storeService.changeStatus(store,merchant.getProviderId());
+            }else if( merchant.getProviderId() == null && merchant.getMerchantId() != null){
+                Merchant info = merchantMapper.selectMerchantById(merchant.getMerchantId());
+                if( info == null ){
+                    throw new BusinessException(String.format("%1$s无此商户,请确认", info.getMerchantName()));
+                }
+                //查看是否有运行中的设备
+                Integer count = storeInterface.getRunningEquipmentCount(info.getProviderId(),info.getMerchantId(),null,null);
+                if( !Integer.valueOf(0).equals(count)){
+                    //关闭策略1,等设备运行完毕立即关闭设备
+                    //启动线程执行定时任务,轮询设备状态,设备处于闲,只执行策略2置就直接关闭(暂时不执行)
+                    //关闭策略2,不关闭服务商及设备
+                    //如果是关闭则需要把与服务商相关的商户和门店全部关闭
+                    throw new BusinessException(String.format("%1$s有正在运行的设备,无法停用", info.getProviderName()));
+                }
+                ServiceStore store = new ServiceStore();
+                store.setStatus(merchant.getStatus());
+                store.setMerchantId(merchant.getMerchantId());
+                storeService.changeStatus(store,null);
+            }
         }else if(merchant != null && "0".equals(merchant.getStatus())){
             //开启的时候查看父级服务商是否开启如果是停用则不允许开启
             //查询商户

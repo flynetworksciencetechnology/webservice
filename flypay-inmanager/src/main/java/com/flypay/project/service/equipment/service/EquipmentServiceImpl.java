@@ -11,6 +11,7 @@ import com.flypay.project.service.equipment.mapper.EquipmentMapper;
 import com.flypay.project.service.equipment.task.EquipmentTaskJob;
 import com.flypay.project.service.merchant.service.IMerchantService;
 import com.flypay.project.service.merchant.task.MerchantTaskJob;
+import com.flypay.project.service.store.service.StoreInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +30,8 @@ public class EquipmentServiceImpl implements IEquipmentService
     private EquipmentMapper equipmentMapper;
     @Autowired
     private EquipmentTaskJob equipmentTaskJob;
+    @Autowired
+    private StoreInterface storeInterface;
     @Override
     @DataScope(deptAlias = "d")
     public List<Equipment> selectEquipmentList(Equipment equipment) {
@@ -43,13 +46,59 @@ public class EquipmentServiceImpl implements IEquipmentService
      */
     @Override
     public int changeStatus(Equipment equipment) {
-        //异步删除正在使用中的设备缓存
+        //同步删除正在使用中的设备缓存
         if( equipment != null && "1".equals(equipment.getStatus())) {
-            //如果是关闭则需要把正在缓存的设备信息删除掉
+            Integer count = storeInterface.getRunningEquipmentCount(null,null,null,equipment.getEquipmentId());
+            if( !Integer.valueOf(0).equals(count)){
+                throw new BusinessException(equipment.getEquipmentId() + "该设备正在运行,无法停用");
+            }
+            //关闭所有设备
+            storeInterface.closeEquipment(null, null, null,equipment.getEquipmentId());
             //判断设备的运行状态,如果是闲置则可以直接删除缓存如果非闲置则不可停用设备
             //equipmentTaskJob.changeStatus(equipment.getStatus(),equipment.getEquipmentId());
+        }else{
+            //如果是启动
+            //则将本设备
         }
         return equipmentMapper.updateEquipment(equipment);
+    }
+
+    /**
+     * 修改设备状态
+     *
+     * @param eIds
+     * @return
+     */
+    @Override
+    public int changeStatus(List<Long> eIds, String status) {
+
+        if( eIds == null || eIds.isEmpty()){
+            //可以关闭
+            return 0;
+        }
+        if( status != null && "1".equals(status)) {
+            //设备是否在运行
+            for (Long eId:eIds) {
+                Integer count = storeInterface.getRunningEquipmentCount(null,null,null,eId);
+                if( !Integer.valueOf(0).equals(count)){
+                    throw new BusinessException(eId + "该设备正在运行,无法停用");
+                }
+            }
+        }
+        //关闭设备
+        int i = 0;
+        for (Long eId:eIds) {
+            if( status != null && "1".equals(status)){
+                storeInterface.closeEquipment(null, null, null,eId);
+            }
+            Equipment equipment = new Equipment();
+            equipment.setEquipmentId(eId);
+            equipment.setStatus(status);
+            changeStatus(equipment);
+            i++;
+        }
+
+        return  i;
     }
 
     /**

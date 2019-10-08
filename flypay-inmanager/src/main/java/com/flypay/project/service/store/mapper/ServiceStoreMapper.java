@@ -58,4 +58,12 @@ public interface ServiceStoreMapper
      * @return 结果
      */
     public int deleteServiceStoreByIds(String[] ids);
+
+
+    /**
+     * 修改门店状态
+     * @param providerId
+     * @return
+     */
+    int changeStatus(Long providerId);
 }
