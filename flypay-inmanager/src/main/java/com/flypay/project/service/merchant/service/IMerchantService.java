@@ -75,4 +75,11 @@ public interface IMerchantService
      * @return
      */
     int countMerchantByProviderId(Long providerId);
+
+    /**
+     * 根据门店id查询商户信息
+     * @param storeId
+     * @return
+     */
+    Merchant selectMerchantByStoreId(Long storeId);
 }

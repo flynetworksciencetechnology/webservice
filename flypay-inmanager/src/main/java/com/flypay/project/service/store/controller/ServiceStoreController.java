@@ -122,4 +122,15 @@ public class ServiceStoreController extends BaseController
     {
         return toAjax(serviceStoreService.deleteServiceStoreByIds(ids));
     }
+
+    /**
+     * 服务商状态修改
+     */
+    @Log(title = "门店", businessType = BusinessType.UPDATE)
+    @RequiresPermissions("service:store:edit")
+    @PostMapping("/changeStatus")
+    @ResponseBody
+    public AjaxResult changeStatus(ServiceStore store) {
+        return toAjax(serviceStoreService.changeStatus(store));
+    }
 }

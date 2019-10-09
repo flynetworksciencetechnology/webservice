@@ -99,7 +99,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </delete>
 
     <delete id="delete${ClassName}ByIds" parameterType="String">
-        delete from ${tableName} where ${pkColumn.columnName} in 
+        update ${tableName} set del_flag = 2  where ${pkColumn.columnName} in
         <foreach item="${pkColumn.javaField}" collection="array" open="(" separator="," close=")">
             #{${pkColumn.javaField}}
         </foreach>

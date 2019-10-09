@@ -85,11 +85,11 @@ public class ProviderServiceImpl implements IProviderService
         for (Long providerId : providerIds){
             Provider provider = selectProviderById(providerId);
             if( provider == null ) {
-                throw new BusinessException(String.format("%1$s找不到此服务商,不能删除", providerId));
+                throw new BusinessException(String.format("错误:%1$s找不到此服务商,不能删除", providerId));
             }
             //查看服务商是否已经绑定商户,如果绑定则无法删除
             if (countMerchantByProviderId(providerId) > 0){
-                throw new BusinessException(String.format("%1$s已分配,不能删除", provider.getProviderName()));
+                throw new BusinessException(String.format("错误:%1$s有下属服务商,不能删除", provider.getProviderName()));
             }
             ps.add(provider);
         }

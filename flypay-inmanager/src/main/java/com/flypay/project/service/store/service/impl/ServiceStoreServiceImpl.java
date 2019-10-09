@@ -7,6 +7,8 @@ import com.flypay.common.constant.ServiceConstansts;
 import com.flypay.common.exception.BusinessException;
 import com.flypay.project.service.equipment.domain.Equipment;
 import com.flypay.project.service.equipment.service.IEquipmentService;
+import com.flypay.project.service.merchant.domain.Merchant;
+import com.flypay.project.service.merchant.service.IMerchantService;
 import com.flypay.project.service.store.service.StoreInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,6 +34,8 @@ public class ServiceStoreServiceImpl implements IServiceStoreService
     @Autowired
     private StoreInterface storeInterface;
 
+    @Autowired
+    private IMerchantService merchantService;
     /**
      * 查询门店
      * 
@@ -87,8 +91,8 @@ public class ServiceStoreServiceImpl implements IServiceStoreService
      * @return 结果
      */
     @Override
-    public int deleteServiceStoreByIds(String ids)
-    {
+    public int deleteServiceStoreByIds(String ids){
+        //
         return serviceStoreMapper.deleteServiceStoreByIds(Convert.toStrArray(ids));
     }
 
@@ -109,48 +113,102 @@ public class ServiceStoreServiceImpl implements IServiceStoreService
      * @param store
      */
     @Override
-    public int changeStatus(ServiceStore store,Long providerId) {
+    public int changeStatus(ServiceStore store) {
 
         List<Long> eids = null;
-        if( providerId != null){
-            //查询服务商是否有运行中的设备
-            Integer count = storeInterface.getRunningEquipmentCount(providerId,null,null,null);
-            if( !Integer.valueOf(0).equals(count)){
-                throw new BusinessException("该服务商有正在运行的设备,无法停用");
-            }
-            //查询服务商下所有的设备id
-            Equipment equipment = new Equipment();
-            equipment.setProviderId(providerId);
-            equipment.setStatus(ServiceConstansts.USING_STATUS);//启用状态的
-            List<Equipment> es = equipmentService.selectEquipmentList(equipment);
-            if( es != null){
-                eids = new ArrayList<>();
-                for (Equipment e :es) {
-                    eids.add(e.getEquipmentId());
+        if( ServiceConstansts.STOP_STATUS.equals(store.getStatus())){
+            if( store.getProviderId() != null){
+                //查询服务商是否有运行中的设备
+                Integer count = storeInterface.getRunningEquipmentCount(store.getProviderId(),null,null,null);
+                if( !Integer.valueOf(0).equals(count)){
+                    throw new BusinessException("该服务商有正在运行的设备,无法停用");
                 }
+                //查询服务商下所有的设备id
+                Equipment equipment = new Equipment();
+                equipment.setProviderId(store.getProviderId());
+                equipment.setStatus(ServiceConstansts.USING_STATUS);//启用状态的
+                List<Equipment> es = equipmentService.selectEquipmentList(equipment);
+                if( es != null){
+                    eids = new ArrayList<>();
+                    for (Equipment e :es) {
+                        eids.add(e.getEquipmentId());
+                    }
+                }
+            }else if( store != null && store.getMerchantId() != null && store.getStoreId() == null){
+                //查询商户下运行中的设备
+                Integer count = storeInterface.getRunningEquipmentCount(null,store.getMerchantId(),null,null);
+                if( !Integer.valueOf(0).equals(count)){
+                    throw new BusinessException("该商户下有正在运行的设备,无法停用");
+                }
+                //关闭商户下的所有设备
+                //查询商户下所有的设备id
+                List<Equipment> es = equipmentService.selectEquipmentListByMerchantId(store.getMerchantId());
+                if( es != null){
+                    eids = new ArrayList<>();
+                    for (Equipment e :es) {
+                        eids.add(e.getEquipmentId());
+                    }
+                }
+            }else if( store.getStoreId() != null){
+                //查询门店下运行中的设备
+                Integer count = storeInterface.getRunningEquipmentCount(null,null,store.getStoreId(),null);
+                if( !Integer.valueOf(0).equals(count)){
+                    throw new BusinessException("该门店下有正在运行的设备,无法停用");
+                }
+                //查询该门店下的设备id
+                ServiceStore info = serviceStoreMapper.selectServiceStoreById(store.getStoreId());
+                eids = new ArrayList<>();
+                eids.add(info.getEquipmentId());
             }
-        }else if( store != null && store.getMerchantId() != null && store.getId() == null){
-            //查询商户下运行中的设备
-            Integer count = storeInterface.getRunningEquipmentCount(null,store.getMerchantId(),null,null);
-            if( !Integer.valueOf(0).equals(count)){
-                throw new BusinessException("该商户下有正在运行的设备,无法停用");
+            //如果都没有运行中的则关闭所有设备
+            equipmentService.changeStatus(eids,store.getStatus());
+        }else{
+            //查询服务商状态
+            Merchant merchant = merchantService.selectMerchantByStoreId(store.getStoreId());
+            if( merchant == null){
+                //未绑定商户
+                throw new BusinessException("错误:门店未绑定商户,无法启用");
             }
-            //关闭商户下的所有设备
-            //查询商户下所有的设备id
-        }else if( store.getId() != null){
-            //查询门店下运行中的设备
-            Integer count = storeInterface.getRunningEquipmentCount(null,null,store.getId(),null);
-            if( !Integer.valueOf(0).equals(count)){
-                throw new BusinessException("该门店下有正在运行的设备,无法停用");
+            if( ServiceConstansts.STOP_STATUS.equals(merchant.getStatus())){
+                throw new BusinessException("错误:所属商户已经停用,无法启用");
             }
-            //查询该门店下的设备id
-            ServiceStore info = serviceStoreMapper.selectServiceStoreById(store.getId());
-            eids = new ArrayList<>();
-            eids.add(info.getEquipmentId());
+            //则将本设备改成闲置
+            storeInterface.openEquipment(null, null, store.getStoreId(),null);
+            //将门店下的设备置为闲置
         }
-        //如果都没有运行中的则关闭所有设备
-        equipmentService.changeStatus(eids,store.getStatus());
+
         return serviceStoreMapper.updateServiceStore(store);
+    }
+
+    /**
+     * 根据设备查询门店
+     * @param equipmentId
+     * @return
+     */
+    @Override
+    public ServiceStore selectServiceStoreByEquipmentId(Long equipmentId) {
+        ServiceStore store = new ServiceStore();
+        store.setEquipmentId(equipmentId);
+        List<ServiceStore> ss = serviceStoreMapper.selectServiceStoreList(store);
+        if( ss == null || ss.isEmpty()){
+            return null;
+        }
+        return ss.get(0);
+    }
+
+    /**
+     * 根据条件查询商户数量
+     *
+     * @param store
+     * @return
+     */
+    @Override
+    public int countStoreByMerchantId(ServiceStore store) {
+        List<ServiceStore> ss = serviceStoreMapper.selectServiceStoreList(store);
+        if( ss == null || ss.isEmpty()){
+            return 0;
+        }
+        return ss.size();
     }
 
 

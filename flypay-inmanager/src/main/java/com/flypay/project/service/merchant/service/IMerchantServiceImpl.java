@@ -70,7 +70,8 @@ public class IMerchantServiceImpl implements IMerchantService
                 //同步关闭门店
                 ServiceStore store = new ServiceStore();
                 store.setStatus(merchant.getStatus());
-                storeService.changeStatus(store,merchant.getProviderId());
+                store.setProviderId(merchant.getProviderId());
+                storeService.changeStatus(store);
             }else if( merchant.getProviderId() == null && merchant.getMerchantId() != null){
                 Merchant info = merchantMapper.selectMerchantById(merchant.getMerchantId());
                 if( info == null ){
@@ -88,7 +89,7 @@ public class IMerchantServiceImpl implements IMerchantService
                 ServiceStore store = new ServiceStore();
                 store.setStatus(merchant.getStatus());
                 store.setMerchantId(merchant.getMerchantId());
-                storeService.changeStatus(store,null);
+                storeService.changeStatus(store);
             }
         }else if(merchant != null && "0".equals(merchant.getStatus())){
             //开启的时候查看父级服务商是否开启如果是停用则不允许开启
@@ -131,11 +132,11 @@ public class IMerchantServiceImpl implements IMerchantService
         for (Long merchantId : merchantIds){
             Merchant merchant = selectMerchantById(merchantId);
             if( merchant == null ) {
-                throw new BusinessException(String.format("%1$s找不到此商戶,不能删除", merchantId));
+                throw new BusinessException(String.format("错误:%1$s找不到此商戶,不能删除", merchantId));
             }
             //查看商戶是否已經綁定門店,如果綁定則無法刪除
             if (countStoreByMerchantId(merchantId) > 0){
-                throw new BusinessException(String.format("%1$s已分配,不能删除", merchant.getMerchantName()));
+                throw new BusinessException(String.format("错误:%1$s有下属门店,不能删除", merchant.getMerchantName()));
             }
             ms.add(merchant);
         }
@@ -229,11 +230,25 @@ public class IMerchantServiceImpl implements IMerchantService
     }
 
     /**
-     * 根据服务商id查询商户数量
+     * 根据门店id查询商户信息
+     *
+     * @param storeId
+     * @return
+     */
+    @Override
+    public Merchant selectMerchantByStoreId(Long storeId) {
+
+        return merchantMapper.selectMerchantByStoreId(storeId);
+    }
+
+    /**
+     * 根据商户id查询门店数量
      * @param merchantId
      * @return
      */
     private int countStoreByMerchantId(Long merchantId) {
-        return 0;
+        ServiceStore store = new ServiceStore();
+        store.setMerchantId(merchantId);
+        return storeService.countStoreByMerchantId(store);
     }
 }

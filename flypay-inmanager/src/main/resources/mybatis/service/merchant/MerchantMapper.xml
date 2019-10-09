@@ -47,6 +47,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			and date_format(sm.create_time,'%y%m%d') &lt;= date_format(#{params.endTime},'%y%m%d')
 		</if>
 	</select>
+	<!--  根据门店id查询商户信息	-->
+	<select id="selectMerchantByStoreId" parameterType="Long" resultMap="MerchantResult">
+		<include refid="selectMerchantVo"/>
+		left join service_store ss on ss.merchant_id = sm.id
+		where sm.del_flag = '0' and ss.id = #{storeId}
+	</select>
     <!--  根据主键更新商户	-->
 	<update id="updateMerchant" parameterType="Merchant" >
 		update service_merchant

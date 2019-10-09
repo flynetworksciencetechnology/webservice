@@ -97,6 +97,29 @@ public class StoreInterfaceImpl implements StoreInterface {
         return 1;
     }
 
+    /**
+     * 启动指定设备
+     *
+     * @param providerId
+     * @param merchantId
+     * @param storeId
+     * @param equipmentId
+     * @return
+     */
+    @Override
+    public Integer openEquipment(Long providerId, Long merchantId, Long storeId, Long equipmentId) {
+        String run_key = getKey(providerId, merchantId, storeId,equipmentId,ServiceConstansts.EQUIPMENT_REDIS_TYPE.RUN_TYPE.name());
+        Set<String> run_keys = redis.getKeys(run_key, null);
+        //给虽所有key设置值
+        String code = dict.getValue(ServiceConstansts.EQUIPMENT_RUN_STATUS, ServiceConstansts.EQUIPMENT_RUN_NAME.闲置.name());
+        if( run_keys != null && !run_keys.isEmpty()){
+            for (String k : run_keys) {
+                redis.set(k,code,null);
+            }
+        }
+        return 1;
+    }
+
     private int get(List<String> list, String code) {
         int i = 0;
         for (String s : list) {

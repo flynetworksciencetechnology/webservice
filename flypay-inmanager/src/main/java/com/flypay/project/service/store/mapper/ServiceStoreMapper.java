@@ -66,4 +66,5 @@ public interface ServiceStoreMapper
      * @return
      */
     int changeStatus(Long providerId);
+
 }

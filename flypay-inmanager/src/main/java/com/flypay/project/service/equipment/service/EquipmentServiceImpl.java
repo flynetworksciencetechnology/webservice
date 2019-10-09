@@ -11,7 +11,9 @@ import com.flypay.project.service.equipment.mapper.EquipmentMapper;
 import com.flypay.project.service.equipment.task.EquipmentTaskJob;
 import com.flypay.project.service.merchant.service.IMerchantService;
 import com.flypay.project.service.merchant.task.MerchantTaskJob;
+import com.flypay.project.service.store.domain.ServiceStore;
 import com.flypay.project.service.store.service.StoreInterface;
+import com.flypay.project.service.store.service.impl.ServiceStoreServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +34,8 @@ public class EquipmentServiceImpl implements IEquipmentService
     private EquipmentTaskJob equipmentTaskJob;
     @Autowired
     private StoreInterface storeInterface;
+    @Autowired
+    private ServiceStoreServiceImpl storeService;
     @Override
     @DataScope(deptAlias = "d")
     public List<Equipment> selectEquipmentList(Equipment equipment) {
@@ -46,6 +50,9 @@ public class EquipmentServiceImpl implements IEquipmentService
      */
     @Override
     public int changeStatus(Equipment equipment) {
+        if( equipment == null){
+            return 0;
+        }
         //同步删除正在使用中的设备缓存
         if( equipment != null && "1".equals(equipment.getStatus())) {
             Integer count = storeInterface.getRunningEquipmentCount(null,null,null,equipment.getEquipmentId());
@@ -58,7 +65,20 @@ public class EquipmentServiceImpl implements IEquipmentService
             //equipmentTaskJob.changeStatus(equipment.getStatus(),equipment.getEquipmentId());
         }else{
             //如果是启动
-            //则将本设备
+            //查看绑定的门店状态,如果是关闭则无法启动
+            ServiceStore store = storeService.selectServiceStoreByEquipmentId(equipment.getEquipmentId());
+            if( store == null){
+                //未绑定
+                equipment.setIsBand("0");
+                equipment.setStatus("");
+                equipmentMapper.updateEquipment(equipment);
+                throw new BusinessException("错误:设备未绑定,无法启用");
+            }
+            if( ServiceConstansts.STOP_STATUS.equals(store.getStatus())){
+                throw new BusinessException("错误:所属门店已经停用,无法启用");
+            }
+            //则将本设备改成闲置
+            storeInterface.openEquipment(null, null, null,equipment.getEquipmentId());
         }
         return equipmentMapper.updateEquipment(equipment);
     }
@@ -175,6 +195,18 @@ public class EquipmentServiceImpl implements IEquipmentService
         equipment.setUpdateBy(ShiroUtils.getLoginName());
         // 修改角色信息
         return equipmentMapper.updateEquipment(equipment);
+    }
+
+    /**
+     * 根据商户id查询设备列表
+     *
+     * @param merchantId
+     * @return
+     */
+    @Override
+    public List<Equipment> selectEquipmentListByMerchantId(Long merchantId) {
+
+        return equipmentMapper.selectEquipmentListByMerchantId(merchantId);
     }
 
 }

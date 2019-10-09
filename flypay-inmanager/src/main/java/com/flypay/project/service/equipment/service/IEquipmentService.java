@@ -68,4 +68,10 @@ public interface IEquipmentService
      */
     int updateEquipment(Equipment equipment);
 
+    /**
+     * 根据商户id查询设备列表
+     * @param merchantId
+     * @return
+     */
+    List<Equipment> selectEquipmentListByMerchantId(Long merchantId);
 }

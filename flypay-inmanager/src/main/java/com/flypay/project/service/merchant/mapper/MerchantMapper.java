@@ -74,4 +74,6 @@ public interface MerchantMapper
      * @return
      */
     int countMerchantByProviderId(Long providerId);
+
+    Merchant selectMerchantByStoreId(Long storeId);
 }

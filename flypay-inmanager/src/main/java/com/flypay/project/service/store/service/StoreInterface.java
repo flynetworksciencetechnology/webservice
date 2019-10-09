@@ -17,8 +17,19 @@ public interface StoreInterface {
      * 关闭运行中的设备
      * @param providerId
      * @param merchantId
-     * @param StoreId
+     * @param storeId
+     * @param equipmentId
      * @return
      */
-    Integer closeEquipment(Long providerId, Long merchantId, Long StoreId,Long equipmentId);
+    Integer closeEquipment(Long providerId, Long merchantId, Long storeId,Long equipmentId);
+
+    /**
+     * 启动指定设备
+     * @param providerId
+     * @param merchantId
+     * @param storeId
+     * @param equipmentId
+     * @return
+     */
+    Integer openEquipment(Long providerId, Long merchantId, Long storeId, Long equipmentId);
 }

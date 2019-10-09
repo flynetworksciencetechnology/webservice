@@ -64,7 +64,6 @@
     <script th:inline="javascript">
         var editFlag = [[${@permission.hasPermi('service:store:edit')}]];
         var removeFlag = [[${@permission.hasPermi('service:store:remove')}]];
-        var statusDatas = [[${@dict.getType('sys_normal_disable')}]];
         var prefix = ctx + "service/store";
 
         $(function() {
@@ -104,10 +103,11 @@
                     title : '所属商户'
                 },
                 {
-                    field : 'status', 
-                    title : '状态',
-                    formatter: function(value, row, index) {
-                       return $.table.selectDictLabel(statusDatas, value);
+                    visible: editFlag == 'hidden' ? false : true,
+                    title: '门店状态',
+                    align: 'center',
+                    formatter: function (value, row, index) {
+                        return statusTools(row);
                     }
                 },
                 {
@@ -139,6 +139,26 @@
             };
             $.table.init(options);
         });
+        function statusTools(row) {
+            if (row.status == 1) {
+                return '<i class=\"fa fa-toggle-off text-info fa-2x\" onclick="enable(\'' + row.storeId + '\')"></i> ';
+            } else {
+                return '<i class=\"fa fa-toggle-on text-info fa-2x\" onclick="disable(\'' + row.storeId + '\')"></i> ';
+            }
+        }
+        /* 商户管理-停用 */
+        function disable(storeId) {
+            $.modal.confirm("确认要停用门店吗？", function() {
+                $.operate.post(prefix + "/changeStatus", { "storeId": storeId, "status": 1 });
+            })
+        }
+
+        /* 角色管理启用 */
+        function enable(storeId) {
+            $.modal.confirm("确认要启用门店吗？", function() {
+                $.operate.post(prefix + "/changeStatus", { "storeId": storeId, "status": 0 });
+            })
+        }
     </script>
 </body>
 </html>

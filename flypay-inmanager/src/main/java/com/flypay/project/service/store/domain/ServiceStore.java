@@ -18,7 +18,7 @@ public class ServiceStore extends BaseEntity
     private static final long serialVersionUID = 1L;
 
     /** 门店id */
-    private Long id;
+    private Long storeId;
 
     /** 门店名称 */
     @Excel(name = "门店名称")
@@ -39,6 +39,7 @@ public class ServiceStore extends BaseEntity
     /** 所属商户 */
     @Excel(name = "所属商户")
     private Long merchantId;
+    private Long providerId;
 
     /** 状态 */
     @Excel(name = "状态")
@@ -55,14 +56,14 @@ public class ServiceStore extends BaseEntity
     @Excel(name = "创建时间", width = 30, dateFormat = "yyyy-MM-dd")
     private Date creatTime;
 
-    public void setId(Long id) 
+    public void setStoreId(Long storeId)
     {
-        this.id = id;
+        this.storeId = storeId;
     }
 
-    public Long getId() 
+    public Long getStoreId()
     {
-        return id;
+        return storeId;
     }
     public void setStoreName(String storeName) 
     {
@@ -146,10 +147,22 @@ public class ServiceStore extends BaseEntity
         return creatTime;
     }
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Long getProviderId() {
+        return providerId;
+    }
+
+    public void setProviderId(Long providerId) {
+        this.providerId = providerId;
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
-            .append("id", getId())
+            .append("id", getStoreId())
             .append("storeName", getStoreName())
             .append("brand", getBrand())
             .append("city", getCity())

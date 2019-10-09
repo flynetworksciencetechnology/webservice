@@ -63,6 +63,15 @@ public interface IServiceStoreService
      * 修改门店状态
      * @param store
      */
-    int changeStatus(ServiceStore store,Long providerId);
+    int changeStatus(ServiceStore store);
 
+
+    ServiceStore selectServiceStoreByEquipmentId(Long equipmentId);
+
+    /**
+     * 根据条件查询商户数量
+     * @param store
+     * @return
+     */
+    int countStoreByMerchantId(ServiceStore store);
 }

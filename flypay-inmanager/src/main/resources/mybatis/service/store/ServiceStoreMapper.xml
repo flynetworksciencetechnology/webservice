@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.flypay.project.service.store.mapper.ServiceStoreMapper">
     
     <resultMap type="ServiceStore" id="ServiceStoreResult">
-        <result property="id"    column="id"    />
+        <result property="storeId"    column="id"    />
         <result property="storeName"    column="store_name"    />
         <result property="brand"    column="brand"    />
         <result property="city"    column="city"    />
@@ -26,17 +26,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
     <select id="selectServiceStoreList" parameterType="ServiceStore" resultMap="ServiceStoreResult">
         <include refid="selectServiceStoreVo"/>
-        <where>  
-            <if test="id != null "> and id like concat('%', #{id}, '%')</if>
+
+        <where>
+            del_flag = '0'
+            <if test="storeId != null "> and id like concat('%', #{storeId}, '%')</if>
             <if test="storeName != null  and storeName != ''"> and store_name like concat('%', #{storeName}, '%')</if>
             <if test="merchantId != null "> and merchant_id = #{merchantId}</if>
             <if test="status != null  and status != ''"> and status = #{status}</if>
+            <if test="equipmentId != null  and equipmentId != ''"> and equipment_id = #{equipmentId}</if>
         </where>
     </select>
     
     <select id="selectServiceStoreById" parameterType="Long" resultMap="ServiceStoreResult">
         <include refid="selectServiceStoreVo"/>
-        where id = #{id}
+        where id = #{storeId}
     </select>
         
     <insert id="insertServiceStore" parameterType="ServiceStore">
@@ -57,7 +60,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="remark != null  and remark != ''">remark,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="id != null ">#{id},</if>
+            <if test="id != null ">#{storeId},</if>
             <if test="storeName != null  and storeName != ''">#{storeName},</if>
             <if test="brand != null  and brand != ''">#{brand},</if>
             <if test="city != null  and city != ''">#{city},</if>
@@ -74,38 +77,47 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </insert>
 
     <update id="updateServiceStore" parameterType="ServiceStore">
-        update service_store
+        update service_store ss
+        <if test="providerId != null">
+            left join service_merchant sm on  sm.id = merchant_id
+            left join service_provider sp on  sp.id = sm.provider_id
+        </if>
         <trim prefix="SET" suffixOverrides=",">
-            <if test="storeName != null  and storeName != ''">store_name = #{storeName},</if>
-            <if test="brand != null  and brand != ''">brand = #{brand},</if>
-            <if test="city != null  and city != ''">city = #{city},</if>
-            <if test="equipmentId != null ">equipment_id = #{equipmentId},</if>
-            <if test="merchantId != null ">merchant_id = #{merchantId},</if>
-            <if test="status != null  and status != ''">status = #{status},</if>
-            <if test="delFlag != null  and delFlag != ''">del_flag = #{delFlag},</if>
-            <if test="creatBy != null  and creatBy != ''">creat_by = #{creatBy},</if>
-            <if test="creatTime != null ">creat_time = #{creatTime},</if>
-            <if test="updateBy != null  and updateBy != ''">update_by = #{updateBy},</if>
-            <if test="updateTime != null ">update_time = #{updateTime},</if>
-            <if test="remark != null  and remark != ''">remark = #{remark},</if>
+            <if test="storeName != null  and storeName != ''">ss.store_name = #{storeName},</if>
+            <if test="brand != null  and brand != ''">ss.brand = #{brand},</if>
+            <if test="city != null  and city != ''">ss.city = #{city},</if>
+            <if test="equipmentId != null ">ss.equipment_id = #{equipmentId},</if>
+            <if test="merchantId != null ">ss.merchant_id = #{merchantId},</if>
+            <if test="status != null  and status != ''">ss.status = #{status},</if>
+            <if test="delFlag != null  and delFlag != ''">ss.del_flag = #{delFlag},</if>
+            <if test="creatBy != null  and creatBy != ''">ss.creat_by = #{creatBy},</if>
+            <if test="creatTime != null ">ss.creat_time = #{creatTime},</if>
+            <if test="updateBy != null  and updateBy != ''">ss.update_by = #{updateBy},</if>
+            <if test="updateTime != null ">ss.update_time = #{updateTime},</if>
+            <if test="remark != null  and remark != ''">ss.remark = #{remark},</if>
         </trim>
-        <if test="id != null">
-            where id = #{id}
+        <if test="providerId != null">
+            where sp.id = #{providerId}
         </if>
-        <if test="id == null">
-            where merchant_id = #{merchantId}
+        <if test="providerId == null">
+            <if test="storeId != null">
+                where id = #{storeId}
+            </if>
+            <if test="storeId == null">
+                where merchant_id = #{merchantId}
+            </if>
         </if>
+
     </update>
 
     <delete id="deleteServiceStoreById" parameterType="Long">
-        delete from service_store where id = #{id}
+        delete from service_store where id = #{storeId}
     </delete>
 
-    <delete id="deleteServiceStoreByIds" parameterType="String">
-        delete from service_store where id in 
-        <foreach item="id" collection="array" open="(" separator="," close=")">
-            #{id}
+    <delete id="deleteServiceStoreByIds" parameterType="Long">
+        update service_store set del_flag = '2' where id in
+        <foreach collection="array" item="id" open="(" separator="," close=")">
+            #{storeId}
         </foreach>
     </delete>
-    
 </mapper>
