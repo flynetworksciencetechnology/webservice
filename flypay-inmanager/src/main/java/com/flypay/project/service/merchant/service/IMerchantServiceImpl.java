@@ -101,6 +101,8 @@ public class IMerchantServiceImpl implements IMerchantService
             if( checkProviderStatus(info.getProviderId()) != 0 ){
                 throw new BusinessException("错误:此商户服务商未启用,请联系管理员进行服务商启用");
             }
+            //将下属设备置为闲置
+            storeInterface.openEquipment(null,merchant.getMerchantId(),null,null);
         }
         return merchantMapper.updateMerchant(merchant);
     }

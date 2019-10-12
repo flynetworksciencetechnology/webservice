@@ -107,8 +107,8 @@ public class ServiceEquipmentController extends BaseController {
      * 修改角色
      */
     @GetMapping("/edit/{equipmentId}")
-    public String edit(@PathVariable("equipmentId") Long equipmentId, ModelMap mmap)
-    {
+    public String edit(@PathVariable("equipmentId") Long equipmentId, ModelMap mmap) {
+        //获取该设备
         mmap.put("equipment", equipmentService.selectEquipmentById(equipmentId));
         return prefix + "/edit";
     }

@@ -1,140 +1,100 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" >
 <head>
-	<th:block th:include="include :: header('新增设备')" />
-	<th:block th:include="include :: ztree-css" />
+    <th:block th:include="include :: header('新增设备')" />
 </head>
 <body class="white-bg">
-	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
-		<form class="form-horizontal m" id="form-equipment-add">
-			<div class="form-group">
-				<label class="col-sm-3 control-label ">设备名称：</label>
-				<div class="col-sm-8">
-					<input class="form-control" type="text" name="equipmentName" id="equipmentName" required>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label ">appID：</label>
-				<div class="col-sm-8">
-					<input class="form-control" type="text" name="appId" id="appId" required>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label ">MD5Key：</label>
-				<div class="col-sm-8">
-					<input class="form-control" type="text" name="MD5Key" id="MD5Key" required>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label ">设备编号：</label>
-				<div class="col-sm-8">
-					<input class="form-control" type="text" name="mchId" id="mchId" required>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label">所属服务商：</label>
-				<div class="col-sm-8">
-					<select name="providerId" class="form-control m-b" th:with="ps=${@providerservice.searchALLProviders()}">
-						<option th:each="p : ${ps}" th:text="${p.providerName}" th:value="${p.providerId}"></option>
-					</select>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label">显示顺序：</label>
-				<div class="col-sm-8">
-					<input class="form-control" type="text" name="equipmentSort" id="equipmentSort" required>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label">状态：</label>
-				<div class="col-sm-8">
-			        <label class="toggle-switch switch-solid">
+    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
+        <form class="form-horizontal m" id="form-equipment-add">
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">设备编号：</label>
+                <div class="col-sm-8">
+                    <input name="deviceId" id="deviceId" class="form-control" type="text" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">所属服务商：</label>
+                <div class="col-sm-8">
+                    <select name="providerId" class="form-control m-b" th:with="ps=${@providerservice.searchALLProviders()}">
+                        <option th:each="p : ${ps}" th:text="${p.providerName}" th:value="${p.providerId}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">设备类型：</label>
+                <div class="col-sm-8">
+                    <select name="type" class="form-control m-b" th:with="type=${@dict.getType('equipment_type')}" required>
+                        <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">设备序号：</label>
+                <div class="col-sm-8">
+                    <input name="equipmentSort" class="form-control" type="text" required>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">设备状态</label>
+                <div class="col-sm-8">
+                    <label class="toggle-switch switch-solid">
                         <input type="checkbox" id="status" checked>
                         <span></span>
                     </label>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label">备注：</label>
-				<div class="col-sm-8">
-					<input id="remark" name="remark" class="form-control" type="text">
-				</div>
-			</div>
-		</form>
-	</div>
-	<th:block th:include="include :: footer" />
-	<script type="text/javascript">
-		$("#form-equipment-add").validate({
-			rules:{
-				onkeyup: false,
-				equipmentName:{
-					remote: {
-		                url: ctx + "service/equipment/checkEquipmentNameUnique",
-		                type: "post",
-		                dataType: "json",
-		                data: {
-		                	"equipmentName" : function() {
-		                		return $.common.trim($("#equipmentName").val());
-		                    }
-		                },
-		                dataFilter: function(data, type) {
-		                	return $.validate.unique(data);
-		                }
-		            }
-				},
-				appId:{
-					remote: {
-		                url: ctx + "service/equipment/checkEquipmentAppIdUnique",
-		                type: "post",
-		                dataType: "json",
-		                data: {
-		                	"appId" : function() {
-		                        return $.common.trim($("#appId").val());
-		                    }
-		                },
-		                dataFilter: function(data, type) {
-		                	return $.validate.unique(data);
-		                }
-		            }
-				},
-				equipmentSort:{
-					digits:true
-				},
-			},
-			messages: {
-		        "equipmentName": {
-		            remote: "设备名称已经存在"
-		        },
-		        "appId": {
-		            remote: "appID已经存在"
-		        }
-		    },
-		    focusCleanup: true
-		});
-		
-		function submitHandler() {
-	        if ($.validate.form()) {
-	        	add();
-	        }
-	    }
-	
-		function add() {
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">备注：</label>
+                <div class="col-sm-8">
+                    <input id="remark" name="remark" class="form-control" type="text">
+                </div>
+            </div>
+        </form>
+    </div>
+    <th:block th:include="include :: footer" />
+    <script type="text/javascript">
+        var prefix = ctx + "service/equipment"
+        $("#form-equipment-add").validate({
+            //添加规则,校验设备编号是否已经存在
+            onkeyup: false,
+            rules:{
+                deviceId:{
+                    remote: {
+                        url: ctx + "service/equipment/checkEquipmentDeviceIdUnique",
+                        type: "post",
+                        dataType: "json",
+                        data: {
+                            "deviceId": function() {
+                                return $("#deviceId").val();
+                            }
+                        },
+                        dataFilter: function(data, type) {
+                            return $.validate.unique(data);
+                        }
+                    }
+                },
+                equipmentSort:{
+                    digits:true
+                },
+            },
+            messages: {
+                "deviceId": {
+                    remote: "设备编号已经存在"
+                }
+            },
+            focusCleanup: true
+            //添加规则,校验设备编号是否已经存在
+        });
 
-			var data = $("#form-equipment-add").serializeArray();
-			$.ajax({
-				cache : true,
-				type : "POST",
-				url : ctx + "service/equipment/add",
-				data : data,
-				async : false,
-				error : function(request) {
-					$.modal.alertError("系统错误");
-				},
-				success : function(data) {
-					$.operate.successCallback(data);
-				}
-			});
-		}
-	</script>
+        function submitHandler() {
+            if ($.validate.form()) {
+                var data = $('#form-equipment-add').serializeArray();
+                var status = $("input[id='status']").is(':checked') == true ? 0 : 1;
+                data.push({"name": "status", "value": status});
+                $.operate.save(prefix + "/add", data);
+            }
+        }
+    </script>
 </body>
 </html>

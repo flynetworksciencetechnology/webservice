@@ -1,23 +1,20 @@
 package com.flypay.project.service.store.controller;
 
-import java.util.List;
+import com.flypay.common.utils.poi.ExcelUtil;
+import com.flypay.framework.aspectj.lang.annotation.Log;
+import com.flypay.framework.aspectj.lang.enums.BusinessType;
+import com.flypay.framework.web.controller.BaseController;
+import com.flypay.framework.web.domain.AjaxResult;
+import com.flypay.framework.web.page.TableDataInfo;
+import com.flypay.project.service.store.domain.ServiceStore;
+import com.flypay.project.service.store.service.IServiceStoreService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import com.flypay.framework.aspectj.lang.annotation.Log;
-import com.flypay.framework.aspectj.lang.enums.BusinessType;
-import com.flypay.project.service.store.domain.ServiceStore;
-import com.flypay.project.service.store.service.IServiceStoreService;
-import com.flypay.framework.web.controller.BaseController;
-import com.flypay.framework.web.domain.AjaxResult;
-import com.flypay.common.utils.poi.ExcelUtil;
-import com.flypay.framework.web.page.TableDataInfo;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * 门店Controller
@@ -118,9 +115,13 @@ public class ServiceStoreController extends BaseController
     @Log(title = "门店", businessType = BusinessType.DELETE)
     @PostMapping( "/remove")
     @ResponseBody
-    public AjaxResult remove(String ids)
-    {
-        return toAjax(serviceStoreService.deleteServiceStoreByIds(ids));
+    public AjaxResult remove(String ids){
+        try {
+            return toAjax(serviceStoreService.deleteServiceStoreByIds(ids));
+        }catch (Exception e){
+            return error(e.getMessage());
+        }
+
     }
 
     /**

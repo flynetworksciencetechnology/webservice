@@ -2,6 +2,8 @@ package ${packageName}.${businessName}.controller;
 
 import java.util.List;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.stereotype.Controller;
@@ -32,8 +34,9 @@ import com.flypay.framework.web.domain.Ztree;
  */
 @Controller
 @RequestMapping("/${moduleName}/${businessName}")
-public class ${ClassName}Controller extends BaseController
-{
+public class ${ClassName}Controller extends BaseController{
+
+    private static final Logger logger = LoggerFactory.getLogger(${ClassName}Controller.class)
     private String prefix = "${moduleName}/${businessName}";
 
     @Autowired
@@ -153,9 +156,13 @@ public class ${ClassName}Controller extends BaseController
     @Log(title = "${functionName}", businessType = BusinessType.DELETE)
     @PostMapping( "/remove")
     @ResponseBody
-    public AjaxResult remove(String ids)
-    {
-        return toAjax(${className}Service.delete${ClassName}ByIds(ids));
+    public AjaxResult remove(String ids){
+        try {
+            return toAjax(${className}Service.delete${ClassName}ByIds(ids));
+        }catch (Exception e){
+            logger.error("删除${functionName} :" + ids +"异常," + e.getMessage());
+            return error(e.getMessage());
+        }
     }
 #elseif($table.tree)
     /**
@@ -165,9 +172,13 @@ public class ${ClassName}Controller extends BaseController
     @Log(title = "${functionName}", businessType = BusinessType.DELETE)
     @GetMapping("/remove/{${pkColumn.javaField}}")
     @ResponseBody
-    public AjaxResult remove(@PathVariable("${pkColumn.javaField}") ${pkColumn.javaType} ${pkColumn.javaField})
-    {
-        return toAjax(${className}Service.delete${ClassName}ById(${pkColumn.javaField}));
+    public AjaxResult remove(@PathVariable("${pkColumn.javaField}") ${pkColumn.javaType} ${pkColumn.javaField}) {
+        try {
+            return toAjax(${className}Service.delete${ClassName}ById(${pkColumn.javaField}));
+        }catch (Exception e){
+            logger.error("删除${functionName} :${pkColumn.javaField}异常," + e.getMessage());
+            return error(e.getMessage());
+        }
     }
 #end
 #if($table.tree)

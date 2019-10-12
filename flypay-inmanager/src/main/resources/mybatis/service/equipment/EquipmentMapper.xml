@@ -61,7 +61,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectEquipmentListByMerchantId" parameterType="Long" resultMap="EquipmentResult">
 		<include refid="selectEquipmentVo"/>
 		left join service_store ss on ss.equipment_id = se.id
-		where se.del_flag = '0' and se.status = '0' and ss.merchant_id = ${merchantId}
+		where se.del_flag = '0' and se.status = '0' and ss.merchant_id = #{merchantId}
 	</select>
 
     <!--  根据主键更新服务商	-->
@@ -99,7 +99,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	<select id="checkEquipmentDeviceIdUnique" parameterType="String" resultMap="EquipmentResult">
 		<include refid="selectEquipmentVo"/>
-		where device_id=#{deviceId}
+		where se.del_flag = '0' and device_id=#{deviceId}
 	</select>
 
 	<insert id="insertEquipment" parameterType="Equipment" useGeneratedKeys="true" keyProperty="equipmentId">
@@ -107,6 +107,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="deviceId != null and deviceId != ''">device_id,</if>
 		<if test="equipmentSort != null and equipmentSort != ''">equipment_sort,</if>
 		<if test="status != null and status != ''">status,</if>
+		<if test="type != null and type != ''">type,</if>
 		<if test="providerId != null and providerId != ''">provider_id,</if>
 		<if test="remark != null and remark != ''">remark,</if>
 		<if test="createBy != null and createBy != ''">create_by,</if>
@@ -115,6 +116,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="deviceId != null and deviceId != ''">#{deviceId},</if>
 		<if test="equipmentSort != null and equipmentSort != ''">#{equipmentSort},</if>
 		<if test="status != null and status != ''">#{status},</if>
+		<if test="type != null and type != ''">#{type},</if>
 		<if test="providerId != null and providerId != ''">#{providerId},</if>
 		<if test="remark != null and remark != ''">#{remark},</if>
 		<if test="createBy != null and createBy != ''">#{createBy},</if>

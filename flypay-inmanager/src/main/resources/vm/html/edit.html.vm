@@ -83,6 +83,18 @@
                     <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 代码生成请选择字典属性</span>
                 </div>
             </div>
+    #elseif($column.htmlType == "checkbox" && $dictType)
+        <div class="form-group">
+            <label class="col-sm-3 control-label">${comment}：</label>
+            <div class="col-sm-8">
+                <div class="col-sm-8">
+                    <label class="toggle-switch switch-solid">
+                        <input type="checkbox" id="status" th:checked="${${className}.status == '0' ? true : false}">
+                        <span></span>
+                    </label>
+                </div>
+            </div>
+        </div>
 #elseif($column.htmlType == "datetime")
             <div class="form-group">    
                 <label class="col-sm-3 control-label">${comment}：</label>
@@ -120,8 +132,11 @@
         });
 
         function submitHandler() {
+            var data = $('#form-${businessName}-add').serializeArray();
+            var status = $("input[id='status']").is(':checked') == true ? 0 : 1;
+            data.push({"name": "status", "value": status});
             if ($.validate.form()) {
-                $.operate.save(prefix + "/edit", $('#form-${businessName}-edit').serialize());
+                $.operate.save(prefix + "/edit", data);
             }
         }
 #foreach($column in $columns)

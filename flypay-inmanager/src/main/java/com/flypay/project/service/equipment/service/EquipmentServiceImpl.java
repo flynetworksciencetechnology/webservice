@@ -131,17 +131,24 @@ public class EquipmentServiceImpl implements IEquipmentService
     public int deleteEquipmentByIds(String ids) {
         //解析ids
         Long[] equipmentIds = Convert.toLongArray(ids);
+        List<Equipment> es = new ArrayList<>();
         for (Long equipmentId : equipmentIds){
             Equipment equipment = selectEquipmentById(equipmentId);
             if( equipment == null ) {
                 throw new BusinessException(String.format("%1$s找不到此设备,不能删除", equipmentId));
             }
             //查看设备是否已经绑定商户,如果绑定则无法删除
-            if ("1".equals(equipment.getIsBand())){
+            if (ServiceConstansts.STOP_STATUS.equals(equipment.getIsBand())){
                 throw new BusinessException(String.format("%1$s已绑定,不能删除", equipment.getDeviceId()));
             }
+            es.add(equipment);
         }
-        return equipmentMapper.deleteEquipmentByIds(equipmentIds);
+        int i = equipmentMapper.deleteEquipmentByIds(equipmentIds);
+        if( i >= 0){
+            //异步停用设备
+            equipmentTaskJob.closeEquipmentStatus(es);
+        }
+        return i;
     }
 
     /**

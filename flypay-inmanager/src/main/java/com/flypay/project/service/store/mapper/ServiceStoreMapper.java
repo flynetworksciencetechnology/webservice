@@ -57,7 +57,7 @@ public interface ServiceStoreMapper
      * @param ids 需要删除的数据ID
      * @return 结果
      */
-    public int deleteServiceStoreByIds(String[] ids);
+    public int deleteServiceStoreByIds(Long[] ids);
 
 
     /**

@@ -10,6 +10,7 @@ import com.flypay.project.service.equipment.service.IEquipmentService;
 import com.flypay.project.service.merchant.domain.Merchant;
 import com.flypay.project.service.merchant.service.IMerchantService;
 import com.flypay.project.service.store.service.StoreInterface;
+import com.flypay.project.service.store.task.StoreTaskJob;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.flypay.project.service.store.mapper.ServiceStoreMapper;
@@ -36,6 +37,8 @@ public class ServiceStoreServiceImpl implements IServiceStoreService
 
     @Autowired
     private IMerchantService merchantService;
+    @Autowired
+    private StoreTaskJob storeTaskJob;
     /**
      * 查询门店
      * 
@@ -92,9 +95,29 @@ public class ServiceStoreServiceImpl implements IServiceStoreService
      */
     @Override
     public int deleteServiceStoreByIds(String ids){
-        //
-        return serviceStoreMapper.deleteServiceStoreByIds(Convert.toStrArray(ids));
+        //解析ids
+        Long[] storeIds = Convert.toLongArray(ids);
+        List<ServiceStore> ms = new ArrayList<>();
+        for (Long storeId : storeIds){
+            ServiceStore store = selectServiceStoreById(storeId);
+            if( store == null ) {
+                throw new BusinessException(String.format("错误:%1$s找不到此门店,不能删除", storeId));
+            }
+            //查看商戶是否已經綁定門店,如果綁定則無法刪除
+            if (store.getEquipmentId() != null){
+                throw new BusinessException(String.format("错误:%1$s:该门店已经绑定设备,不能删除", store.getStoreName()));
+            }
+            ms.add(store);
+        }
+        int i = serviceStoreMapper.deleteServiceStoreByIds(storeIds);
+        if( i >= 0){
+            //将删除的商户状态改成关闭
+            storeTaskJob.closeStoreStatus(ms);
+        }
+        return i;
     }
+
+
 
     /**
      * 删除门店信息
@@ -102,8 +125,7 @@ public class ServiceStoreServiceImpl implements IServiceStoreService
      * @param id 门店ID
      * @return 结果
      */
-    public int deleteServiceStoreById(Long id)
-    {
+    public int deleteServiceStoreById(Long id){
         return serviceStoreMapper.deleteServiceStoreById(id);
     }
 

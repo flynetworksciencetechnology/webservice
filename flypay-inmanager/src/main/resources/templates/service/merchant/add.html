@@ -119,8 +119,9 @@
 	    }
 	
 		function add() {
-
+			var status = $("input[id='status']").is(':checked') == true ? 0 : 1;
 			var data = $("#form-merchant-add").serializeArray();
+			data.push({"name": "status", "value": status});
 			$.ajax({
 				cache : true,
 				type : "POST",
