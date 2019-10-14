@@ -10,7 +10,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="brand"    column="brand"    />
         <result property="city"    column="city"    />
         <result property="equipmentId"    column="equipment_id"    />
+        <result property="deviceId"    column="device_id"    />
         <result property="merchantId"    column="merchant_id"    />
+        <result property="merchantName"    column="merchant_name"    />
         <result property="status"    column="status"    />
         <result property="delFlag"    column="del_flag"    />
         <result property="creatBy"    column="creat_by"    />
@@ -21,25 +23,44 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 
     <sql id="selectServiceStoreVo">
-        select id, store_name, brand, city, equipment_id, merchant_id, status, del_flag, creat_by, creat_time, update_by, update_time, remark from service_store
+        SELECT
+            ss.id,
+            ss.store_name,
+            ss.brand,
+            ss.city,
+            ss.equipment_id,
+            se.device_id,
+            ss.merchant_id,
+            sm.merchant_name,
+            ss.`STATUS`,
+            ss.del_flag,
+            ss.creat_by,
+            ss.creat_time,
+            ss.update_by,
+            ss.update_time,
+            ss.remark
+        FROM
+            service_store ss
+            LEFT JOIN service_equipment se ON se.id = ss.equipment_id
+            LEFT JOIN service_merchant sm ON sm.id = ss.merchant_id
     </sql>
 
     <select id="selectServiceStoreList" parameterType="ServiceStore" resultMap="ServiceStoreResult">
         <include refid="selectServiceStoreVo"/>
 
         <where>
-            del_flag = '0'
+            ss.del_flag = '0'
             <if test="storeId != null "> and id like concat('%', #{storeId}, '%')</if>
             <if test="storeName != null  and storeName != ''"> and store_name like concat('%', #{storeName}, '%')</if>
             <if test="merchantId != null "> and merchant_id = #{merchantId}</if>
-            <if test="status != null  and status != ''"> and status = #{status}</if>
+            <if test="status != null  and status != ''"> and ss.status = #{status}</if>
             <if test="equipmentId != null  and equipmentId != ''"> and equipment_id = #{equipmentId}</if>
         </where>
     </select>
     
     <select id="selectServiceStoreById" parameterType="Long" resultMap="ServiceStoreResult">
         <include refid="selectServiceStoreVo"/>
-        where id = #{storeId}
+        where ss.id = #{storeId}
     </select>
         
     <insert id="insertServiceStore" parameterType="ServiceStore">

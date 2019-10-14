@@ -37,40 +37,30 @@
             <div class="form-group">    
                 <label class="col-sm-3 control-label">所属商户：</label>
                 <div class="col-sm-8">
-                    <select name="merchantId" class="form-control m-b">
-                        <option value="">所有</option>
+                    <select name="merchantId" class="form-control m-b"  th:with="mvs=${@merchant.searchAllMerchant()}">
+                        <option th:each="mv : ${mvs}" th:text="${mv.merchantName}" th:value="${mv.merchantId}"></option>
                     </select>
-                    <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 代码生成请选择字典属性</span>
                 </div>
             </div>
-            <div class="form-group">    
+            <div class="form-group">
                 <label class="col-sm-3 control-label">状态：</label>
                 <div class="col-sm-8">
-                    <div class="radio-box" th:each="dict : ${@dict.getType('sys_normal_disable')}">
-                        <input type="radio" th:id="${'status_' + dict.dictCode}" name="status" th:value="${dict.dictValue}" th:checked="${dict.default}">
-                        <label th:for="${'status_' + dict.dictCode}" th:text="${dict.dictLabel}"></label>
-                    </div>
+                    <label class="toggle-switch switch-solid">
+                        <input type="checkbox" id="status" checked>
+                        <span></span>
+                    </label>
                 </div>
             </div>
-            <div class="form-group">    
-                <label class="col-sm-3 control-label">伤处标记：</label>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">显示顺序：</label>
                 <div class="col-sm-8">
-                    <input name="delFlag" class="form-control" type="text">
+                    <input class="form-control" type="text" name="storeSort" id="storeSort" required>
                 </div>
             </div>
-            <div class="form-group">    
-                <label class="col-sm-3 control-label">创建人：</label>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">备注：</label>
                 <div class="col-sm-8">
-                    <input name="creatBy" class="form-control" type="text">
-                </div>
-            </div>
-            <div class="form-group">    
-                <label class="col-sm-3 control-label">创建时间：</label>
-                <div class="col-sm-8">
-                    <div class="input-group date">
-                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                        <input name="creatTime" class="form-control" placeholder="yyyy-MM-dd" type="text">
-                    </div>
+                    <input id="remark" name="remark" class="form-control" type="text">
                 </div>
             </div>
         </form>

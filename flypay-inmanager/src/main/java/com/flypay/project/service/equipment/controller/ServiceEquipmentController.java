@@ -10,6 +10,8 @@ import com.flypay.project.service.equipment.domain.Equipment;
 import com.flypay.project.service.equipment.service.IEquipmentService;
 import com.flypay.project.service.store.service.StoreInterface;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -27,7 +29,7 @@ import java.util.List;
 @RequestMapping("/service/equipment")
 public class ServiceEquipmentController extends BaseController {
     private String prefix = "service/equipment";
-
+    private static final Logger logger = LoggerFactory.getLogger(ServiceEquipmentController.class);
     @Autowired
     private IEquipmentService equipmentService;
     @Autowired
@@ -56,7 +58,12 @@ public class ServiceEquipmentController extends BaseController {
     @PostMapping("/changeStatus")
     @ResponseBody
     public AjaxResult changeStatus(Equipment equipment) {
-        return toAjax(equipmentService.changeStatus(equipment));
+        try{
+            return toAjax(equipmentService.changeStatus(equipment));
+        }catch (Exception e){
+            return error(e.getMessage());
+        }
+
     }
     /**
      * 删除设备
@@ -69,6 +76,7 @@ public class ServiceEquipmentController extends BaseController {
         try{
             return toAjax(equipmentService.deleteEquipmentByIds(ids));
         }catch (Exception e){
+            logger.error("删除设备失败 :" + e.getMessage());
             return error(e.getMessage());
         }
     }

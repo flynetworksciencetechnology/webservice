@@ -35,11 +35,13 @@ public class ServiceStore extends BaseEntity
     /** 绑定的设备 */
     @Excel(name = "绑定的设备")
     private Long equipmentId;
-
+    public String deviceId;
     /** 所属商户 */
     @Excel(name = "所属商户")
     private Long merchantId;
+    public String merchantName;
     private Long providerId;
+
 
     /** 状态 */
     @Excel(name = "状态")

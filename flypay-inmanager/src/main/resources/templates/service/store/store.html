@@ -20,9 +20,9 @@
                             </li>
                             <li>
                                 <p>所属商户：</p>
-                                <select name="merchantId" th:with="type=${@dict.getType('')}">
+                                <select name="merchantId" th:with="mvs=${@merchant.searchAllMerchant()}">
                                     <option value="">所有</option>
-                                    <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+                                    <option th:each="mv : ${mvs}" th:text="${mv.merchantName}" th:value="${mv.merchantId}"></option>
                                 </select>
                             </li>
                             <li>
@@ -100,7 +100,7 @@
                     title : '绑定的设备'
                 },
                 {
-                    field : 'merchantId', 
+                    field : 'merchantName',
                     title : '所属商户'
                 },
                 {
