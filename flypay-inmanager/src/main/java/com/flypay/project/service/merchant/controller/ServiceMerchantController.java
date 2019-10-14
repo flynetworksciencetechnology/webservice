@@ -8,6 +8,7 @@ import com.flypay.framework.web.domain.AjaxResult;
 import com.flypay.framework.web.page.TableDataInfo;
 import com.flypay.project.service.merchant.domain.Merchant;
 import com.flypay.project.service.merchant.service.IMerchantService;
+import com.flypay.project.service.store.service.StoreInterface;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,6 +30,8 @@ public class ServiceMerchantController extends BaseController {
 
     @Autowired
     private IMerchantService merchantService;
+    @Autowired
+    private StoreInterface storeInterface;
     @RequiresPermissions("service:merchant:view")
     @GetMapping()
     public String merchant(){
@@ -136,5 +139,17 @@ public class ServiceMerchantController extends BaseController {
         }
         return toAjax(merchantService.updateMerchant(merchant));
 
+    }
+    /**
+     * 修改前校验
+     */
+    @GetMapping("/editValidata")
+    @ResponseBody
+    public AjaxResult editValidate(@RequestParam("merchantId") Long merchantId){
+        if( storeInterface.getRunningEquipmentCount(null,merchantId,null,null) > 0){
+            return error("修改商户'" + merchantId + "'失败，该商户下有正在运行的设备,此时无法修改");
+        }
+
+        return success("正在查询商户,请稍等... ...");
     }
 }

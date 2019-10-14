@@ -8,6 +8,7 @@ import com.flypay.framework.web.domain.AjaxResult;
 import com.flypay.framework.web.page.TableDataInfo;
 import com.flypay.project.service.equipment.domain.Equipment;
 import com.flypay.project.service.equipment.service.IEquipmentService;
+import com.flypay.project.service.store.service.StoreInterface;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,6 +30,8 @@ public class ServiceEquipmentController extends BaseController {
 
     @Autowired
     private IEquipmentService equipmentService;
+    @Autowired
+    private StoreInterface storeInterface;
     @RequiresPermissions("service:equipment:view")
     @GetMapping()
     public String equipment()
@@ -127,5 +130,18 @@ public class ServiceEquipmentController extends BaseController {
         }
         return toAjax(equipmentService.updateEquipment(equipment));
 
+    }
+
+    /**
+     * 修改前校验
+     */
+    @GetMapping("/editValidata")
+    @ResponseBody
+    public AjaxResult editValidate(@RequestParam("equipmentId") Long equipmentId){
+        if( storeInterface.getRunningEquipmentCount(null,null,null,equipmentId) > 0){
+            return error("修改设备'" + equipmentId + "'失败，该设备正在运行的设备,此时无法修改");
+        }
+
+        return success("正在查询设备,请稍等... ...");
     }
 }

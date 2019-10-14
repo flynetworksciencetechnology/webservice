@@ -41,7 +41,7 @@
 				<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="service:merchant:add">
 	                <i class="fa fa-plus"></i> 新增
 	            </a>
-	            <a class="btn btn-primary single disabled" onclick="$.operate.edit()" shiro:hasPermission="service:merchant:edit">
+	            <a class="btn btn-primary single disabled" onclick="editValidate()" shiro:hasPermission="service:merchant:edit">
 		            <i class="fa fa-edit"></i> 修改
 		        </a>
 				<a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="service:merchant:remove">
@@ -123,7 +123,7 @@
 		            align: 'center',
 		            formatter: function(value, row, index) {
 		                var actions = [];
-		                actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.merchantId + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+		                actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="editValidate(\'' + row.merchantId + '\')"><i class="fa fa-edit"></i>编辑</a> ');
 		                //actions.push('<a class="btn btn-primary btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="authDataScope(\'' + row.roleId + '\')"><i class="fa fa-check-square-o"></i>数据权限</a> ');
 		                //actions.push('<a class="btn btn-info btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="authUser(\'' + row.roleId + '\')"><i class="fa fa-user"></i>分配用户</a> ');
 		                actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.merchantId + '\')"><i class="fa fa-remove"></i>删除</a> ');
@@ -167,6 +167,40 @@
 			$.modal.confirm("确认要启用商户吗？", function() {
 				$.operate.post(prefix + "/changeStatus", { "merchantId": merchantId, "status": 0 });
 		    })
+		}
+		function editValidate(merchantId) {
+			if($.common.isEmpty(merchantId) && $.table._option.type == table_type.bootstrapTreeTable) {
+				var row = $.bttTable.bootstrapTreeTable('getSelections')[0];
+				if ($.common.isEmpty(row)) {
+					$.modal.alertWarning("请至少选择一条记录");
+					return;
+				}
+				merchantId = row[$.table._option.uniqueId];
+			}
+			//校验是否可编辑
+			var config = {
+				url: prefix + "/editValidata",
+				type: "get",
+				dataType: "json",
+				async:false,
+				data: { "merchantId": merchantId },
+				beforeSend: function () {
+					$.modal.loading("正在处理中，请稍后...");
+				},
+				success: function(result) {
+					$.operate.ajaxResult(result);
+					if( result.code == web_status.SUCCESS){
+						edit(merchantId);
+					}
+				}
+
+			};
+			$.ajax(config);
+
+		}
+		function edit(merchantId){
+			//如果可以编辑
+			$.operate.edit(merchantId);
 		}
 	</script>
 </body>

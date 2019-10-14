@@ -985,6 +985,19 @@
                 }
             	$.modal.closeLoading();
             },
+			//ajax请求提示信息不刷新列表
+			ajaxResult: function(result){
+				if (result.code == web_status.SUCCESS && $.table._option.type == table_type.bootstrapTable) {
+					$.modal.msgSuccess(result.msg);
+				} else if (result.code == web_status.SUCCESS && $.table._option.type == table_type.bootstrapTreeTable) {
+					$.modal.msgSuccess(result.msg);
+				} else if (result.code == web_status.WARNING) {
+					$.modal.alertWarning(result.msg)
+				}  else {
+					$.modal.alertError(result.msg);
+				}
+				$.modal.closeLoading();
+			},
             // 成功结果提示msg（父窗体全局更新）
             saveSuccess: function (result) {
             	if (result.code == web_status.SUCCESS) {

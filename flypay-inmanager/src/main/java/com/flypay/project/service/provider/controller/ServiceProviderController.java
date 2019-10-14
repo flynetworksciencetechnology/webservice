@@ -8,6 +8,8 @@ import com.flypay.framework.web.domain.AjaxResult;
 import com.flypay.framework.web.page.TableDataInfo;
 import com.flypay.project.service.provider.domain.Provider;
 import com.flypay.project.service.provider.service.IProviderService;
+import com.flypay.project.service.store.service.IServiceStoreService;
+import com.flypay.project.service.store.service.StoreInterface;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,6 +31,8 @@ public class ServiceProviderController extends BaseController {
 
     @Autowired
     private IProviderService providerService;
+    @Autowired
+    private StoreInterface storeInterface;
     @RequiresPermissions("service:provider:view")
     @GetMapping()
     public String provider()
@@ -114,11 +118,22 @@ public class ServiceProviderController extends BaseController {
     }
 
     /**
+     * 修改前校验
+     */
+    @GetMapping("/editValidata")
+    @ResponseBody
+    public AjaxResult editValidate(@RequestParam("providerId") Long providerId){
+        if( storeInterface.getRunningEquipmentCount(providerId,null,null,null) > 0){
+            return error("修改服务商'" + providerId + "'失败，该服务商下有正在运行的设备,此时无法修改");
+        }
+
+        return success("正在查询服务商,请稍等... ...");
+    }
+    /**
      * 修改角色
      */
     @GetMapping("/edit/{providerId}")
-    public String edit(@PathVariable("providerId") Long providerId, ModelMap mmap)
-    {
+    public String edit(@PathVariable("providerId") Long providerId, ModelMap mmap){
         mmap.put("provider", providerService.selectProviderById(providerId));
         return prefix + "/edit";
     }

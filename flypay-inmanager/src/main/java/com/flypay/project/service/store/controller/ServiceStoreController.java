@@ -8,6 +8,7 @@ import com.flypay.framework.web.domain.AjaxResult;
 import com.flypay.framework.web.page.TableDataInfo;
 import com.flypay.project.service.store.domain.ServiceStore;
 import com.flypay.project.service.store.service.IServiceStoreService;
+import com.flypay.project.service.store.service.StoreInterface;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +31,8 @@ public class ServiceStoreController extends BaseController
 
     @Autowired
     private IServiceStoreService serviceStoreService;
+    @Autowired
+    private StoreInterface storeInterface;
 
     @RequiresPermissions("service:store:view")
     @GetMapping()
@@ -133,5 +136,17 @@ public class ServiceStoreController extends BaseController
     @ResponseBody
     public AjaxResult changeStatus(ServiceStore store) {
         return toAjax(serviceStoreService.changeStatus(store));
+    }
+    /**
+     * 修改前校验
+     */
+    @GetMapping("/editValidata")
+    @ResponseBody
+    public AjaxResult editValidate(@RequestParam("storeId") Long storeId){
+        if( storeInterface.getRunningEquipmentCount(null,null,storeId,null) > 0){
+            return error("修改门店'" + storeId + "'失败，该门店下有正在运行的设备,此时无法修改");
+        }
+
+        return success("正在查询商户,请稍等... ...");
     }
 }
