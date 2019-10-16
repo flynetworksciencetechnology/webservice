@@ -745,6 +745,15 @@
             		$.unblockUI();
             	}, 50);
             },
+			autoLoading: function (message,timeout){
+				$.modal.loading(message);
+				$.modal.autoCloseLoading(timeout);
+			},
+			autoCloseLoading: function (timeout) {
+				setTimeout(function(){
+					$.unblockUI();
+				}, timeout);
+			},
             // 重新加载
             reload: function () {
             	parent.location.reload();

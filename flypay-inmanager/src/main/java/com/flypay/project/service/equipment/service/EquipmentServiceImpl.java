@@ -6,14 +6,18 @@ import com.flypay.common.utils.StringUtils;
 import com.flypay.common.utils.security.ShiroUtils;
 import com.flypay.common.utils.text.Convert;
 import com.flypay.framework.aspectj.lang.annotation.DataScope;
+import com.flypay.framework.web.service.EquipmentService;
 import com.flypay.project.service.equipment.domain.Equipment;
 import com.flypay.project.service.equipment.mapper.EquipmentMapper;
 import com.flypay.project.service.equipment.task.EquipmentTaskJob;
+import com.flypay.project.service.equipment.vo.EquipmentVo;
 import com.flypay.project.service.merchant.service.IMerchantService;
 import com.flypay.project.service.merchant.task.MerchantTaskJob;
 import com.flypay.project.service.store.domain.ServiceStore;
 import com.flypay.project.service.store.service.StoreInterface;
 import com.flypay.project.service.store.service.impl.ServiceStoreServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,8 +30,8 @@ import java.util.List;
  * @author flypay
  */
 @Service
-public class EquipmentServiceImpl implements IEquipmentService
-{
+public class EquipmentServiceImpl implements IEquipmentService{
+    private static final Logger logger = LoggerFactory.getLogger(EquipmentServiceImpl.class);
     @Autowired
     private EquipmentMapper equipmentMapper;
     @Autowired
@@ -207,13 +211,69 @@ public class EquipmentServiceImpl implements IEquipmentService
     /**
      * 根据商户id查询设备列表
      *
-     * @param merchantId
+     * @param equipment
      * @return
      */
     @Override
-    public List<Equipment> selectEquipmentListByMerchantId(Long merchantId) {
+    public List<Equipment> selectEquipmentListByMerchantId(Equipment equipment) {
 
-        return equipmentMapper.selectEquipmentListByMerchantId(merchantId);
+        return equipmentMapper.selectEquipmentListByMerchantId(equipment);
+    }
+
+    /**
+     * 根据商户id查询设备列表(连动用)
+     *
+     * @param merchantId
+     * @param equipmentId
+     * @return
+     */
+    @Override
+    public List<EquipmentVo> selectEquipmentListByMerchantId(Long merchantId, Long equipmentId) {
+        //参数校验
+        if( merchantId == null){
+            throw new BusinessException("错误:商户id为空,请联系开发人员!!!");
+        }
+        Equipment equipment = new Equipment();
+        equipment.setStatus("1");
+        equipment.setIsBand("0");
+        equipment.setProviderId(merchantId);
+        //获取所有设备
+        List<Equipment> es = selectEquipmentListByMerchantId(equipment);
+        if( es == null || es.isEmpty()){
+            throw new BusinessException("错误:商户下无可用设备,请联系管理员添加设备");
+        }
+        List<EquipmentVo> evs = new ArrayList<>();
+        for(Equipment e : es){
+            EquipmentVo ev = new EquipmentVo();
+            ev.deviceId = e.getDeviceId();
+            ev.equipmentId = e.getEquipmentId();
+            if( equipmentId != null && equipmentId.equals(e.getEquipmentId())){
+                ev.selected = true;
+            }else{
+                ev.selected = false;
+            }
+            evs.add(ev);
+        }
+        return evs;
+    }
+
+    @Override
+    public boolean isCanRun(Equipment e) {
+        logger.error("判定设备是否可运行");
+        if( e == null){
+            logger.error("设备不可运行,原因: 传入设备为空");
+            return false;
+        }
+        if( ServiceConstansts.DEL_FLAG.equals(e.getDelFlag())){
+            logger.error("设备不可运行,原因: 设备已被删除");
+            return false;
+        }
+        if( e.getDeviceId() == null || "".equals(e.getDeviceId())){
+            logger.error("设备不可运行,原因: 设备编号为空");
+            return false;
+        }
+        logger.info("设备准备完毕可运行");
+        return true;
     }
 
 }

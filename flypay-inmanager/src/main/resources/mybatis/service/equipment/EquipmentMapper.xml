@@ -58,10 +58,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</if>
 
 	</select>
-	<select id="selectEquipmentListByMerchantId" parameterType="Long" resultMap="EquipmentResult">
-		<include refid="selectEquipmentVo"/>
-		left join service_store ss on ss.equipment_id = se.id
-		where se.del_flag = '0' and se.status = '0' and ss.merchant_id = #{merchantId}
+	<select id="selectEquipmentListByMerchantId" parameterType="Equipment" resultMap="EquipmentResult">
+		SELECT
+			se.id,
+			se.device_id
+		FROM
+			service_equipment se
+		LEFT JOIN service_merchant sm ON sm.provider_id = se.provider_id
+		<where>
+			se.del_flag = '0'
+			<if test="status != null and status != ''">
+				AND se.`STATUS` = #{status}
+			</if>
+
+			<if test="isBand != null and isBand != ''">
+				AND se.is_band = #{isBand}
+			</if>
+			AND sm.id = #{providerId}
+		</where>
 	</select>
 
     <!--  根据主键更新服务商	-->

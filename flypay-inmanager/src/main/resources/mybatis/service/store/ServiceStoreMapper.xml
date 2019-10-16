@@ -50,11 +50,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
         <where>
             ss.del_flag = '0'
-            <if test="storeId != null "> and id like concat('%', #{storeId}, '%')</if>
-            <if test="storeName != null  and storeName != ''"> and store_name like concat('%', #{storeName}, '%')</if>
-            <if test="merchantId != null "> and merchant_id = #{merchantId}</if>
+            <if test="storeId != null "> and ss.id like concat('%', #{storeId}, '%')</if>
+            <if test="storeName != null  and storeName != ''"> and ss.store_name like concat('%', #{storeName}, '%')</if>
+            <if test="merchantId != null "> and ss.merchant_id = #{merchantId}</if>
             <if test="status != null  and status != ''"> and ss.status = #{status}</if>
-            <if test="equipmentId != null  and equipmentId != ''"> and equipment_id = #{equipmentId}</if>
+            <if test="equipmentId != null  and equipmentId != ''"> and ss.equipment_id = #{equipmentId}</if>
         </where>
     </select>
     
@@ -66,7 +66,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <insert id="insertServiceStore" parameterType="ServiceStore">
         insert into service_store
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="id != null ">id,</if>
             <if test="storeName != null  and storeName != ''">store_name,</if>
             <if test="brand != null  and brand != ''">brand,</if>
             <if test="city != null  and city != ''">city,</if>
@@ -75,13 +74,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="status != null  and status != ''">status,</if>
             <if test="delFlag != null  and delFlag != ''">del_flag,</if>
             <if test="creatBy != null  and creatBy != ''">creat_by,</if>
-            <if test="creatTime != null ">creat_time,</if>
-            <if test="updateBy != null  and updateBy != ''">update_by,</if>
-            <if test="updateTime != null ">update_time,</if>
             <if test="remark != null  and remark != ''">remark,</if>
+            creat_time
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="id != null ">#{storeId},</if>
             <if test="storeName != null  and storeName != ''">#{storeName},</if>
             <if test="brand != null  and brand != ''">#{brand},</if>
             <if test="city != null  and city != ''">#{city},</if>
@@ -90,10 +86,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="status != null  and status != ''">#{status},</if>
             <if test="delFlag != null  and delFlag != ''">#{delFlag},</if>
             <if test="creatBy != null  and creatBy != ''">#{creatBy},</if>
-            <if test="creatTime != null ">#{creatTime},</if>
-            <if test="updateBy != null  and updateBy != ''">#{updateBy},</if>
-            <if test="updateTime != null ">#{updateTime},</if>
             <if test="remark != null  and remark != ''">#{remark},</if>
+            sysdate()
          </trim>
     </insert>
 
@@ -141,4 +135,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             #{storeId}
         </foreach>
     </delete>
+
+    <select id="checkStoreNameUnique" parameterType="String" resultMap="ServiceStoreResult">
+        <include refid="selectServiceStoreVo"/>
+        <where>
+            ss.store_name=#{storeName}
+        </where>
+    </select>
 </mapper>

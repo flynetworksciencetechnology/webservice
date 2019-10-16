@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.flypay.common.constant.ServiceConstansts;
 import com.flypay.common.exception.BusinessException;
+import com.flypay.common.utils.StringUtils;
+import com.flypay.common.utils.security.ShiroUtils;
 import com.flypay.project.service.equipment.domain.Equipment;
 import com.flypay.project.service.equipment.service.IEquipmentService;
 import com.flypay.project.service.merchant.domain.Merchant;
@@ -70,8 +72,26 @@ public class ServiceStoreServiceImpl implements IServiceStoreService
      * @return 结果
      */
     @Override
-    public int insertServiceStore(ServiceStore serviceStore)
-    {
+    public int insertServiceStore(ServiceStore serviceStore){
+        //拿出设备,查询设备信息
+        if( serviceStore.getEquipmentId() == null || "".equals(serviceStore.getEquipmentId())){
+            throw new BusinessException("错误:请选择需要绑定的设备");
+        }
+        Equipment e = equipmentService.selectEquipmentById(serviceStore.getEquipmentId());
+        //检查设备是否可用,不必校验设备的状态,校验设备的信息即可,是否绑定
+        if( e == null){
+            throw new BusinessException("错误:所选设备不存在");
+        }
+        //如果不可用则报错
+        if( !equipmentService.isCanRun(e)){
+            throw new BusinessException("错误:所选设备信息异常,请联系管理员解决!!!");
+        }
+        //如果可用则将设备状态置为启用.并且修改设备的绑定信息
+        e.setIsBand("1");
+        e.setStatus("0");
+        equipmentService.updateEquipment(e);
+        storeInterface.openEquipment(e.getProviderId(),serviceStore.getMerchantId(),null,e.getEquipmentId());
+        serviceStore.setCreateBy(ShiroUtils.getLoginName());
         return serviceStoreMapper.insertServiceStore(serviceStore);
     }
 
@@ -164,7 +184,11 @@ public class ServiceStoreServiceImpl implements IServiceStoreService
                 }
                 //关闭商户下的所有设备
                 //查询商户下所有的设备id
-                List<Equipment> es = equipmentService.selectEquipmentListByMerchantId(store.getMerchantId());
+                Equipment equipment = new Equipment();
+                equipment.setStatus("0");
+                equipment.setIsBand("1");
+                equipment.setProviderId(store.getMerchantId());
+                List<Equipment> es = equipmentService.selectEquipmentListByMerchantId(equipment);
                 if( es != null){
                     eids = new ArrayList<>();
                     for (Equipment e :es) {
@@ -231,6 +255,22 @@ public class ServiceStoreServiceImpl implements IServiceStoreService
             return 0;
         }
         return ss.size();
+    }
+
+    /**
+     * 校验门店名字是否存在
+     *
+     * @param store
+     * @return
+     */
+    @Override
+    public String checkStoreNameUnique(ServiceStore store) {
+        Long storeId = StringUtils.isNull(store.getStoreId()) ? -1L : store.getStoreId();
+        ServiceStore info = serviceStoreMapper.checkStoreNameUnique(store.getStoreName());
+        if (StringUtils.isNotNull(info) && info.getMerchantId().longValue() != storeId.longValue()) {
+            return ServiceConstansts.STORE_NAME_NOT_UNIQUE;
+        }
+        return ServiceConstansts.STORE_NAME_UNIQUE;
     }
 
 

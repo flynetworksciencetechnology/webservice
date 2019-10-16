@@ -74,4 +74,11 @@ public interface IServiceStoreService
      * @return
      */
     int countStoreByMerchantId(ServiceStore store);
+
+    /**
+     * 校验门店名字是否存在
+     * @param store
+     * @return
+     */
+    String checkStoreNameUnique(ServiceStore store);
 }

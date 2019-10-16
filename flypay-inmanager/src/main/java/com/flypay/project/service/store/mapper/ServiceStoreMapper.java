@@ -67,4 +67,5 @@ public interface ServiceStoreMapper
      */
     int changeStatus(Long providerId);
 
+    ServiceStore checkStoreNameUnique(String storeName);
 }

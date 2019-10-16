@@ -18,6 +18,7 @@ public class ServiceStore extends BaseEntity
     private static final long serialVersionUID = 1L;
 
     /** 门店id */
+    @Excel(name = "商户id", cellType = Excel.ColumnType.NUMERIC)
     private Long storeId;
 
     /** 门店名称 */

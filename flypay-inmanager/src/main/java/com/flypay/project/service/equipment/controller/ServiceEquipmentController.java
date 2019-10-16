@@ -152,4 +152,16 @@ public class ServiceEquipmentController extends BaseController {
 
         return success("正在查询设备,请稍等... ...");
     }
+    /**
+     * 根据服务商id查询下属设备
+     */
+    @GetMapping("/selectEquipmentByMerchantId")
+    @ResponseBody
+    public AjaxResult selectEquipmentByMerchantId(Long merchantId, Long equipmentId){
+        try {
+            return AjaxResult.success(equipmentService.selectEquipmentListByMerchantId(merchantId,equipmentId));
+        }catch (Exception e){
+            return  error(e.getMessage());
+        }
+    }
 }

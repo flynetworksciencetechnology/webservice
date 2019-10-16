@@ -67,5 +67,5 @@ public interface EquipmentMapper
      */
     public Equipment checkEquipmentDeviceIdUnique(String deviceId);
 
-    List<Equipment> selectEquipmentListByMerchantId(Long merchantId);
+    List<Equipment> selectEquipmentListByMerchantId(Equipment equipment);
 }

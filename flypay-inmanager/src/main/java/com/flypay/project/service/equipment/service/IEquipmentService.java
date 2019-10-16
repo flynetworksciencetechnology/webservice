@@ -1,6 +1,7 @@
 package com.flypay.project.service.equipment.service;
 
 import com.flypay.project.service.equipment.domain.Equipment;
+import com.flypay.project.service.equipment.vo.EquipmentVo;
 
 import java.util.List;
 
@@ -70,8 +71,15 @@ public interface IEquipmentService
 
     /**
      * 根据商户id查询设备列表
+     * @param equipment
+     * @return
+     */
+    List<Equipment> selectEquipmentListByMerchantId(Equipment equipment);/**
+     * 根据商户id查询设备列表(连动用)
      * @param merchantId
      * @return
      */
-    List<Equipment> selectEquipmentListByMerchantId(Long merchantId);
+    List<EquipmentVo> selectEquipmentListByMerchantId(Long merchantId, Long equipmentId);
+
+    boolean isCanRun(Equipment e);
 }

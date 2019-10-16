@@ -149,4 +149,12 @@ public class ServiceStoreController extends BaseController
 
         return success("正在查询商户,请稍等... ...");
     }
+    /**
+     * 校验商户名称
+     */
+    @PostMapping("/checkStoreNameUnique")
+    @ResponseBody
+    public String checkStoreNameUnique(ServiceStore store){
+        return serviceStoreService.checkStoreNameUnique(store);
+    }
 }
