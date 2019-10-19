@@ -15,6 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="merchantName"    column="merchant_name"    />
         <result property="status"    column="status"    />
         <result property="delFlag"    column="del_flag"    />
+        <result property="storeSort"    column="store_sort"    />
         <result property="creatBy"    column="creat_by"    />
         <result property="creatTime"    column="creat_time"    />
         <result property="updateBy"    column="update_by"    />
@@ -34,6 +35,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             sm.merchant_name,
             ss.`STATUS`,
             ss.del_flag,
+            ss.store_sort,
             ss.creat_by,
             ss.creat_time,
             ss.update_by,
@@ -73,6 +75,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="merchantId != null ">merchant_id,</if>
             <if test="status != null  and status != ''">status,</if>
             <if test="delFlag != null  and delFlag != ''">del_flag,</if>
+            <if test="storeSort != null  and storeSort != ''">store_sort,</if>
             <if test="creatBy != null  and creatBy != ''">creat_by,</if>
             <if test="remark != null  and remark != ''">remark,</if>
             creat_time
@@ -85,6 +88,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="merchantId != null ">#{merchantId},</if>
             <if test="status != null  and status != ''">#{status},</if>
             <if test="delFlag != null  and delFlag != ''">#{delFlag},</if>
+            <if test="storeSort != null  and storeSort != ''">#{storeSort},</if>
             <if test="creatBy != null  and creatBy != ''">#{creatBy},</if>
             <if test="remark != null  and remark != ''">#{remark},</if>
             sysdate()
@@ -105,6 +109,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="merchantId != null ">ss.merchant_id = #{merchantId},</if>
             <if test="status != null  and status != ''">ss.status = #{status},</if>
             <if test="delFlag != null  and delFlag != ''">ss.del_flag = #{delFlag},</if>
+            <if test="storeSort != null  and storeSort != ''">ss.store_sort = #{storeSort},</if>
             <if test="creatBy != null  and creatBy != ''">ss.creat_by = #{creatBy},</if>
             <if test="creatTime != null ">ss.creat_time = #{creatTime},</if>
             <if test="updateBy != null  and updateBy != ''">ss.update_by = #{updateBy},</if>

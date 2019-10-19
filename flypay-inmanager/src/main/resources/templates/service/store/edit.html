@@ -7,8 +7,9 @@
 <body class="white-bg">
     <div class="wrapper wrapper-content animated fadeInRight ibox-content">
         <form class="form-horizontal m" id="form-store-edit" th:object="${serviceStore}">
-            <input name="id" th:field="*{id}" type="hidden">
-            <div class="form-group">    
+            <input name="id" th:field="*{storeId}" type="hidden">
+            <input name="bind_equipmenId" th:field="*{equipmenId}" type="hidden">
+            <div class="form-group">
                 <label class="col-sm-3 control-label">门店名称：</label>
                 <div class="col-sm-8">
                     <input name="storeName" th:field="*{storeName}" class="form-control" type="text">
@@ -26,22 +27,33 @@
                     <input name="city" th:field="*{city}" class="form-control" type="text">
                 </div>
             </div>
-            <div class="form-group">    
-                <label class="col-sm-3 control-label">绑定的设备：</label>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">所属商户：</label>
                 <div class="col-sm-8">
-                    <select name="equipmentId" class="form-control m-b">
-                        <option value="">所有</option>
+                    <select name="merchantId" id="merchantId" class="form-control m-b"  th:with="mvs=${@merchant.searchAllMerchant()}">
+                        <option value="">--</option>
+                        <option th:each="mv : ${mvs}" th:text="${mv.merchantName}" th:value="${mv.merchantId}" th:field="*{merchantId}"></option>
                     </select>
-                    <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 代码生成请选择字典属性</span>
                 </div>
             </div>
             <div class="form-group">    
-                <label class="col-sm-3 control-label">所属商户：</label>
+                <label class="col-sm-3 control-label">绑定的设备：</label>
                 <div class="col-sm-8">
-                    <select name="merchantId" class="form-control m-b">
-                        <option value="">所有</option>
+                    <select name="equipmentId" id="equipmentId" class="form-control m-b">
+                        <option value="">--</option>
                     </select>
-                    <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 代码生成请选择字典属性</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">显示顺序：</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" name="storeSort" id="storeSort" th:field="*{storeSort}"  required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">备注：</label>
+                <div class="col-sm-8">
+                    <input id="remark" name="remark" class="form-control" type="text" th:field="*{remark}" >
                 </div>
             </div>
 <!--            <div class="form-group">    -->
@@ -53,26 +65,18 @@
 <!--                    </div>-->
 <!--                </div>-->
 <!--            </div>-->
-            <div class="form-group">    
-                <label class="col-sm-3 control-label">创建人：</label>
-                <div class="col-sm-8">
-                    <input name="creatBy" th:field="*{creatBy}" class="form-control" type="text">
-                </div>
-            </div>
-            <div class="form-group">    
-                <label class="col-sm-3 control-label">创建时间：</label>
-                <div class="col-sm-8">
-                    <div class="input-group date">
-                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                        <input name="creatTime" th:value="${#dates.format(serviceStore.creatTime, 'yyyy-MM-dd')}" class="form-control" placeholder="yyyy-MM-dd" type="text">
-                    </div>
-                </div>
-            </div>
         </form>
     </div>
     <th:block th:include="include :: footer" />
     <th:block th:include="include :: datetimepicker-js" />
     <script type="text/javascript">
+
+        //页面加载完进行请求
+        $(function(){
+            //获取服务商id,获取绑定设备id
+            var merchantId = $('#merchantId option:selected').val();
+
+        });
         var prefix = ctx + "service/store";
         $("#form-store-edit").validate({
             focusCleanup: true

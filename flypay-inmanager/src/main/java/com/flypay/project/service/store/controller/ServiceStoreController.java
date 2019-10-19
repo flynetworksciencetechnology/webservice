@@ -147,7 +147,7 @@ public class ServiceStoreController extends BaseController
             return error("修改门店'" + storeId + "'失败，该门店下有正在运行的设备,此时无法修改");
         }
 
-        return success("正在查询商户,请稍等... ...");
+        return success("正在查询门店,请稍等... ...");
     }
     /**
      * 校验商户名称

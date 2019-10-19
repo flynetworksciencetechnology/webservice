@@ -51,6 +51,8 @@ public class ServiceStore extends BaseEntity
     /** 伤处标记 */
     private String delFlag;
 
+    private String storeSort;
+
     /** 创建人 */
     @Excel(name = "创建人")
     private String creatBy;
@@ -160,6 +162,14 @@ public class ServiceStore extends BaseEntity
 
     public void setProviderId(Long providerId) {
         this.providerId = providerId;
+    }
+
+    public String getStoreSort() {
+        return storeSort;
+    }
+
+    public void setStoreSort(String storeSort) {
+        this.storeSort = storeSort;
     }
 
     @Override
