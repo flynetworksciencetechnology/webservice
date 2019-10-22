@@ -31,7 +31,7 @@ server:
 # 日志配置
 logging:
   level:
-    com.flypay: info
+    com.flypay: DEBUG
     org.springframework: warn
 
 # 用户配置

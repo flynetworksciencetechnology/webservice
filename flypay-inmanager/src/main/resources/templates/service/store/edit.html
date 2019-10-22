@@ -8,7 +8,8 @@
     <div class="wrapper wrapper-content animated fadeInRight ibox-content">
         <form class="form-horizontal m" id="form-store-edit" th:object="${serviceStore}">
             <input name="id" th:field="*{storeId}" type="hidden">
-            <input name="bind_equipmenId" th:field="*{equipmenId}" type="hidden">
+            <input id="bind_equipmentId" th:field="*{equipmentId}" type="hidden">
+            <input id="bind_merchantId" th:field="*{merchantId}" type="hidden">
             <div class="form-group">
                 <label class="col-sm-3 control-label">门店名称：</label>
                 <div class="col-sm-8">
@@ -30,7 +31,7 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label">所属商户：</label>
                 <div class="col-sm-8">
-                    <select name="merchantId" id="merchantId" class="form-control m-b"  th:with="mvs=${@merchant.searchAllMerchant()}">
+                    <select name="merchantId" id="merchantId" data-th-onchange="change(null)"  class="form-control m-b"  th:with="mvs=${@merchant.searchAllMerchant()}">
                         <option value="">--</option>
                         <option th:each="mv : ${mvs}" th:text="${mv.merchantName}" th:value="${mv.merchantId}" th:field="*{merchantId}"></option>
                     </select>
@@ -74,7 +75,9 @@
         //页面加载完进行请求
         $(function(){
             //获取服务商id,获取绑定设备id
-            var merchantId = $('#merchantId option:selected').val();
+
+            var bind_equipmentId = $('#bind_equipmentId').val();
+            change(bind_equipmentId);
 
         });
         var prefix = ctx + "service/store";
@@ -93,6 +96,45 @@
             minView: "month",
             autoclose: true
         });
+
+        function change(bind_equipmentId){
+            var merchantId = $('#merchantId option:selected').val();
+            var bind_merchantId = $('#bind_merchantId').val();
+            if( bind_merchantId == merchantId){
+                bind_equipmentId = $('#bind_equipmentId').val();
+            }
+            $("#equipmentId").html("<option value=\"\">--</option>");
+
+            //查询
+            var config = {
+                url: ctx + "service/equipment/selectEquipmentByMerchantId",
+                type: "get",
+                dataType: "json",
+                async:false,
+                data: { "merchantId": merchantId,"equipmentId": bind_equipmentId},
+                beforeSend: function () {
+                    $.modal.loading("正在处理中，请稍后...");
+                },
+                success: function(result) {
+
+                    if( result.code == web_status.SUCCESS){
+                        $.modal.closeLoading();
+                        var datas = result.data;
+                        if( datas){
+                            //循环
+                            $.each(datas, function(i, ele) {
+                                $("#equipmentId")[0].options.add(new Option(ele.deviceId,ele.equipmentId,ele.selected,ele.selected))
+                            });
+                        }
+
+                    }else{
+                        $.modal.autoLoading(result.msg,300);
+                    }
+                }
+
+            };
+            $.ajax(config);
+        }
     </script>
 </body>
 </html>

@@ -113,8 +113,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="creatBy != null  and creatBy != ''">ss.creat_by = #{creatBy},</if>
             <if test="creatTime != null ">ss.creat_time = #{creatTime},</if>
             <if test="updateBy != null  and updateBy != ''">ss.update_by = #{updateBy},</if>
-            <if test="updateTime != null ">ss.update_time = #{updateTime},</if>
             <if test="remark != null  and remark != ''">ss.remark = #{remark},</if>
+            ss.update_time = sysdate()
         </trim>
         <if test="providerId != null">
             where sp.id = #{providerId}

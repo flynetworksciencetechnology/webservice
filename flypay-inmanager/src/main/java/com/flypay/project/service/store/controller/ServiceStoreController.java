@@ -142,8 +142,8 @@ public class ServiceStoreController extends BaseController
      */
     @GetMapping("/editValidata")
     @ResponseBody
-    public AjaxResult editValidate(@RequestParam("storeId") Long storeId){
-        if( storeInterface.getRunningEquipmentCount(null,null,storeId,null) > 0){
+    public AjaxResult editValidate(@RequestParam("storeId") Long storeId,Long equipmentId){
+        if( storeInterface.getRunningEquipmentCount(null,null,storeId,equipmentId) > 0){
             return error("修改门店'" + storeId + "'失败，该门店下有正在运行的设备,此时无法修改");
         }
 

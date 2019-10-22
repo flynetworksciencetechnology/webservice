@@ -102,8 +102,8 @@ public class ServiceStoreServiceImpl implements IServiceStoreService
      * @return 结果
      */
     @Override
-    public int updateServiceStore(ServiceStore serviceStore)
-    {
+    public int updateServiceStore(ServiceStore serviceStore){
+        serviceStore.setUpdateBy(ShiroUtils.getLoginName());
         return serviceStoreMapper.updateServiceStore(serviceStore);
     }
 

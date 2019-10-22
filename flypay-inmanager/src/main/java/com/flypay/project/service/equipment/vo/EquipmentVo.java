@@ -7,5 +7,5 @@ public class EquipmentVo {
 
     public Long equipmentId;
     public String deviceId;
-    public boolean selected;
+    public boolean selected = false;
 }

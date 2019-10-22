@@ -234,15 +234,30 @@ public class EquipmentServiceImpl implements IEquipmentService{
             throw new BusinessException("错误:商户id为空,请联系开发人员!!!");
         }
         Equipment equipment = new Equipment();
-        equipment.setStatus("1");
-        equipment.setIsBand("0");
+        List<EquipmentVo> evs = new ArrayList<>();
+        //查询未绑定且未启用的,否则查询全部的
+        if( equipmentId != null){
+
+            //根据id查询设备信息,查询已绑定信息
+            Equipment e = equipmentMapper.selectEquipmentById(equipmentId);
+            if( e == null){
+                throw new BusinessException("错误:该绑定设备异常,请联系管理员");
+            }
+            EquipmentVo ev = new EquipmentVo();
+            ev.deviceId = e.getDeviceId();
+            ev.equipmentId = e.getEquipmentId();
+            ev.selected = true;
+            evs.add(ev);
+        }
+        equipment.setStatus(ServiceConstansts.STOP_STATUS);
+        equipment.setIsBand(ServiceConstansts.USING_STATUS);
         equipment.setProviderId(merchantId);
         //获取所有设备
         List<Equipment> es = selectEquipmentListByMerchantId(equipment);
-        if( es == null || es.isEmpty()){
+        if( (evs == null || evs.isEmpty()) && (es == null || es.isEmpty())){
             throw new BusinessException("错误:商户下无可用设备,请联系管理员添加设备");
         }
-        List<EquipmentVo> evs = new ArrayList<>();
+
         for(Equipment e : es){
             EquipmentVo ev = new EquipmentVo();
             ev.deviceId = e.getDeviceId();
